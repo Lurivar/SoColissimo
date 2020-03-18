@@ -1,0 +1,31 @@
+{loop name="check.module.socolissimo.order.edit" type="order" id=$ID status="2,3"}
+{loop name="check.module.socolissimoid" type="socolissimoid"}
+    {if $MODULE_ID == $DELIVERY_MODULE}
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {intl l="Export Coliship file" d='socolissimo.ai'}
+        </div>
+        <div class="panel-body">
+
+                {form name="socolissimo.export"}
+                <form action="{url path="/admin/module/socolissimo/export"}" method="post">
+                    {form_hidden_fields form=$form}
+                    {form_field form=$form field="new_status_id"}
+                        <input type="hidden" name="{$name}" value="nochange" />
+                    {/form_field}
+
+                    {form_field form=$form field="order_"|cat:$ID}
+                        <input type="hidden" name="{$name}" value="true" />
+                    {/form_field}
+                    <button type="submit" name="export_order" value="stay" class="form-submit-button btn btn-sm btn-default" title="{intl l='Export' d='socolissimo.ai'}">{intl l='Export' d='socolissimo.ai'} <span class="glyphicon glyphicon-ok"></span></button>
+                </form>
+                {/form}
+                <br/>
+
+                Suivi du colis: <a href="">ici</a>
+        </div>
+    </div>
+    {/if}
+{/loop}
+{/loop}
