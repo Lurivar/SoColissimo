@@ -66,7 +66,7 @@ class ConfigureSoColissimo extends BaseForm
                 'text',
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => ConfigQuery::read('socolissimo_login'),
+                    'data'        => SoColissimo::getConfigValue('socolissimo_username'),
                     'label'       => $translator->trans("Account number", [], SoColissimo::DOMAIN),
                     'label_attr'  => ['for' => 'accountnumber']
                 ]
@@ -76,13 +76,13 @@ class ConfigureSoColissimo extends BaseForm
                 'text',
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => ConfigQuery::read('socolissimo_pwd'),
+                    'data'        => SoColissimo::getConfigValue('socolissimo_password'),
                     'label'       => $translator->trans("Password", [], SoColissimo::DOMAIN),
                     'label_attr'  => ['for' => 'password']
                 ]
             )
             ->add(
-                'url_prod',
+                'endpoint',
                 'text',
                 [
                     'constraints' => [
@@ -91,34 +91,9 @@ class ConfigureSoColissimo extends BaseForm
                             'protocols' => ['https', 'http']
                         ])
                     ],
-                    'data'        => ConfigQuery::read('socolissimo_url_prod'),
+                    'data'        => SoColissimo::getConfigValue('socolissimo_endpoint_url'),
                     'label'       => $translator->trans("Colissimo URL prod", [], SoColissimo::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_url_prod']
-                ]
-            )
-            ->add(
-                'url_test',
-                'text',
-                [
-                    'constraints' => [
-                        new NotBlank(),
-                        new Url([
-                            'protocols' => ['https', 'http']
-                        ])
-                    ],
-                    'data'        => ConfigQuery::read('socolissimo_url_test'),
-                    'label'       => $translator->trans("Colissimo URL test", [], SoColissimo::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_url_test']
-                ]
-            )
-            ->add(
-                'test_mode',
-                'text',
-                [
-                    'constraints' => [new NotBlank()],
-                    'data'        => ConfigQuery::read('socolissimo_test_mode'),
-                    'label'       => $translator->trans("Test mode", [], SoColissimo::DOMAIN),
-                    'label_attr'  => ['for' => 'test_mode']
+                    'label_attr'  => ['for' => 'socolissimo_endpoint_url']
                 ]
             )
             ->add(
@@ -126,7 +101,7 @@ class ConfigureSoColissimo extends BaseForm
                 'text',
                 [
                     'constraints' => [],
-                    'data'        => ConfigQuery::read('socolissimo_google_map_key'),
+                    'data'        => SoColissimo::getConfigValue('socolissimo_google_map_key'),
                     'label'       => $translator->trans("Google map API key", [], SoColissimo::DOMAIN),
                     'label_attr'  => ['for' => 'google_map_key']
                 ]
