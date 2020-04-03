@@ -1,9 +1,9 @@
 <?php
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\Model\SocolissimoDeliveryModeQuery;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -11,7 +11,7 @@ use Thelia\Core\Template\Element\PropelSearchLoopInterface;
 use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 
-class SoColissimoDeliveryMode extends BaseLoop implements PropelSearchLoopInterface
+class ColissimoPickupPointDeliveryMode extends BaseLoop implements PropelSearchLoopInterface
 {
     /**
      * @return ArgumentCollection
@@ -27,7 +27,7 @@ class SoColissimoDeliveryMode extends BaseLoop implements PropelSearchLoopInterf
     {
         $mode = $this->getId();
 
-        $modes = SocolissimoDeliveryModeQuery::create();
+        $modes = ColissimoPickupPointDeliveryModeQuery::create();
 
         if (null !== $mode) {
             $modes->filterById($mode);
@@ -38,9 +38,9 @@ class SoColissimoDeliveryMode extends BaseLoop implements PropelSearchLoopInterf
 
     public function parseResults(LoopResult $loopResult)
     {
-        /** @var \SoColissimo\Model\SocolissimoDeliveryMode $mode */
+        /** @var \ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryMode $mode */
         foreach ($loopResult->getResultDataCollection() as $mode) {
-            if (SoColissimo::getConfigValue('socolissimo_dom_delivery_authorized') || $mode->getId() !== 1) {
+            if (ColissimoPickupPoint::getConfigValue('socolissimo_dom_delivery_authorized') || $mode->getId() !== 1) {
                 $loopResultRow = new LoopResultRow($mode);
                 $loopResultRow
                     ->set("ID", $mode->getId())

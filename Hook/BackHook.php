@@ -1,13 +1,13 @@
 <?php
 
-namespace SoColissimo\Hook;
+namespace ColissimoPickupPoint\Hook;
 
 use Thelia\Core\Event\Hook\HookRenderEvent;
 use Thelia\Core\Hook\BaseHook;
 
 /**
  * Class BackHook
- * @package SoColissimo\Hook
+ * @package ColissimoPickupPoint\Hook
  */
 class BackHook extends BaseHook
 {

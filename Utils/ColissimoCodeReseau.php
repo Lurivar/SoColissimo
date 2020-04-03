@@ -1,12 +1,12 @@
 <?php
 
-namespace SoColissimo\Utils;
+namespace ColissimoPickupPoint\Utils;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 
 /**
  * Class ColissimoCodeReseau
- * @package SoColissimo\Utils
+ * @package ColissimoPickupPoint\Utils
  */
 class ColissimoCodeReseau
 {

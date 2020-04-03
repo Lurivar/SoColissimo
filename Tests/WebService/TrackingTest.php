@@ -21,11 +21,11 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Tests\WebService;
+namespace ColissimoPickupPoint\Tests\WebService;
 
 /**
  * Class TrackingTest
- * @package SoColissimo\Tests\WebService
+ * @package ColissimoPickupPoint\Tests\WebService
  * @author Thelia <info@thelia.net>
  */
 class TrackingTest extends \PHPUnit_Framework_TestCase

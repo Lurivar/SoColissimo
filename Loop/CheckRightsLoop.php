@@ -21,7 +21,7 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 use Thelia\Core\Template\Element\BaseLoop;

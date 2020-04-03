@@ -21,10 +21,10 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
-use SoColissimo\SoColissimo;
-use SoColissimo\WebService\FindById;
+use ColissimoPickupPoint\ColissimoPickupPoint;
+use ColissimoPickupPoint\WebService\FindById;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Core\HttpFoundation\Response;
@@ -60,8 +60,8 @@ class GetSpecificLocation extends BaseFrontController
         $req->setId($point_id)
             ->setLangue("FR")
             ->setDate(date("d/m/Y"))
-            ->setAccountNumber(SoColissimo::getConfigValue('socolissimo_username'))
-            ->setPassword(SoColissimo::getConfigValue('socolissimo_password'))
+            ->setAccountNumber(ColissimoPickupPoint::getConfigValue('socolissimo_username'))
+            ->setPassword(ColissimoPickupPoint::getConfigValue('socolissimo_password'))
         ;
 
         $response = $req->exec();

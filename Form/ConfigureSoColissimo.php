@@ -21,9 +21,9 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Form;
+namespace ColissimoPickupPoint\Form;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -34,7 +34,7 @@ use Thelia\Model\ConfigQuery;
 
 /**
  * Class ConfigureSoColissimo
- * @package SoColissimo\Form
+ * @package ColissimoPickupPoint\Form
  * @author Thelia <info@thelia.net>
  */
 class ConfigureSoColissimo extends BaseForm
@@ -68,8 +68,8 @@ class ConfigureSoColissimo extends BaseForm
                 TextType::class,
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => SoColissimo::getConfigValue('socolissimo_username'),
-                    'label'       => $translator->trans("Account number", [], SoColissimo::DOMAIN),
+                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_username'),
+                    'label'       => $translator->trans("Account number", [], ColissimoPickupPoint::DOMAIN),
                     'label_attr'  => ['for' => 'socolissimo_username']
                 ]
             )
@@ -78,8 +78,8 @@ class ConfigureSoColissimo extends BaseForm
                 TextType::class,
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => SoColissimo::getConfigValue('socolissimo_password'),
-                    'label'       => $translator->trans("Password", [], SoColissimo::DOMAIN),
+                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_password'),
+                    'label'       => $translator->trans("Password", [], ColissimoPickupPoint::DOMAIN),
                     'label_attr'  => ['for' => 'socolissimo_password']
                 ]
             )
@@ -93,8 +93,8 @@ class ConfigureSoColissimo extends BaseForm
                             'protocols' => ['https', 'http']
                         ])
                     ],
-                    'data'        => SoColissimo::getConfigValue('socolissimo_endpoint_url'),
-                    'label'       => $translator->trans("Colissimo URL prod", [], SoColissimo::DOMAIN),
+                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_endpoint_url'),
+                    'label'       => $translator->trans("Colissimo URL prod", [], ColissimoPickupPoint::DOMAIN),
                     'label_attr'  => ['for' => 'socolissimo_endpoint_url']
                 ]
             )
@@ -103,8 +103,8 @@ class ConfigureSoColissimo extends BaseForm
                 TextType::class,
                 [
                     'constraints' => [],
-                    'data'        => SoColissimo::getConfigValue('socolissimo_google_map_key'),
-                    'label'       => $translator->trans("Google map API key", [], SoColissimo::DOMAIN),
+                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_google_map_key'),
+                    'label'       => $translator->trans("Google map API key", [], ColissimoPickupPoint::DOMAIN),
                     'label_attr'  => ['for' => 'socolissimo_google_map_key']
                 ]
             )
@@ -114,9 +114,9 @@ class ConfigureSoColissimo extends BaseForm
                 [
                     'constraints' => [],
                     'required'      => false,
-                    'data'          => (bool)SoColissimo::getConfigValue('socolissimo_dom_delivery_authorized'),
-                    'value'         => (bool)SoColissimo::getConfigValue('socolissimo_dom_delivery_authorized'),
-                    'label'       => $translator->trans("[DEPRECATED] Activate Dom delivery", [], SoColissimo::DOMAIN),
+                    'data'          => (bool)ColissimoPickupPoint::getConfigValue('socolissimo_dom_delivery_authorized'),
+                    'value'         => (bool)ColissimoPickupPoint::getConfigValue('socolissimo_dom_delivery_authorized'),
+                    'label'       => $translator->trans("[DEPRECATED] Activate Dom delivery", [], ColissimoPickupPoint::DOMAIN),
                     'label_attr'  => ['for' => 'socolissimo_dom_delivery_authorized']
                 ]
             )

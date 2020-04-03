@@ -21,8 +21,8 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
-use SoColissimo\SoColissimo;
+namespace ColissimoPickupPoint\Loop;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Core\Template\Element\ArraySearchLoopInterface;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
@@ -30,11 +30,11 @@ use Thelia\Core\Template\Element\LoopResultRow;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 
 /**
- * Class SoColissimoId
- * @package SoColissimo\Loop
+ * class ColissimoPickupPointId
+ * @package ColissimoPickupPoint\Loop
  * @author Thelia <info@thelia.net>
  */
-class SoColissimoId extends BaseLoop implements ArraySearchLoopInterface
+class ColissimoPickupPointId extends BaseLoop implements ArraySearchLoopInterface
 {
     /**
      * this method returns an array
@@ -43,7 +43,7 @@ class SoColissimoId extends BaseLoop implements ArraySearchLoopInterface
      */
     public function buildArray()
     {
-        return array(SoColissimo::getModCode());
+        return array(ColissimoPickupPoint::getModCode());
     }
 
     /**

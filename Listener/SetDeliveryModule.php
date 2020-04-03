@@ -21,10 +21,10 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Listener;
+namespace ColissimoPickupPoint\Listener;
 
-use SoColissimo\Utils\ColissimoCodeReseau;
-use SoColissimo\WebService\FindById;
+use ColissimoPickupPoint\Utils\ColissimoCodeReseau;
+use ColissimoPickupPoint\WebService\FindById;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Thelia\Core\Event\Delivery\DeliveryPostageEvent;
 use Thelia\Core\Event\TheliaEvents;
@@ -35,16 +35,16 @@ use Thelia\Model\Address;
 use Thelia\Model\ConfigQuery;
 use Thelia\Model\CountryQuery;
 use Thelia\Model\OrderAddressQuery;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Core\Event\Order\OrderEvent;
 use Thelia\Model\AddressQuery;
-use SoColissimo\Model\AddressSocolissimoQuery;
-use SoColissimo\Model\AddressSocolissimo;
-use SoColissimo\Model\OrderAddressSocolissimo;
+use ColissimoPickupPoint\Model\AddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\AddressSocolissimo;
+use ColissimoPickupPoint\Model\OrderAddressSocolissimo;
 
 /**
  * Class SetDeliveryModule
- * @package SoColissimo\Listener
+ * @package ColissimoPickupPoint\Listener
  * @author Thelia <info@thelia.net>
  */
 class SetDeliveryModule implements EventSubscriberInterface
@@ -63,7 +63,7 @@ class SetDeliveryModule implements EventSubscriberInterface
 
     protected function check_module($id)
     {
-        return $id == SoColissimo::getModCode();
+        return $id == ColissimoPickupPoint::getModCode();
     }
 
     private function callWebServiceFindRelayPointByIdFromRequest(Request $request)
@@ -80,8 +80,8 @@ class SetDeliveryModule implements EventSubscriberInterface
             $req->setId($pr_code)
                 ->setLangue("FR")
                 ->setDate(date("d/m/Y"))
-                ->setAccountNumber(SoColissimo::getConfigValue('socolissimo_username'))
-                ->setPassword(SoColissimo::getConfigValue('socolissimo_password'));
+                ->setAccountNumber(ColissimoPickupPoint::getConfigValue('socolissimo_username'))
+                ->setPassword(ColissimoPickupPoint::getConfigValue('socolissimo_password'));
 
             // An argument "Code réseau" is now required in addition to the Relay Point Code to identify a relay point outside France.
             // This argument is optional for relay points inside France.
@@ -174,7 +174,7 @@ class SetDeliveryModule implements EventSubscriberInterface
                         ->setCountryId($relayCountry->getId())
                         ->save();
                 } else {
-                    $message = Translator::getInstance()->trans('No relay points were selected', [], SoColissimo::DOMAIN);
+                    $message = Translator::getInstance()->trans('No relay points were selected', [], ColissimoPickupPoint::DOMAIN);
                     throw new \Exception($message);
                 }
             }

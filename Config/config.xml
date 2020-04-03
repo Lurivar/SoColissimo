@@ -5,38 +5,38 @@
         xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
 
     <loops>
-        <loop class="SoColissimo\Loop\CheckRightsLoop" name="socolissimo.check.rights" />
-        <loop class="SoColissimo\Loop\SoColissimoDeliveryMode" name="socolissimo.delivery.mode" />
-        <loop class="SoColissimo\Loop\SoColissimoPrice" name="socolissimo" />
-        <loop class="SoColissimo\Loop\SoColissimoId" name="socolissimoid" />
-        <loop class="SoColissimo\Loop\GetRelais" name="socolissimo.around" />
-        <loop class="SoColissimo\Loop\SoColissimoAddress" name="address.socolissimo" />
-        <loop class="SoColissimo\Loop\NotSentOrders" name="order.notsent.socolissimo" />
-        <loop class="SoColissimo\Loop\SoColissimoOrderAddressLoop" name="socolissimo.order_address" />
-        <loop class="SoColissimo\Loop\AreaFreeshippingDom" name="socolissimo.area.freeshipping.dom" />
-        <loop class="SoColissimo\Loop\AreaFreeshippingPr" name="socolissimo.area.freeshipping.pr" />
+        <loop class="ColissimoPickupPoint\Loop\CheckRightsLoop" name="socolissimo.check.rights" />
+        <loop class="ColissimoPickupPoint\Loop\SoColissimoDeliveryMode" name="socolissimo.delivery.mode" />
+        <loop class="ColissimoPickupPoint\Loop\SoColissimoPrice" name="socolissimo" />
+        <loop class="ColissimoPickupPoint\Loop\SoColissimoId" name="socolissimoid" />
+        <loop class="ColissimoPickupPoint\Loop\GetRelais" name="socolissimo.around" />
+        <loop class="ColissimoPickupPoint\Loop\SoColissimoAddress" name="address.socolissimo" />
+        <loop class="ColissimoPickupPoint\Loop\NotSentOrders" name="order.notsent.socolissimo" />
+        <loop class="ColissimoPickupPoint\Loop\SoColissimoOrderAddressLoop" name="socolissimo.order_address" />
+        <loop class="ColissimoPickupPoint\Loop\AreaFreeshippingDom" name="socolissimo.area.freeshipping.dom" />
+        <loop class="ColissimoPickupPoint\Loop\AreaFreeshippingPr" name="socolissimo.area.freeshipping.pr" />
     </loops>
 
     <forms>
-        <form name="socolissimo.freeshipping.form" class="SoColissimo\Form\FreeShipping" />
-        <form name="socolissimo.configure" class="SoColissimo\Form\ConfigureSoColissimo" />
-        <form name="socolissimo.export" class="SoColissimo\Form\ExportOrder" />
-        <form name="socolissimo.import" class="SoColissimo\Form\ImportForm"/>
-        <form name="socolissimo.add.price.form" class="SoColissimo\Form\AddPriceForm" />
-        <form name="socolissimo.update.price.form" class="SoColissimo\Form\UpdatePriceForm" />
+        <form name="socolissimo.freeshipping.form" class="ColissimoPickupPoint\Form\FreeShipping" />
+        <form name="socolissimo.configure" class="ColissimoPickupPoint\Form\ConfigureSoColissimo" />
+        <form name="socolissimo.export" class="ColissimoPickupPoint\Form\ExportOrder" />
+        <form name="socolissimo.import" class="ColissimoPickupPoint\Form\ImportForm"/>
+        <form name="socolissimo.add.price.form" class="ColissimoPickupPoint\Form\AddPriceForm" />
+        <form name="socolissimo.update.price.form" class="ColissimoPickupPoint\Form\UpdatePriceForm" />
     </forms>
 
     <services>
-        <service id="hook.order.module.socolissimo" class="SoColissimo\Listener\SetDeliveryModule" scope="request">
+        <service id="hook.order.module.socolissimo" class="ColissimoPickupPoint\Listener\SetDeliveryModule" scope="request">
             <argument type="service" id="request"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-        <service id="send.socolissimo.mail" class="SoColissimo\Listener\SendMail" scope="request">
+        <service id="send.socolissimo.mail" class="ColissimoPickupPoint\Listener\SendMail" scope="request">
             <argument type="service" id="thelia.parser" />
             <argument type="service" id="mailer"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-        <service id="socolissimo.price.smarty.plugin" class="SoColissimo\Smarty\Plugins\SocolissimoDeliveryPrice" scope="request">
+        <service id="socolissimo.price.smarty.plugin" class="ColissimoPickupPoint\Smarty\Plugins\SocolissimoDeliveryPrice" scope="request">
             <argument type="service" id="request" />
             <argument type="service" id="event_dispatcher"/>
             <tag name="thelia.parser.register_plugin" />
@@ -44,16 +44,16 @@
     </services>
 
     <hooks>
-        <hook id="socolissimo.hook.back" class="SoColissimo\Hook\BackHook">
+        <hook id="socolissimo.hook.back" class="ColissimoPickupPoint\Hook\BackHook">
             <tag name="hook.event_listener" event="module.configuration" type="back" method="onModuleConfiguration" />
             <tag name="hook.event_listener" event="module.config-js" type="back" method="onModuleConfigJs" />
         </hook>
-        <hook id="socolissimo.hook.front" class="SoColissimo\Hook\FrontHook" scope="request">
+        <hook id="socolissimo.hook.front" class="ColissimoPickupPoint\Hook\FrontHook" scope="request">
             <tag name="hook.event_listener" event="order-delivery.extra" />
             <tag name="hook.event_listener" event="order-invoice.delivery-address" />
             <tag name="hook.event_listener" event="main.head-bottom" />
         </hook>
-        <hook id="socolissimo.hook.pdf" class="SoColissimo\Hook\PdfHook" scope="request">
+        <hook id="socolissimo.hook.pdf" class="ColissimoPickupPoint\Hook\PdfHook" scope="request">
             <tag name="hook.event_listener" event="invoice.after-delivery-module" type="pdf" method="onInvoiceAfterDeliveryModule" />
         </hook>
     </hooks>

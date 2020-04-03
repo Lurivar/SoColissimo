@@ -21,10 +21,10 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
 use Propel\Runtime\ActiveQuery\Criteria;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 use Thelia\Model\OrderQuery;
@@ -34,7 +34,7 @@ use Thelia\Model\OrderStatusQuery;
 
 /**
  * Class NotSentOrders
- * @package SoColissimo\Loop
+ * @package ColissimoPickupPoint\Loop
  * @author Thelia <info@thelia.net>
  */
 class NotSentOrders extends Order
@@ -62,7 +62,7 @@ class NotSentOrders extends Order
             ->find()
             ->toArray("code");
         $query = OrderQuery::create()
-            ->filterByDeliveryModuleId(SoColissimo::getModCode())
+            ->filterByDeliveryModuleId(ColissimoPickupPoint::getModCode())
             ->filterByStatusId(
                 array(
                     $status[OrderStatus::CODE_PAID]['Id'],

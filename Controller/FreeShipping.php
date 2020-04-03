@@ -21,13 +21,13 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
-use SoColissimo\Model\SocolissimoAreaFreeshippingDom;
-use SoColissimo\Model\SocolissimoAreaFreeshippingDomQuery;
-use SoColissimo\Model\SocolissimoAreaFreeshippingPr;
-use SoColissimo\Model\SocolissimoAreaFreeshippingPrQuery;
-use SoColissimo\Model\SocolissimoDeliveryModeQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDom;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPr;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPrQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\HttpFoundation\Response;
@@ -45,7 +45,7 @@ class FreeShipping extends BaseAdminController
             return $response;
         }
 
-        $form = new \SoColissimo\Form\FreeShipping($this->getRequest());
+        $form = new \ColissimoPickupPoint\Form\FreeShipping($this->getRequest());
         $response=null;
 
         try {
@@ -53,7 +53,7 @@ class FreeShipping extends BaseAdminController
             $freeshipping = $vform->get('freeshipping')->getData();
             $deliveryModeId = $vform->get('delivery_mode')->getData();
 
-            $deliveryMode = SocolissimoDeliveryModeQuery::create()->findOneById($deliveryModeId);
+            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($deliveryModeId);
             $deliveryMode->setFreeshippingActive($freeshipping)
                 ->save();
             $response = Response::create('');
@@ -66,12 +66,12 @@ class FreeShipping extends BaseAdminController
     public function setFreeShippingFrom()
     {
         if (null !== $response = $this
-                ->checkAuth(array(AdminResources::MODULE), array('SoColissimo'), AccessManager::UPDATE)) {
+                ->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
             return $response;
         }
 
         $data = $this->getRequest()->request;
-        $deliveryMode = SocolissimoDeliveryModeQuery::create()->findOneById($data->get('delivery-mode'));
+        $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($data->get('delivery-mode'));
 
         $price = $data->get("price") === "" ? null : $data->get("price");
 
@@ -82,11 +82,11 @@ class FreeShipping extends BaseAdminController
             ->save();
 
         return $this->generateRedirectFromRoute(
-            "admin.module.configure",
+            'admin.module.configure',
             array(),
             array (
-                'current_tab'=>'prices_slices_tab_'.$data->get('delivery-mode'),
-                'module_code'=>"SoColissimo",
+                'current_tab'=> 'prices_slices_tab_'.$data->get('delivery-mode'),
+                'module_code'=> 'ColissimoPickupPoint',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
                 'price_error_id' => null,
                 'price_error' => null
@@ -101,7 +101,7 @@ class FreeShipping extends BaseAdminController
     public function setAreaFreeShipping()
     {
         if (null !== $response = $this
-                ->checkAuth(array(AdminResources::MODULE), array('SoColissimo'), AccessManager::UPDATE)) {
+                ->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
             return $response;
         }
 
@@ -110,69 +110,69 @@ class FreeShipping extends BaseAdminController
         try {
             $data = $this->getRequest()->request;
 
-            $socolissimo_area_id = $data->get('area-id');
-            $socolissimo_delivery_id = $data->get('delivery-mode');
-            $cartAmount = $data->get("cart-amount");
+            $colissimo_pickup_area_id = $data->get('area-id');
+            $colissimo_pickup_delivery_id = $data->get('delivery-mode');
+            $cartAmount = $data->get('cart-amount');
 
             if ($cartAmount < 0 || $cartAmount === '') {
                 $cartAmount = null;
             }
 
-            $aeraQuery = AreaQuery::create()->findOneById($socolissimo_area_id);
+            $aeraQuery = AreaQuery::create()->findOneById($colissimo_pickup_area_id);
             if (null === $aeraQuery) {
                 return null;
             }
 
-            $deliveryModeQuery = SocolissimoDeliveryModeQuery::create()->findOneById($socolissimo_delivery_id);
+            $deliveryModeQuery = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($colissimo_pickup_delivery_id);
             if (null === $deliveryModeQuery) {
                 return null;
             }
 
             //Price slices for "Domicile"
-            if ($socolissimo_delivery_id === '1') {
-                $socolissimoFreeShippingDom = new SocolissimoAreaFreeshippingDom();
+            if ($colissimo_pickup_delivery_id === '1') {
+                $socolissimoFreeShippingDom = new ColissimoPickupPointAreaFreeshippingDom();
 
-                $socolissimoAreaFreeshippingDomQuery = SocolissimoAreaFreeshippingDomQuery::create()
-                    ->filterByAreaId($socolissimo_area_id)
-                    ->filterByDeliveryModeId($socolissimo_delivery_id)
+                $socolissimoAreaFreeshippingDomQuery = ColissimoPickupPointAreaFreeshippingDomQuery::create()
+                    ->filterByAreaId($colissimo_pickup_area_id)
+                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
                     ->findOne();
 
                 if (null === $socolissimoAreaFreeshippingDomQuery) {
                     $socolissimoFreeShippingDom
-                        ->setAreaId($socolissimo_area_id)
-                        ->setDeliveryModeId($socolissimo_delivery_id)
+                        ->setAreaId($colissimo_pickup_area_id)
+                        ->setDeliveryModeId($colissimo_pickup_delivery_id)
                         ->setCartAmount($cartAmount)
                         ->save();
                 }
 
-                $cartAmountDomQuery = SocolissimoAreaFreeshippingDomQuery::create()
-                    ->filterByAreaId($socolissimo_area_id)
-                    ->filterByDeliveryModeId($socolissimo_delivery_id)
+                $cartAmountDomQuery = ColissimoPickupPointAreaFreeshippingDomQuery::create()
+                    ->filterByAreaId($colissimo_pickup_area_id)
+                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
                     ->findOneOrCreate()
                     ->setCartAmount($cartAmount)
                     ->save();
             }
 
             //Price slices for "Point Relais"
-            if ($socolissimo_delivery_id === '2') {
-                $socolissimoFreeShippingPr = new SocolissimoAreaFreeshippingPr();
+            if ($colissimo_pickup_delivery_id === '2') {
+                $socolissimoFreeShippingPr = new ColissimoPickupPointAreaFreeshippingPr();
 
-                $socolissimoAreaFreeshippingPrQuery = SocolissimoAreaFreeshippingPrQuery::create()
-                    ->filterByAreaId($socolissimo_area_id)
-                    ->filterByDeliveryModeId($socolissimo_delivery_id)
+                $socolissimoAreaFreeshippingPrQuery = ColissimoPickupPointAreaFreeshippingPrQuery::create()
+                    ->filterByAreaId($colissimo_pickup_area_id)
+                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
                     ->findOne();
 
                 if (null === $socolissimoAreaFreeshippingPrQuery) {
                     $socolissimoFreeShippingPr
-                        ->setAreaId($socolissimo_area_id)
-                        ->setDeliveryModeId($socolissimo_delivery_id)
+                        ->setAreaId($colissimo_pickup_area_id)
+                        ->setDeliveryModeId($colissimo_pickup_delivery_id)
                         ->setCartAmount($cartAmount)
                         ->save();
                 }
 
-                $cartAmountPrQuery = SocolissimoAreaFreeshippingPrQuery::create()
-                    ->filterByAreaId($socolissimo_area_id)
-                    ->filterByDeliveryModeId($socolissimo_delivery_id)
+                $cartAmountPrQuery = ColissimoPickupPointAreaFreeshippingPrQuery::create()
+                    ->filterByAreaId($colissimo_pickup_area_id)
+                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
                     ->findOneOrCreate()
                     ->setCartAmount($cartAmount)
                     ->save();

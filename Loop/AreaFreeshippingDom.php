@@ -1,8 +1,8 @@
 <?php
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\Model\SocolissimoAreaFreeshippingDomQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -28,7 +28,7 @@ class AreaFreeshippingDom extends BaseLoop implements PropelSearchLoopInterface
         $areaId = $this->getAreaId();
         $mode = $this->getDeliveryModeId();
 
-        $modes = SocolissimoAreaFreeshippingDomQuery::create();
+        $modes = ColissimoPickupPointAreaFreeshippingDomQuery::create();
 
         if (null !== $mode) {
             $modes->filterByDeliveryModeId($mode);
@@ -43,7 +43,7 @@ class AreaFreeshippingDom extends BaseLoop implements PropelSearchLoopInterface
 
     public function parseResults(LoopResult $loopResult)
     {
-        /** @var \SoColissimo\Model\SocolissimoAreaFreeshippingDom $mode */
+        /** @var \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDom $mode */
         foreach ($loopResult->getResultDataCollection() as $mode) {
             $loopResultRow = new LoopResultRow($mode);
             $loopResultRow->set("ID", $mode->getId())

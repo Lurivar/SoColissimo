@@ -9,12 +9,12 @@ VALUES
 	(2, 'Point relais', 'pr', 0, NULL);
 
 -- add domicile delivery mode
-INSERT INTO `socolissimo_area_freeshipping_dom` (`id`, `area_id`, `delivery_mode_id`, `cart_amount`)
+INSERT INTO `colissimo_area_freeshipping_dom` (`id`, `area_id`, `delivery_mode_id`, `cart_amount`)
 VALUES
 	(1, '1', '1', NULL);
 
 -- add relais delivery mode
-INSERT INTO `socolissimo_area_freeshipping_pr` (`id`, `area_id`, `delivery_mode_id`, `cart_amount`)
+INSERT INTO `colissimo_area_freeshipping_pr` (`id`, `area_id`, `delivery_mode_id`, `cart_amount`)
 VALUES
 	(1, '1', '2', NULL);
 

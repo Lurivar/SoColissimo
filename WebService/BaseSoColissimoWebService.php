@@ -21,14 +21,13 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\WebService;
+namespace ColissimoPickupPoint\WebService;
 
-use SoColissimo\SoColissimo;
-use Thelia\Model\ConfigQuery;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 
 /**
  * Class BaseSoColissimoWebService
- * @package SoColissimo\WebService
+ * @package ColissimoPickupPoint\WebService
  * @author Thelia <info@thelia.net>
  *
  * @method BaseSoColissimoWebService getAccountNumber()
@@ -49,7 +48,7 @@ abstract class BaseSoColissimoWebService extends BaseWebService
 
     public function __construct($function)
     {
-        $url = SoColissimo::getConfigValue('socolissimo_endpoint_url');
+        $url = ColissimoPickupPoint::getConfigValue('socolissimo_endpoint_url');
 
         parent::__construct($url, $function);
     }

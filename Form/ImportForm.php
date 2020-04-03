@@ -1,15 +1,15 @@
 <?php
 
-namespace SoColissimo\Form;
+namespace ColissimoPickupPoint\Form;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Validator\Constraints;
 use Thelia\Core\Translation\Translator;
 use Thelia\Form\BaseForm;
 
 /**
  * Class ImportForm
- * @package SoColissimo\Form
+ * @package ColissimoPickupPoint\Form
  * @author Etienne Perriere - OpenStudio <eperriere@openstudio.fr>
  */
 class ImportForm extends BaseForm
@@ -25,7 +25,7 @@ class ImportForm extends BaseForm
             ->add(
                 'import_file', 'file',
                 [
-                    'label' => Translator::getInstance()->trans('Select file to import', [], SoColissimo::DOMAIN),
+                    'label' => Translator::getInstance()->trans('Select file to import', [], ColissimoPickupPoint::DOMAIN),
                     'constraints' => [
                         new Constraints\NotBlank(),
                         new Constraints\File(['mimeTypes' => ['text/csv', 'text/plain']])

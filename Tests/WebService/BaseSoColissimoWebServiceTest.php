@@ -21,18 +21,18 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Tests\WebService;
+namespace ColissimoPickupPoint\Tests\WebService;
 
 /**
  * Class BaseSoColissimoWebServiceTest
- * @package SoColissimo\Tests\WebService
+ * @package ColissimoPickupPoint\Tests\WebService
  * @author Thelia <info@thelia.net>
  */
 class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testCall()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $this->assertInstanceOf("\\SoapClient",$instance->getSoap());
 
@@ -43,7 +43,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testBadFunctionCallException()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance->FooBar();
     }
@@ -53,7 +53,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetInvalidArgumentException()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance->getFoo("bar");
     }
@@ -63,7 +63,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetInvalidArgumentException()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance->setFoo();
     }
@@ -73,7 +73,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetInvalidArgumentException2()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance->setFoo("apple", "banana");
     }
@@ -83,7 +83,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetBadFunctionCallException()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance->getFoo();
     }
@@ -93,7 +93,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptFindByAddressExec()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance
             ->setAddress("17 rue des gras")
@@ -114,7 +114,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testFindByAddressExec()
     {
-        $instance = new \SoColissimo\WebService\FindByAddress();
+        $instance = new \ColissimoPickupPoint\WebService\FindByAddress();
 
         $instance
             ->setAddress("17 rue des gras")
@@ -140,7 +140,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptFindByIdExec()
     {
-        $instance = new \SoColissimo\WebService\FindById();
+        $instance = new \ColissimoPickupPoint\WebService\FindById();
 
         $instance
             ->setId("002572")
@@ -155,7 +155,7 @@ class BaseSoColissimoWebServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testFindByIdExec()
     {
-        $instance = new \SoColissimo\WebService\FindById();
+        $instance = new \ColissimoPickupPoint\WebService\FindById();
 
         $instance
             ->setId("002572")

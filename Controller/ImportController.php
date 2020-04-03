@@ -1,9 +1,9 @@
 <?php
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
 use Propel\Runtime\Propel;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\Event\Order\OrderEvent;
 use Thelia\Core\Event\TheliaEvents;
@@ -16,7 +16,7 @@ use Thelia\Tools\URL;
 
 /**
  * Class ImportController
- * @package SoColissimo\Controller
+ * @package ColissimoPickupPoint\Controller
  * @author Etienne Perriere - OpenStudio <eperriere@openstudio.fr>
  */
 class ImportController extends BaseAdminController
@@ -41,7 +41,7 @@ class ImportController extends BaseAdminController
                 throw new FormValidationException(
                     Translator::getInstance()->trans('Bad file format. CSV expected.',
                         [],
-                        SoColissimo::DOMAIN)
+                        ColissimoPickupPoint::DOMAIN)
                 );
             }
 
@@ -53,8 +53,8 @@ class ImportController extends BaseAdminController
                 $parsedLine = str_getcsv($line, ";");
 
                 // Get delivery and order ref
-                $deliveryRef = $parsedLine[SoColissimo::IMPORT_DELIVERY_REF_COL];
-                $orderRef = $parsedLine[SoColissimo::IMPORT_ORDER_REF_COL];
+                $deliveryRef = $parsedLine[ColissimoPickupPoint::IMPORT_DELIVERY_REF_COL];
+                $orderRef = $parsedLine[ColissimoPickupPoint::IMPORT_ORDER_REF_COL];
 
                 // Save delivery ref if there is one
                 if (!empty($deliveryRef)) {
@@ -70,7 +70,7 @@ class ImportController extends BaseAdminController
                 Translator::getInstance()->trans(
                     'Operation successful. %i orders affected.',
                     ['%i' => $i],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 )
             );
 
@@ -84,7 +84,7 @@ class ImportController extends BaseAdminController
             return $this->render(
                 'module-configure',
                 [
-                    'module_code' => SoColissimo::getModuleCode(),
+                    'module_code' => ColissimoPickupPoint::getModuleCode(),
                     'current_tab' => 'import'
                 ]
             );

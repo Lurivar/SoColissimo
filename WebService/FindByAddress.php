@@ -21,13 +21,13 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\WebService;
+namespace ColissimoPickupPoint\WebService;
 
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Class FindByAddress
- * @package SoColissimo\WebService
+ * @package ColissimoPickupPoint\WebService
  * @author Thelia <info@thelia.net>
  *
  * @method FindByAddress getAddress()

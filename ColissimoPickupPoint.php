@@ -21,18 +21,18 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo;
+namespace ColissimoPickupPoint;
 
 use PDO;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Propel;
-use SoColissimo\Model\SocolissimoAreaFreeshippingDomQuery;
-use SoColissimo\Model\SocolissimoAreaFreeshippingPrQuery;
-use SoColissimo\Model\SocolissimoDeliveryMode;
-use SoColissimo\Model\SocolissimoDeliveryModeQuery;
-use SoColissimo\Model\SocolissimoPrice;
-use SoColissimo\Model\SocolissimoPriceQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPrQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryMode;
+use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPrice;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceQuery;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Finder\Finder;
 use Thelia\Model\AreaQuery;
@@ -46,14 +46,14 @@ use Thelia\Module\AbstractDeliveryModule;
 use Thelia\Module\Exception\DeliveryException;
 use Thelia\Tools\Version\Version;
 
-class SoColissimo extends AbstractDeliveryModule
+class ColissimoPickupPoint extends AbstractDeliveryModule
 {
     protected $request;
     protected $dispatcher;
 
     private static $prices = null;
 
-    const DOMAIN = 'socolissimo';
+    const DOMAIN = 'colissimopickuppoint';
 
     const JSON_PRICE_RESOURCE = "/Config/prices.json";
     const JSON_CONFIG_PATH = "/Config/config.json";
@@ -78,6 +78,7 @@ class SoColissimo extends AbstractDeliveryModule
      * @param Country $country the country to deliver to.
      *
      * @return boolean
+     * @throws PropelException
      */
     public function isValidDelivery(Country $country)
     {
@@ -85,11 +86,11 @@ class SoColissimo extends AbstractDeliveryModule
 
         $areaId = $country->getAreaId();
 
-        $prices = SocolissimoPriceQuery::create()
+        $prices = ColissimoPickupPointPriceQuery::create()
             ->filterByAreaId($areaId)
             ->findOne();
 
-        $freeShipping = SocolissimoDeliveryModeQuery::create()
+        $freeShipping = ColissimoPickupPointDeliveryModeQuery::create()
             ->findOneByFreeshippingActive(1);
 
         /* check if Colissimo delivers the asked area*/
@@ -111,9 +112,9 @@ class SoColissimo extends AbstractDeliveryModule
     public static function getPostageAmount($areaId, $weight, $cartAmount = 0, $deliverModeCode = null)
     {
         if (null === $deliverModeCode) {
-            $deliveryMode = SocolissimoDeliveryModeQuery::create()->find()->getFirst();
+            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->find()->getFirst();
         } else {
-            $deliveryMode = SocolissimoDeliveryModeQuery::create()->findOneByCode($deliverModeCode);
+            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneByCode($deliverModeCode);
         }
 
         $freeshipping = $deliveryMode->getFreeshippingActive();
@@ -124,7 +125,7 @@ class SoColissimo extends AbstractDeliveryModule
         $postage = 0;
 
         if (!$freeshipping) {
-            $areaPrices = SocolissimoPriceQuery::create()
+            $areaPrices = ColissimoPickupPointPriceQuery::create()
                 ->filterByDeliveryModeId($deliveryMode->getId())
                 ->filterByAreaId($areaId)
                 ->filterByWeightMax($weight, Criteria::GREATER_EQUAL)
@@ -150,7 +151,7 @@ class SoColissimo extends AbstractDeliveryModule
             }
 
             if ($deliveryModeQuery === 'dom') {
-                $cartAmountDom = SocolissimoAreaFreeshippingDomQuery::create()
+                $cartAmountDom = ColissimoPickupPointAreaFreeshippingDomQuery::create()
                     ->filterByAreaId($areaId)
                     ->findOne();
                 if ($cartAmountDom) {
@@ -161,7 +162,7 @@ class SoColissimo extends AbstractDeliveryModule
                     return $postage;
                 }
             } elseif ($deliveryModeQuery === 'pr') {
-                $cartAmountPr = SocolissimoAreaFreeshippingPrQuery::create()
+                $cartAmountPr = ColissimoPickupPointAreaFreeshippingPrQuery::create()
                     ->filterByAreaId($areaId)
                     ->findOne();
                 if ($cartAmountPr) {
@@ -178,12 +179,12 @@ class SoColissimo extends AbstractDeliveryModule
     }
 
     /**
+     * Calculate and return delivery price
      *
-     * calculate and return delivery price
-     *
-     * @param  Country                          $country
+     * @param Country $country
      * @return mixed
      * @throws DeliveryException
+     * @throws PropelException
      */
     public function getPostage(Country $country)
     {
@@ -192,14 +193,15 @@ class SoColissimo extends AbstractDeliveryModule
         $cartWeight = $request->getSession()->getSessionCart($this->getDispatcher())->getWeight();
         $cartAmount = $request->getSession()->getSessionCart($this->getDispatcher())->getTaxedAmount($country);
 
+        /** todo : compatibility */
         $dom = $request->get('socolissimo-home');
         $pr_code = $request->get('socolissimo_code');
 
         $deliveryModeCode = null;
         if ($dom) {
-            $deliveryModeCode = "dom";
+            $deliveryModeCode = 'dom';
         } elseif (!empty($pr_code)) {
-            $deliveryModeCode = "pr";
+            $deliveryModeCode = 'pr';
         }
 
         if (null == $deliveryModeCode) {
@@ -208,15 +210,15 @@ class SoColissimo extends AbstractDeliveryModule
             $pr_code = $session->get('SoColissimoDeliveryId');
 
             if ($dom) {
-                $deliveryModeCode = "dom";
+                $deliveryModeCode = 'dom';
             } elseif (!empty($pr_code)) {
-                $deliveryModeCode = "pr";
+                $deliveryModeCode = 'pr';
             }
         }
 
         $areaIdArray = $this->getAllAreasForCountry($country);
         if (empty($areaIdArray)) {
-            throw new DeliveryException("Your delivery country is not covered by Colissimo.");
+            throw new DeliveryException('Your delivery country is not covered by Colissimo.');
         }
         $postage = null;
 
@@ -259,9 +261,9 @@ class SoColissimo extends AbstractDeliveryModule
     {
         $areaArray = [];
 
-        $sql = "SELECT ca.area_id as area_id FROM country_area ca
+        $sql = 'SELECT ca.area_id as area_id FROM country_area ca
                INNER JOIN area_delivery_module adm ON (ca.area_id = adm.area_id AND adm.delivery_module_id = :p0)
-               WHERE ca.country_id = :p1";
+               WHERE ca.country_id = :p1';
 
         $con = Propel::getConnection();
 
@@ -280,21 +282,21 @@ class SoColissimo extends AbstractDeliveryModule
     /** Return the module code */
     public function getCode()
     {
-        return 'SoColissimo';
+        return 'ColissimoPickupPoint';
     }
 
-    public static function getPrices(SocolissimoDeliveryMode $deliveryMode)
+    public static function getPrices(ColissimoPickupPointDeliveryMode $deliveryMode)
     {
         self::$prices = null;
 
-        $fileName = sprintf('%s%s', __DIR__, "/Config/prices_".$deliveryMode->getCode().".json");
+        $fileName = sprintf('%s%s', __DIR__, '/Config/prices_' . $deliveryMode->getCode() . '.json');
 
         // If delivery mode file doesn't exist take global price
         if (!file_exists($fileName)) {
             $fileName = sprintf('%s%s', __DIR__, self::JSON_PRICE_RESOURCE);
             // If global price doesn't exist throw exception
             if (!file_exists($fileName)) {
-                throw new Exception("Prices configuration not found.");
+                throw new Exception('Prices configuration not found.');
             }
         }
 
@@ -304,11 +306,11 @@ class SoColissimo extends AbstractDeliveryModule
         return self::$prices;
     }
 
-    public static function importJsonPrice(SocolissimoDeliveryMode $deliveryMode, ConnectionInterface $con)
+    public static function importJsonPrice(ColissimoPickupPointDeliveryMode $deliveryMode, ConnectionInterface $con)
     {
         $areaPrices = self::getPrices($deliveryMode);
 
-        $priceExist = SocolissimoPriceQuery::create()
+        $priceExist = ColissimoPickupPointPriceQuery::create()
             ->filterByDeliveryModeId($deliveryMode->getId())
             ->findOne();
 
@@ -323,7 +325,7 @@ class SoColissimo extends AbstractDeliveryModule
                 // Check if the area exists
                 if (null !== AreaQuery::create()->findPk($areaId)) {
                     foreach ($area['slices'] as $weight => $price) {
-                        $slice = (new SocolissimoPrice())
+                        $slice = (new ColissimoPickupPointPrice())
                             ->setAreaId($areaId)
                             ->setWeightMax($weight)
                             ->setPrice($price)
@@ -346,6 +348,8 @@ class SoColissimo extends AbstractDeliveryModule
              * We check for every ConfigQuery the old version of the module set.
              * We delete them if they exist, and we set a module config instead
              */
+
+            /** TODO : make constants */
 
             /** Colissimo Username / Account number */
             self::setConfigValue('socolissimo_username', '');
@@ -399,16 +403,16 @@ class SoColissimo extends AbstractDeliveryModule
     {
         try {
             // Security to not erase user config on reactivation
-            SocolissimoDeliveryModeQuery::create()->findOne();
-            SocolissimoAreaFreeshippingDomQuery::create()->findOne();
-            SocolissimoAreaFreeshippingPrQuery::create()->findOne();
+            ColissimoPickupPointDeliveryModeQuery::create()->findOne();
+            ColissimoPickupPointAreaFreeshippingDomQuery::create()->findOne();
+            ColissimoPickupPointAreaFreeshippingPrQuery::create()->findOne();
         } catch (\Exception $e) {
             $database = new Database($con->getWrappedConnection());
             $database->insertSql(null, [__DIR__ . '/Config/thelia.sql', __DIR__ . '/Config/insert.sql']);
         }
 
         try {
-            $deliveryModes = SocolissimoDeliveryModeQuery::create()
+            $deliveryModes = ColissimoPickupPointDeliveryModeQuery::create()
                 ->find();
 
             foreach ($deliveryModes as $deliveryMode) {
@@ -430,7 +434,7 @@ class SoColissimo extends AbstractDeliveryModule
     /** Return the module ID */
     public static function getModCode()
     {
-        return ModuleQuery::create()->findOneByCode("SoColissimo")->getId();
+        return ModuleQuery::create()->findOneByCode('ColissimoPickupPoint')->getId();
     }
 
     /**

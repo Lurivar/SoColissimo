@@ -21,12 +21,12 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\WebService;
+namespace ColissimoPickupPoint\WebService;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 
 /**
  * Class BaseWebService
- * @package SoColissimo\WebService
+ * @package ColissimoPickupPoint\WebService
  * @author Thelia <info@thelia.net>
  *
  * @method BaseWebService getSoap()
@@ -149,7 +149,7 @@ abstract class BaseWebService
     protected function getThisVars()
     {
         $this_class_vars = get_object_vars($this);
-        $base_class_vars = get_class_vars("\\SoColissimo\\WebService\\BaseWebService");
+        $base_class_vars = get_class_vars("\\ColissimoPickupPoint\\WebService\\BaseWebService");
         $pks = array_diff_key($this_class_vars, $base_class_vars);
 
         return $pks;

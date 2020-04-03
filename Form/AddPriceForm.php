@@ -1,9 +1,9 @@
 <?php
 
-namespace SoColissimo\Form;
+namespace ColissimoPickupPoint\Form;
 
-use SoColissimo\Model\SocolissimoDeliveryModeQuery;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Validator\Constraints;
 
 use Symfony\Component\Validator\ExecutionContextInterface;
@@ -68,38 +68,38 @@ class AddPriceForm extends BaseForm
     {
         $area = AreaQuery::create()->findPk($value);
         if (null === $area) {
-            $context->addViolation(Translator::getInstance()->trans("This area doesn't exists.", [], SoColissimo::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans("This area doesn't exists.", [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
     public function verifyDeliveryModeExist($value, ExecutionContextInterface $context)
     {
-        $mode = SocolissimoDeliveryModeQuery::create()->findPk($value);
+        $mode = ColissimoPickupPointDeliveryModeQuery::create()->findPk($value);
         if (null === $mode) {
-            $context->addViolation(Translator::getInstance()->trans("This delivery mode doesn't exists.", [], SoColissimo::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans("This delivery mode doesn't exists.", [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
     public function verifyValidWeight($value, ExecutionContextInterface $context)
     {
         if (!preg_match("#^\d+\.?\d*$#", $value)) {
-            $context->addViolation(Translator::getInstance()->trans("The weight value is not valid.", [], SoColissimo::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans("The weight value is not valid.", [], ColissimoPickupPoint::DOMAIN));
         }
 
         if ($value < 0) {
-            $context->addViolation(Translator::getInstance()->trans("The weight value must be superior to 0.", [], SoColissimo::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans("The weight value must be superior to 0.", [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
     public function verifyValidPrice($value, ExecutionContextInterface $context)
     {
         if (!preg_match("#^\d+\.?\d*$#", $value)) {
-            $context->addViolation(Translator::getInstance()->trans("The price value is not valid.", [], SoColissimo::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans("The price value is not valid.", [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
     public function getName()
     {
-        return "socolissimo_price_create";
+        return "colissimo_pickup_point_price_slices_create";
     }
 }

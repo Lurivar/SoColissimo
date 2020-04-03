@@ -1,11 +1,11 @@
 <?php
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
 use Propel\Runtime\Map\TableMap;
-use SoColissimo\Model\SocolissimoPrice;
-use SoColissimo\Model\SocolissimoPriceQuery;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPrice;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceQuery;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\Security\AccessManager;
 use Thelia\Core\Security\Resource\AdminResources;
@@ -33,9 +33,9 @@ class SliceController extends BaseAdminController
             $requestData = $this->getRequest()->request;
 
             if (0 !== $id = (int)$requestData->get('id', 0)) {
-                $slice = SocolissimoPriceQuery::create()->findPk($id);
+                $slice = ColissimoPickupPointPriceQuery::create()->findPk($id);
             } else {
-                $slice = new SocolissimoPrice();
+                $slice = new ColissimoPickupPointPrice();
             }
 
 
@@ -45,7 +45,7 @@ class SliceController extends BaseAdminController
                 $messages[] = $this->getTranslator()->trans(
                     'The area is not valid',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
             }
 
@@ -55,7 +55,7 @@ class SliceController extends BaseAdminController
                 $messages[] = $this->getTranslator()->trans(
                     'The delivery mode is not valid',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
             }
 
@@ -67,7 +67,7 @@ class SliceController extends BaseAdminController
                 $messages[] = $this->getTranslator()->trans(
                     'You must specify at least a price max or a weight max value.',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
             } else {
                 if (!empty($requestPriceMax)) {
@@ -78,7 +78,7 @@ class SliceController extends BaseAdminController
                         $messages[] = $this->getTranslator()->trans(
                             'The price max value is not valid',
                             [],
-                            SoColissimo::DOMAIN
+                            ColissimoPickupPoint::DOMAIN
                         );
                     }
                 } else {
@@ -93,7 +93,7 @@ class SliceController extends BaseAdminController
                         $messages[] = $this->getTranslator()->trans(
                             'The weight max value is not valid',
                             [],
-                            SoColissimo::DOMAIN
+                            ColissimoPickupPoint::DOMAIN
                         );
                     }
                 } else {
@@ -110,7 +110,7 @@ class SliceController extends BaseAdminController
                 $messages[] = $this->getTranslator()->trans(
                     'The price value is not valid',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
             }
 
@@ -119,7 +119,7 @@ class SliceController extends BaseAdminController
                 $messages[] = $this->getTranslator()->trans(
                     'Your slice has been saved',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
 
                 $responseData['success'] = true;
@@ -172,14 +172,14 @@ class SliceController extends BaseAdminController
             $requestData = $this->getRequest()->request;
 
             if (0 !== $id = (int)$requestData->get('id', 0)) {
-                $slice = SocolissimoPriceQuery::create()->findPk($id);
+                $slice = ColissimoPickupPointPriceQuery::create()->findPk($id);
                 $slice->delete();
                 $responseData['success'] = true;
             } else {
                 $responseData['message'] = $this->getTranslator()->trans(
                     'The slice has not been deleted',
                     [],
-                    SoColissimo::DOMAIN
+                    ColissimoPickupPoint::DOMAIN
                 );
             }
         } catch (\Exception $e) {

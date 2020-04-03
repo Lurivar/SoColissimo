@@ -21,9 +21,9 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Listener;
+namespace ColissimoPickupPoint\Listener;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Thelia\Core\Event\Order\OrderEvent;
 use Thelia\Core\Event\TheliaEvents;
@@ -53,7 +53,7 @@ class SendMail implements EventSubscriberInterface
     public function updateStatus(OrderEvent $event)
     {
         $order = $event->getOrder();
-        $socolissimo = new SoColissimo();
+        $socolissimo = new ColissimoPickupPoint();
 
         if ($order->isSent() && $order->getDeliveryModuleId() == $socolissimo->getModuleModel()->getId()) {
             $contact_email = ConfigQuery::read('store_email');
@@ -117,7 +117,7 @@ class SendMail implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            TheliaEvents::ORDER_UPDATE_STATUS => array("updateStatus", 128)
+            TheliaEvents::ORDER_UPDATE_STATUS => array('updateStatus', 128)
         );
     }
 }

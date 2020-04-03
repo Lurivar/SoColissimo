@@ -10,10 +10,10 @@
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\Model\OrderAddressSocolissimo;
-use SoColissimo\Model\OrderAddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\OrderAddressSocolissimo;
+use ColissimoPickupPoint\Model\OrderAddressSocolissimoQuery;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -21,7 +21,7 @@ use Thelia\Core\Template\Element\PropelSearchLoopInterface;
 use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 
-class SoColissimoOrderAddressLoop extends BaseLoop implements PropelSearchLoopInterface
+class ColissimoPickupPointOrderAddressLoop extends BaseLoop implements PropelSearchLoopInterface
 {
     /**
      * Definition of loop arguments

@@ -1,10 +1,10 @@
 <?php
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
-use SoColissimo\Form\ConfigureSoColissimo;
+use ColissimoPickupPoint\Form\ConfigureSoColissimo;
 use Thelia\Core\Translation\Translator;
 use Thelia\Core\Security\Resource\AdminResources;
 use Thelia\Core\Security\AccessManager;
@@ -23,11 +23,11 @@ class SaveConfig extends BaseAdminController
         try {
             $vform = $this->validateForm($form);
 
-            SoColissimo::setConfigValue('socolissimo_username', $vform->get('socolissimo_username')->getData());
-            SoColissimo::setConfigValue('socolissimo_password', $vform->get('socolissimo_password')->getData());
-            SoColissimo::setConfigValue('socolissimo_google_map_key', $vform->get('socolissimo_google_map_key')->getData());
-            SoColissimo::setConfigValue('socolissimo_endpoint_url', $vform->get('socolissimo_endpoint_url')->getData());
-            SoColissimo::setConfigValue('socolissimo_dom_delivery_authorized', $vform->get('socolissimo_dom_delivery_authorized')->getData());
+            ColissimoPickupPoint::setConfigValue('socolissimo_username', $vform->get('socolissimo_username')->getData());
+            ColissimoPickupPoint::setConfigValue('socolissimo_password', $vform->get('socolissimo_password')->getData());
+            ColissimoPickupPoint::setConfigValue('socolissimo_google_map_key', $vform->get('socolissimo_google_map_key')->getData());
+            ColissimoPickupPoint::setConfigValue('socolissimo_endpoint_url', $vform->get('socolissimo_endpoint_url')->getData());
+            ColissimoPickupPoint::setConfigValue('socolissimo_dom_delivery_authorized', $vform->get('socolissimo_dom_delivery_authorized')->getData());
 
             return $this->generateRedirect(
                 URL::getInstance()->absoluteUrl('/admin/module/SoColissimo', ['current_tab' => 'configure'])

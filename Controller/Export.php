@@ -21,14 +21,14 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Controller;
+namespace ColissimoPickupPoint\Controller;
 
 use Propel\Runtime\ActiveQuery\Criteria;
-use SoColissimo\Form\ExportOrder;
-use SoColissimo\Format\CSV;
-use SoColissimo\Format\CSVLine;
-use SoColissimo\Model\OrderAddressSocolissimoQuery;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\Form\ExportOrder;
+use ColissimoPickupPoint\Format\CSV;
+use ColissimoPickupPoint\Format\CSVLine;
+use ColissimoPickupPoint\Model\OrderAddressSocolissimoQuery;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\Event\TheliaEvents;
@@ -46,19 +46,19 @@ use Thelia\Core\Security\AccessManager;
 
 /**
  * Class Export
- * @package SoColissimo\Controller
+ * @package ColissimoPickupPoint\Controller
  * @author Thelia <info@thelia.net>
  */
 class Export extends BaseAdminController
 {
-    const CSV_SEPARATOR = ";";
+    const CSV_SEPARATOR = ';';
 
-    const DEFAULT_PHONE = "0100000000";
-    const DEFAULT_CELLPHONE = "0600000000";
+    const DEFAULT_PHONE = '0100000000';
+    const DEFAULT_CELLPHONE = '0600000000';
 
     public function export()
     {
-        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), array('SoColissimo'), AccessManager::UPDATE)) {
+        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
             return $response;
         }
 
@@ -69,9 +69,9 @@ class Export extends BaseAdminController
             $vform = $this->validateForm($form);
 
             // Check status_id
-            $status_id = $vform->get("new_status_id")->getData();
-            if (!preg_match("#^nochange|processing|sent$#",$status_id)) {
-                throw new Exception("Bad value for new_status_id field");
+            $status_id = $vform->get('new_status_id')->getData();
+            if (!preg_match('#^nochange|processing|sent$#',$status_id)) {
+                throw new Exception('Bad value for new_status_id field');
             }
 
             $status = OrderStatusQuery::create()
@@ -84,11 +84,11 @@ class Export extends BaseAdminController
                     Criteria::IN
                 )
                 ->find()
-                ->toArray("code")
+                ->toArray('code')
             ;
 
             $query = OrderQuery::create()
-                ->filterByDeliveryModuleId(SoColissimo::getModCode())
+                ->filterByDeliveryModuleId(ColissimoPickupPoint::getModCode())
                 ->filterByStatusId(
                     array(
                         $status[OrderStatus::CODE_PAID]['Id'],
@@ -186,7 +186,7 @@ class Export extends BaseAdminController
                     /**
                      * Get store's name
                      */
-                    $store_name = ConfigQuery::read("store_name");
+                    $store_name = ConfigQuery::read('store_name');
                     /**
                      * Write CSV line
                      */
@@ -240,9 +240,9 @@ class Export extends BaseAdminController
             utf8_decode($csv->parse()),
             200,
             array(
-                "Content-Encoding"=>"ISO-8889-1",
-                "Content-Type"=>"application/csv-tab-delimited-table",
-                "Content-disposition"=>"filename=expeditor_thelia.csv"
+                'Content-Encoding' => 'ISO-8889-1',
+                'Content-Type' => 'application/csv-tab-delimited-table',
+                'Content-disposition' => 'filename=expeditor_thelia.csv'
             )
         );
     }

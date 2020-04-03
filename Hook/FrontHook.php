@@ -10,14 +10,14 @@
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-namespace SoColissimo\Hook;
+namespace ColissimoPickupPoint\Hook;
 use Thelia\Core\Event\Hook\HookRenderEvent;
 use Thelia\Core\Hook\BaseHook;
 
 
 /**
  * Class FrontHook
- * @package SoColissimo\Hook
+ * @package ColissimoPickupPoint\Hook
  * @author Michaël Espeche <mespeche@openstudio.fr>
  */
 class FrontHook extends BaseHook {

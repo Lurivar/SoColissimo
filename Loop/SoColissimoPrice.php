@@ -1,8 +1,8 @@
 <?php
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\Model\SocolissimoPriceQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceQuery;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -10,7 +10,7 @@ use Thelia\Core\Template\Element\PropelSearchLoopInterface;
 use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 
-class SoColissimoPrice extends BaseLoop implements PropelSearchLoopInterface
+class ColissimoPickupPointPrice extends BaseLoop implements PropelSearchLoopInterface
 {
     /**
      * @return ArgumentCollection
@@ -28,7 +28,7 @@ class SoColissimoPrice extends BaseLoop implements PropelSearchLoopInterface
         $areaId = $this->getAreaId();
         $modeId = $this->getDeliveryModeId();
 
-        $areaPrices = SocolissimoPriceQuery::create()
+        $areaPrices = ColissimoPickupPointPriceQuery::create()
             ->filterByDeliveryModeId($modeId)
             ->filterByAreaId($areaId)
             ->orderByWeightMax();
@@ -38,7 +38,7 @@ class SoColissimoPrice extends BaseLoop implements PropelSearchLoopInterface
 
     public function parseResults(LoopResult $loopResult)
     {
-        /** @var \SoColissimo\Model\SocolissimoPrice $price */
+        /** @var \ColissimoPickupPoint\Model\ColissimoPickupPointPrice $price */
         foreach ($loopResult->getResultDataCollection() as $price) {
             $loopResultRow = new LoopResultRow($price);
             $loopResultRow

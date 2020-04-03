@@ -21,9 +21,9 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Form;
+namespace ColissimoPickupPoint\Form;
 use Propel\Runtime\ActiveQuery\Criteria;
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Form\BaseForm;
 use Thelia\Model\Base\OrderQuery;
 use Thelia\Core\Translation\Translator;
@@ -32,7 +32,7 @@ use Thelia\Model\OrderStatus;
 
 /**
  * Class ExportOrder
- * @package SoColissimo\Form
+ * @package ColissimoPickupPoint\Form
  * @author Thelia <info@thelia.net>
  */
 class ExportOrder extends BaseForm
@@ -72,7 +72,7 @@ class ExportOrder extends BaseForm
             ->toArray("code")
         ;
         $query = OrderQuery::create()
-            ->filterByDeliveryModuleId(SoColissimo::getModCode())
+            ->filterByDeliveryModuleId(ColissimoPickupPoint::getModCode())
             ->filterByStatusId(array($status['paid']['Id'], $status['processing']['Id']), Criteria::IN)
             ->find();
 

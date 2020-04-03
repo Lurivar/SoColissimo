@@ -21,11 +21,11 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Format;
+namespace ColissimoPickupPoint\Format;
 
 /**
  * Class CSVLine
- * @package SoColissimo\Format
+ * @package ColissimoPickupPoint\Format
  * @author Thelia <info@thelia.net>
  */
 class CSVLine

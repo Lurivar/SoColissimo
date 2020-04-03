@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-    <fullnamespace>SoColissimo\SoColissimo</fullnamespace>
+    <fullnamespace>ColissimoPickupPoint\ColissimoPickupPoint</fullnamespace>
     <descriptive locale="en_US">
         <title>So Colissimo</title>
     </descriptive>
     <descriptive locale="fr_FR">
         <title>So Colissimo</title>
     </descriptive>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
     <author>
         <name>Thelia</name>
         <email>info@thelia.net</email>

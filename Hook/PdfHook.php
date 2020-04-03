@@ -10,9 +10,9 @@
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-namespace SoColissimo\Hook;
+namespace ColissimoPickupPoint\Hook;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Core\Event\Hook\HookRenderEvent;
 use Thelia\Core\Hook\BaseHook;
 use Thelia\Model\OrderQuery;
@@ -22,7 +22,7 @@ class PdfHook extends BaseHook
     public function onInvoiceAfterDeliveryModule(HookRenderEvent $event)
     {
         // No So Colissimo information if the delivery module is not SoColissimo
-        if (SoColissimo::getModuleId() == $event->getArgument('module_id')) {
+        if (ColissimoPickupPoint::getModuleId() == $event->getArgument('module_id')) {
             return;
         }
 

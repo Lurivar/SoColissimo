@@ -21,18 +21,18 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\Model\AddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\AddressSocolissimoQuery;
 use Thelia\Core\Template\Loop\Address;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
 /**
- * Class SoColissimoDelivery
- * @package SoColissimo\Loop
+ * class ColissimoPickupPointDelivery
+ * @package ColissimoPickupPoint\Loop
  * @author Thelia <info@thelia.net>
  */
-class SoColissimoAddress extends Address
+class ColissimoPickupPointAddress extends Address
 {
     protected $exists = false;
     protected $timestampable = false;
@@ -55,7 +55,7 @@ class SoColissimoAddress extends Address
         if (!$this->exists) {
             return parent::parseResults($loopResult);
         } else {
-            /** @var \SoColissimo\Model\AddressSocolissimo $address */
+            /** @var \ColissimoPickupPoint\Model\AddressSocolissimo $address */
             foreach ($loopResult->getResultDataCollection() as $address) {
                 $loopResultRow = new LoopResultRow();
                 $loopResultRow->set("TITLE", $address->getTitleId())

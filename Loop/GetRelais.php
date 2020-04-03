@@ -21,10 +21,10 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace SoColissimo\Loop;
+namespace ColissimoPickupPoint\Loop;
 
-use SoColissimo\SoColissimo;
-use SoColissimo\WebService\FindByAddress;
+use ColissimoPickupPoint\ColissimoPickupPoint;
+use ColissimoPickupPoint\WebService\FindByAddress;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Thelia\Core\Template\Element\ArraySearchLoopInterface;
 use Thelia\Core\Template\Element\BaseLoop;
@@ -39,7 +39,7 @@ use Thelia\Model\CountryQuery;
 
 /**
  * Class GetRelais
- * @package SoColissimo\Loop
+ * @package ColissimoPickupPoint\Loop
  * @author Thelia <info@thelia.net>
  */
 class GetRelais extends BaseLoop implements ArraySearchLoopInterface
@@ -109,8 +109,8 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
             ->setLang("FR")
             ->setOptionInter("1")
             ->setShippingDate(date("d/m/Y"))
-            ->setAccountNumber(SoColissimo::getConfigValue('socolissimo_username'))
-            ->setPassword(SoColissimo::getConfigValue('socolissimo_password'))
+            ->setAccountNumber(ColissimoPickupPoint::getConfigValue('socolissimo_username'))
+            ->setPassword(ColissimoPickupPoint::getConfigValue('socolissimo_password'))
         ;
 
         try {

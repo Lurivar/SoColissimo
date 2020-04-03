@@ -1,8 +1,8 @@
 <?php
 
-namespace SoColissimo\Smarty\Plugins;
+namespace ColissimoPickupPoint\Smarty\Plugins;
 
-use SoColissimo\SoColissimo;
+use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Thelia\Core\HttpFoundation\Request;
 use Thelia\Model\CountryQuery;
@@ -11,7 +11,7 @@ use Thelia\Module\Exception\DeliveryException;
 use TheliaSmarty\Template\AbstractSmartyPlugin;
 use TheliaSmarty\Template\SmartyPluginDescriptor;
 
-class SocolissimoDeliveryPrice extends AbstractSmartyPlugin
+class ColissimoPickupPointDeliveryPrice extends AbstractSmartyPlugin
 {
     protected $request;
     protected $dispatcher;
@@ -44,7 +44,7 @@ class SocolissimoDeliveryPrice extends AbstractSmartyPlugin
         $cartAmount = $this->request->getSession()->getSessionCart($this->dispatcher)->getTaxedAmount($country);
 
         try {
-            $price = SoColissimo::getPostageAmount(
+            $price = ColissimoPickupPoint::getPostageAmount(
                 $country->getAreaId(),
                 $cartWeight,
                 $cartAmount,
