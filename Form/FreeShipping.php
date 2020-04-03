@@ -55,14 +55,10 @@ class FreeShipping extends BaseForm
     {
         $this->formBuilder
             ->add(
-                'delivery_mode',
-                IntegerType::class
-            )
-            ->add(
                 'freeshipping',
                 CheckboxType::class,
                 [
-                    'label' =>  Translator::getInstance()->trans("Activate free shipping: ", [], ColissimoPickupPoint::DOMAIN)
+                    'label' =>  Translator::getInstance()->trans('Activate free shipping: ', [], ColissimoPickupPoint::DOMAIN)
                 ]
             )
         ;

@@ -53,8 +53,8 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
 
     const DOMAIN = 'colissimopickuppoint';
 
-    const JSON_PRICE_RESOURCE = "/Config/prices.json";
-    const JSON_CONFIG_PATH = "/Config/config.json";
+    const JSON_PRICE_RESOURCE = '/Config/prices.json';
+    const JSON_CONFIG_PATH = '/Config/config.json';
 
     /**
      * These constants refer to the imported CSV file.
@@ -107,14 +107,8 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
      * @return mixed
      * @throws DeliveryException
      */
-    public static function getPostageAmount($areaId, $weight, $cartAmount = 0, $deliverModeCode = null)
+    public static function getPostageAmount($areaId, $weight, $cartAmount = 0)
     {
-        if (null === $deliverModeCode) {
-            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->find()->getFirst();
-        } else {
-            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneByCode($deliverModeCode);
-        }
-
         $freeshipping = $deliveryMode->getFreeshippingActive();
         $freeshippingFrom = $deliveryMode->getFreeshippingFrom();
         $deliveryModeQuery = $deliveryMode->getCode();
@@ -124,7 +118,6 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
 
         if (!$freeshipping) {
             $areaPrices = ColissimoPickupPointPriceSlicesQuery::create()
-                ->filterByDeliveryModeId($deliveryMode->getId())
                 ->filterByAreaId($areaId)
                 ->filterByWeightMax($weight, Criteria::GREATER_EQUAL)
                 ->_or()
@@ -139,7 +132,7 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
                 ->getFirst();
 
             if (null === $firstPrice) {
-                throw new DeliveryException("Colissimo delivery unavailable for your cart weight or delivery country");
+                throw new DeliveryException('Colissimo delivery unavailable for your cart weight or delivery country');
             }
 
             //If a min price for freeshipping is define and the amount of cart reach this montant return 0

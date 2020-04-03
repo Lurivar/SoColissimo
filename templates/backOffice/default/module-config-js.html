@@ -54,9 +54,9 @@
             }
         });
         // Free shipping switch
-        $(".freeshipping-activation-SoColissimo").bootstrapSwitch();
+        $(".freeshipping-activation-ColissimoPickupPoint").bootstrapSwitch();
 
-        $(".freeshipping-activation-SoColissimo").on("switch-change", function(e, data){
+        $(".freeshipping-activation-ColissimoPickupPoint").on("switch-change", function(e, data){
             var is_checked = data.value;
             var mode = $(this).data("id");
             var form = $("#freeshippingform-"+mode);
@@ -92,7 +92,7 @@
         var tpl = _.template($("#tpl-slice").html());
 
         var showMessage = function showMessage(message) {
-            $('#socolissimo_dialog')
+            $('#colissimo-pickup-point_dialog')
                     .find('.modal-body')
                     .html(message)
                     .end()

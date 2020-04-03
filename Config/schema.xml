@@ -45,11 +45,17 @@
         </foreign-key>
     </table>
 
+    <table name="colissimo_pickup_point_freeshipping">
+        <column name="id" primaryKey="true" required="true" type="INTEGER" />
+        <column name="active" type="BOOLEAN" default="0"/>
+        <column name="freeshipping_from" size="18" scale="2" type="DECIMAL" />
+    </table>
+
     <table name="colissimo_pickup_point_area_freeshipping">
         <column name="id" primaryKey="true" autoIncrement="true" required="true" type="INTEGER" />
         <column name="area_id" required="true" type="INTEGER" />
         <column name="delivery_mode_id" required="true" type="INTEGER" />
-        <column name="cart_amount" defaultValue="0.00" size="16" scale="2" type="DECIMAL" />
+        <column name="cart_amount" defaultValue="0.00" size="18" scale="2" type="DECIMAL" />
         <foreign-key foreignTable="area" name="fk_colissimo_pickup_point_area_freeshipping_pr_area_id" onDelete="RESTRICT" onUpdate="RESTRICT">
             <reference foreign="id" local="area_id" />
         </foreign-key>
