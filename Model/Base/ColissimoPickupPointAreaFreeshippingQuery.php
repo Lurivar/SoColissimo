@@ -4,9 +4,9 @@ namespace ColissimoPickupPoint\Model\Base;
 
 use \Exception;
 use \PDO;
-use ColissimoPickupPoint\Model\ColissimoAreaFreeshipping as ChildColissimoAreaFreeshipping;
-use ColissimoPickupPoint\Model\ColissimoAreaFreeshippingQuery as ChildColissimoAreaFreeshippingQuery;
-use ColissimoPickupPoint\Model\Map\ColissimoAreaFreeshippingTableMap;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping as ChildColissimoPickupPointAreaFreeshipping;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery as ChildColissimoPickupPointAreaFreeshippingQuery;
+use ColissimoPickupPoint\Model\Map\ColissimoPickupPointAreaFreeshippingTableMap;
 use ColissimoPickupPoint\Model\Thelia\Model\Area;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -22,67 +22,67 @@ use Propel\Runtime\Exception\PropelException;
  *
  *
  *
- * @method     ChildColissimoAreaFreeshippingQuery orderById($order = Criteria::ASC) Order by the id column
- * @method     ChildColissimoAreaFreeshippingQuery orderByAreaId($order = Criteria::ASC) Order by the area_id column
- * @method     ChildColissimoAreaFreeshippingQuery orderByDeliveryModeId($order = Criteria::ASC) Order by the delivery_mode_id column
- * @method     ChildColissimoAreaFreeshippingQuery orderByCartAmount($order = Criteria::ASC) Order by the cart_amount column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery orderById($order = Criteria::ASC) Order by the id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery orderByAreaId($order = Criteria::ASC) Order by the area_id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery orderByDeliveryModeId($order = Criteria::ASC) Order by the delivery_mode_id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery orderByCartAmount($order = Criteria::ASC) Order by the cart_amount column
  *
- * @method     ChildColissimoAreaFreeshippingQuery groupById() Group by the id column
- * @method     ChildColissimoAreaFreeshippingQuery groupByAreaId() Group by the area_id column
- * @method     ChildColissimoAreaFreeshippingQuery groupByDeliveryModeId() Group by the delivery_mode_id column
- * @method     ChildColissimoAreaFreeshippingQuery groupByCartAmount() Group by the cart_amount column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery groupById() Group by the id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery groupByAreaId() Group by the area_id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery groupByDeliveryModeId() Group by the delivery_mode_id column
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery groupByCartAmount() Group by the cart_amount column
  *
- * @method     ChildColissimoAreaFreeshippingQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
- * @method     ChildColissimoAreaFreeshippingQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
- * @method     ChildColissimoAreaFreeshippingQuery innerJoin($relation) Adds a INNER JOIN clause to the query
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery innerJoin($relation) Adds a INNER JOIN clause to the query
  *
- * @method     ChildColissimoAreaFreeshippingQuery leftJoinArea($relationAlias = null) Adds a LEFT JOIN clause to the query using the Area relation
- * @method     ChildColissimoAreaFreeshippingQuery rightJoinArea($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Area relation
- * @method     ChildColissimoAreaFreeshippingQuery innerJoinArea($relationAlias = null) Adds a INNER JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery leftJoinArea($relationAlias = null) Adds a LEFT JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery rightJoinArea($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointAreaFreeshippingQuery innerJoinArea($relationAlias = null) Adds a INNER JOIN clause to the query using the Area relation
  *
- * @method     ChildColissimoAreaFreeshipping findOne(ConnectionInterface $con = null) Return the first ChildColissimoAreaFreeshipping matching the query
- * @method     ChildColissimoAreaFreeshipping findOneOrCreate(ConnectionInterface $con = null) Return the first ChildColissimoAreaFreeshipping matching the query, or a new ChildColissimoAreaFreeshipping object populated from the query conditions when no match is found
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOne(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointAreaFreeshipping matching the query
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOneOrCreate(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointAreaFreeshipping matching the query, or a new ChildColissimoPickupPointAreaFreeshipping object populated from the query conditions when no match is found
  *
- * @method     ChildColissimoAreaFreeshipping findOneById(int $id) Return the first ChildColissimoAreaFreeshipping filtered by the id column
- * @method     ChildColissimoAreaFreeshipping findOneByAreaId(int $area_id) Return the first ChildColissimoAreaFreeshipping filtered by the area_id column
- * @method     ChildColissimoAreaFreeshipping findOneByDeliveryModeId(int $delivery_mode_id) Return the first ChildColissimoAreaFreeshipping filtered by the delivery_mode_id column
- * @method     ChildColissimoAreaFreeshipping findOneByCartAmount(string $cart_amount) Return the first ChildColissimoAreaFreeshipping filtered by the cart_amount column
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOneById(int $id) Return the first ChildColissimoPickupPointAreaFreeshipping filtered by the id column
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOneByAreaId(int $area_id) Return the first ChildColissimoPickupPointAreaFreeshipping filtered by the area_id column
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOneByDeliveryModeId(int $delivery_mode_id) Return the first ChildColissimoPickupPointAreaFreeshipping filtered by the delivery_mode_id column
+ * @method     ChildColissimoPickupPointAreaFreeshipping findOneByCartAmount(string $cart_amount) Return the first ChildColissimoPickupPointAreaFreeshipping filtered by the cart_amount column
  *
- * @method     array findById(int $id) Return ChildColissimoAreaFreeshipping objects filtered by the id column
- * @method     array findByAreaId(int $area_id) Return ChildColissimoAreaFreeshipping objects filtered by the area_id column
- * @method     array findByDeliveryModeId(int $delivery_mode_id) Return ChildColissimoAreaFreeshipping objects filtered by the delivery_mode_id column
- * @method     array findByCartAmount(string $cart_amount) Return ChildColissimoAreaFreeshipping objects filtered by the cart_amount column
+ * @method     array findById(int $id) Return ChildColissimoPickupPointAreaFreeshipping objects filtered by the id column
+ * @method     array findByAreaId(int $area_id) Return ChildColissimoPickupPointAreaFreeshipping objects filtered by the area_id column
+ * @method     array findByDeliveryModeId(int $delivery_mode_id) Return ChildColissimoPickupPointAreaFreeshipping objects filtered by the delivery_mode_id column
+ * @method     array findByCartAmount(string $cart_amount) Return ChildColissimoPickupPointAreaFreeshipping objects filtered by the cart_amount column
  *
  */
-abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
+abstract class ColissimoPickupPointAreaFreeshippingQuery extends ModelCriteria
 {
 
     /**
-     * Initializes internal state of \ColissimoPickupPoint\Model\Base\ColissimoAreaFreeshippingQuery object.
+     * Initializes internal state of \ColissimoPickupPoint\Model\Base\ColissimoPickupPointAreaFreeshippingQuery object.
      *
      * @param     string $dbName The database name
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'thelia', $modelName = '\\ColissimoPickupPoint\\Model\\ColissimoAreaFreeshipping', $modelAlias = null)
+    public function __construct($dbName = 'thelia', $modelName = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointAreaFreeshipping', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }
 
     /**
-     * Returns a new ChildColissimoAreaFreeshippingQuery object.
+     * Returns a new ChildColissimoPickupPointAreaFreeshippingQuery object.
      *
      * @param     string $modelAlias The alias of a model in the query
      * @param     Criteria $criteria Optional Criteria to build the query from
      *
-     * @return ChildColissimoAreaFreeshippingQuery
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery
      */
     public static function create($modelAlias = null, $criteria = null)
     {
-        if ($criteria instanceof \ColissimoPickupPoint\Model\ColissimoAreaFreeshippingQuery) {
+        if ($criteria instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery) {
             return $criteria;
         }
-        $query = new \ColissimoPickupPoint\Model\ColissimoAreaFreeshippingQuery();
+        $query = new \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery();
         if (null !== $modelAlias) {
             $query->setModelAlias($modelAlias);
         }
@@ -105,19 +105,19 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      * @param mixed $key Primary key to use for the query
      * @param ConnectionInterface $con an optional connection object
      *
-     * @return ChildColissimoAreaFreeshipping|array|mixed the result, formatted by the current formatter
+     * @return ChildColissimoPickupPointAreaFreeshipping|array|mixed the result, formatted by the current formatter
      */
     public function findPk($key, $con = null)
     {
         if ($key === null) {
             return null;
         }
-        if ((null !== ($obj = ColissimoAreaFreeshippingTableMap::getInstanceFromPool((string) $key))) && !$this->formatter) {
+        if ((null !== ($obj = ColissimoPickupPointAreaFreeshippingTableMap::getInstanceFromPool((string) $key))) && !$this->formatter) {
             // the object is already in the instance pool
             return $obj;
         }
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
         $this->basePreSelect($con);
         if ($this->formatter || $this->modelAlias || $this->with || $this->select
@@ -136,7 +136,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      * @param     mixed $key Primary key to use for the query
      * @param     ConnectionInterface $con A connection object
      *
-     * @return   ChildColissimoAreaFreeshipping A model object, or null if the key is not found
+     * @return   ChildColissimoPickupPointAreaFreeshipping A model object, or null if the key is not found
      */
     protected function findPkSimple($key, $con)
     {
@@ -151,9 +151,9 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
         }
         $obj = null;
         if ($row = $stmt->fetch(\PDO::FETCH_NUM)) {
-            $obj = new ChildColissimoAreaFreeshipping();
+            $obj = new ChildColissimoPickupPointAreaFreeshipping();
             $obj->hydrate($row);
-            ColissimoAreaFreeshippingTableMap::addInstanceToPool($obj, (string) $key);
+            ColissimoPickupPointAreaFreeshippingTableMap::addInstanceToPool($obj, (string) $key);
         }
         $stmt->closeCursor();
 
@@ -166,7 +166,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      * @param     mixed $key Primary key to use for the query
      * @param     ConnectionInterface $con A connection object
      *
-     * @return ChildColissimoAreaFreeshipping|array|mixed the result, formatted by the current formatter
+     * @return ChildColissimoPickupPointAreaFreeshipping|array|mixed the result, formatted by the current formatter
      */
     protected function findPkComplex($key, $con)
     {
@@ -208,12 +208,12 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *
      * @param     mixed $key Primary key to use for the query
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByPrimaryKey($key)
     {
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $key, Criteria::EQUAL);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $key, Criteria::EQUAL);
     }
 
     /**
@@ -221,12 +221,12 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *
      * @param     array $keys The list of primary key to use for the query
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByPrimaryKeys($keys)
     {
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $keys, Criteria::IN);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $keys, Criteria::IN);
     }
 
     /**
@@ -245,18 +245,18 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterById($id = null, $comparison = null)
     {
         if (is_array($id)) {
             $useMinMax = false;
             if (isset($id['min'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $id['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $id['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($id['max'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $id['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $id['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -267,7 +267,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $id, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $id, $comparison);
     }
 
     /**
@@ -288,18 +288,18 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByAreaId($areaId = null, $comparison = null)
     {
         if (is_array($areaId)) {
             $useMinMax = false;
             if (isset($areaId['min'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::AREA_ID, $areaId['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $areaId['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($areaId['max'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::AREA_ID, $areaId['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $areaId['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -310,7 +310,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::AREA_ID, $areaId, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $areaId, $comparison);
     }
 
     /**
@@ -329,18 +329,18 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByDeliveryModeId($deliveryModeId = null, $comparison = null)
     {
         if (is_array($deliveryModeId)) {
             $useMinMax = false;
             if (isset($deliveryModeId['min'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($deliveryModeId['max'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -351,7 +351,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID, $deliveryModeId, $comparison);
     }
 
     /**
@@ -370,18 +370,18 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByCartAmount($cartAmount = null, $comparison = null)
     {
         if (is_array($cartAmount)) {
             $useMinMax = false;
             if (isset($cartAmount['min'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($cartAmount['max'])) {
-                $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -392,7 +392,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT, $cartAmount, $comparison);
     }
 
     /**
@@ -401,20 +401,20 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      * @param \ColissimoPickupPoint\Model\Thelia\Model\Area|ObjectCollection $area The related object(s) to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function filterByArea($area, $comparison = null)
     {
         if ($area instanceof \ColissimoPickupPoint\Model\Thelia\Model\Area) {
             return $this
-                ->addUsingAlias(ColissimoAreaFreeshippingTableMap::AREA_ID, $area->getId(), $comparison);
+                ->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $area->getId(), $comparison);
         } elseif ($area instanceof ObjectCollection) {
             if (null === $comparison) {
                 $comparison = Criteria::IN;
             }
 
             return $this
-                ->addUsingAlias(ColissimoAreaFreeshippingTableMap::AREA_ID, $area->toKeyValue('PrimaryKey', 'Id'), $comparison);
+                ->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $area->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
             throw new PropelException('filterByArea() only accepts arguments of type \ColissimoPickupPoint\Model\Thelia\Model\Area or Collection');
         }
@@ -426,7 +426,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      * @param     string $relationAlias optional alias for the relation
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
     public function joinArea($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
@@ -473,14 +473,14 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
     /**
      * Exclude object from result
      *
-     * @param   ChildColissimoAreaFreeshipping $colissimoAreaFreeshipping Object to remove from the list of results
+     * @param   ChildColissimoPickupPointAreaFreeshipping $colissimoPickupPointAreaFreeshipping Object to remove from the list of results
      *
-     * @return ChildColissimoAreaFreeshippingQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointAreaFreeshippingQuery The current query, for fluid interface
      */
-    public function prune($colissimoAreaFreeshipping = null)
+    public function prune($colissimoPickupPointAreaFreeshipping = null)
     {
-        if ($colissimoAreaFreeshipping) {
-            $this->addUsingAlias(ColissimoAreaFreeshippingTableMap::ID, $colissimoAreaFreeshipping->getId(), Criteria::NOT_EQUAL);
+        if ($colissimoPickupPointAreaFreeshipping) {
+            $this->addUsingAlias(ColissimoPickupPointAreaFreeshippingTableMap::ID, $colissimoPickupPointAreaFreeshipping->getId(), Criteria::NOT_EQUAL);
         }
 
         return $this;
@@ -495,7 +495,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
     public function doDeleteAll(ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
         $affectedRows = 0; // initialize var to track total num of affected rows
         try {
@@ -506,8 +506,8 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             // Because this db requires some delete cascade/set null emulation, we have to
             // clear the cached instance *after* the emulation has happened (since
             // instances get re-added by the select statement contained therein).
-            ColissimoAreaFreeshippingTableMap::clearInstancePool();
-            ColissimoAreaFreeshippingTableMap::clearRelatedInstancePool();
+            ColissimoPickupPointAreaFreeshippingTableMap::clearInstancePool();
+            ColissimoPickupPointAreaFreeshippingTableMap::clearRelatedInstancePool();
 
             $con->commit();
         } catch (PropelException $e) {
@@ -519,9 +519,9 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
     }
 
     /**
-     * Performs a DELETE on the database, given a ChildColissimoAreaFreeshipping or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a ChildColissimoPickupPointAreaFreeshipping or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or ChildColissimoAreaFreeshipping object or primary key or array of primary keys
+     * @param mixed               $values Criteria or ChildColissimoPickupPointAreaFreeshipping object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -532,13 +532,13 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      public function delete(ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
 
         $criteria = $this;
 
         // Set the correct dbName
-        $criteria->setDbName(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+        $criteria->setDbName(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
 
         $affectedRows = 0; // initialize var to track total num of affected rows
 
@@ -548,10 +548,10 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
             $con->beginTransaction();
 
 
-        ColissimoAreaFreeshippingTableMap::removeInstanceFromPool($criteria);
+        ColissimoPickupPointAreaFreeshippingTableMap::removeInstanceFromPool($criteria);
 
             $affectedRows += ModelCriteria::delete($con);
-            ColissimoAreaFreeshippingTableMap::clearRelatedInstancePool();
+            ColissimoPickupPointAreaFreeshippingTableMap::clearRelatedInstancePool();
             $con->commit();
 
             return $affectedRows;
@@ -561,4 +561,4 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
         }
     }
 
-} // ColissimoAreaFreeshippingQuery
+} // ColissimoPickupPointAreaFreeshippingQuery

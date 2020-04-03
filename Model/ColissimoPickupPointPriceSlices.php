@@ -2,9 +2,9 @@
 
 namespace ColissimoPickupPoint\Model;
 
-use ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesSlices as BaseColissimoPickupPointPriceSlicesSlices;
+use ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlices as BaseColissimoPickupPointPriceSlices;
 
-class ColissimoPickupPointPriceSlicesSlices extends BaseColissimoPickupPointPriceSlicesSlices
+class ColissimoPickupPointPriceSlices extends BaseColissimoPickupPointPriceSlices
 {
 
 }

@@ -2,7 +2,7 @@
 
 namespace ColissimoPickupPoint\Model;
 
-use ColissimoPickupPoint\Model\Base\ColissimoAreaFreeshippingQuery as BaseColissimoAreaFreeshippingQuery;
+use ColissimoPickupPoint\Model\Base\ColissimoPickupPointAreaFreeshippingQuery as BaseColissimoPickupPointAreaFreeshippingQuery;
 
 
 /**
@@ -15,7 +15,7 @@ use ColissimoPickupPoint\Model\Base\ColissimoAreaFreeshippingQuery as BaseColiss
  * long as it does not already exist in the output directory.
  *
  */
-class ColissimoAreaFreeshippingQuery extends BaseColissimoAreaFreeshippingQuery
+class ColissimoPickupPointAreaFreeshippingQuery extends BaseColissimoPickupPointAreaFreeshippingQuery
 {
 
-} // ColissimoAreaFreeshippingQuery
+} // ColissimoPickupPointAreaFreeshippingQuery

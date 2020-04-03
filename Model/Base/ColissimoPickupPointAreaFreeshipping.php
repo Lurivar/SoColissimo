@@ -4,8 +4,8 @@ namespace ColissimoPickupPoint\Model\Base;
 
 use \Exception;
 use \PDO;
-use ColissimoPickupPoint\Model\ColissimoAreaFreeshippingQuery as ChildColissimoAreaFreeshippingQuery;
-use ColissimoPickupPoint\Model\Map\ColissimoAreaFreeshippingTableMap;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery as ChildColissimoPickupPointAreaFreeshippingQuery;
+use ColissimoPickupPoint\Model\Map\ColissimoPickupPointAreaFreeshippingTableMap;
 use ColissimoPickupPoint\Model\Thelia\Model\AreaQuery;
 use ColissimoPickupPoint\Model\Thelia\Model\Area as ChildArea;
 use Propel\Runtime\Propel;
@@ -19,12 +19,12 @@ use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
 
-abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
+abstract class ColissimoPickupPointAreaFreeshipping implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ColissimoPickupPoint\\Model\\Map\\ColissimoAreaFreeshippingTableMap';
+    const TABLE_MAP = '\\ColissimoPickupPoint\\Model\\Map\\ColissimoPickupPointAreaFreeshippingTableMap';
 
 
     /**
@@ -103,7 +103,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
     }
 
     /**
-     * Initializes internal state of ColissimoPickupPoint\Model\Base\ColissimoAreaFreeshipping object.
+     * Initializes internal state of ColissimoPickupPoint\Model\Base\ColissimoPickupPointAreaFreeshipping object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -200,9 +200,9 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>ColissimoAreaFreeshipping</code> instance.  If
-     * <code>obj</code> is an instance of <code>ColissimoAreaFreeshipping</code>, delegates to
-     * <code>equals(ColissimoAreaFreeshipping)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>ColissimoPickupPointAreaFreeshipping</code> instance.  If
+     * <code>obj</code> is an instance of <code>ColissimoPickupPointAreaFreeshipping</code>, delegates to
+     * <code>equals(ColissimoPickupPointAreaFreeshipping)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -285,7 +285,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return ColissimoAreaFreeshipping The current object, for fluid interface
+     * @return ColissimoPickupPointAreaFreeshipping The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -317,7 +317,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      *                       or a format name ('XML', 'YAML', 'JSON', 'CSV')
      * @param string $data The source data to import from
      *
-     * @return ColissimoAreaFreeshipping The current object, for fluid interface
+     * @return ColissimoPickupPointAreaFreeshipping The current object, for fluid interface
      */
     public function importFrom($parser, $data)
     {
@@ -410,7 +410,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * Set the value of [id] column.
      *
      * @param      int $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -420,7 +420,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[ColissimoAreaFreeshippingTableMap::ID] = true;
+            $this->modifiedColumns[ColissimoPickupPointAreaFreeshippingTableMap::ID] = true;
         }
 
 
@@ -431,7 +431,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * Set the value of [area_id] column.
      *
      * @param      int $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping The current object (for fluent API support)
      */
     public function setAreaId($v)
     {
@@ -441,7 +441,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
 
         if ($this->area_id !== $v) {
             $this->area_id = $v;
-            $this->modifiedColumns[ColissimoAreaFreeshippingTableMap::AREA_ID] = true;
+            $this->modifiedColumns[ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID] = true;
         }
 
         if ($this->aArea !== null && $this->aArea->getId() !== $v) {
@@ -456,7 +456,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * Set the value of [delivery_mode_id] column.
      *
      * @param      int $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping The current object (for fluent API support)
      */
     public function setDeliveryModeId($v)
     {
@@ -466,7 +466,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
 
         if ($this->delivery_mode_id !== $v) {
             $this->delivery_mode_id = $v;
-            $this->modifiedColumns[ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID] = true;
+            $this->modifiedColumns[ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID] = true;
         }
 
 
@@ -477,7 +477,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * Set the value of [cart_amount] column.
      *
      * @param      string $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping The current object (for fluent API support)
      */
     public function setCartAmount($v)
     {
@@ -487,7 +487,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
 
         if ($this->cart_amount !== $v) {
             $this->cart_amount = $v;
-            $this->modifiedColumns[ColissimoAreaFreeshippingTableMap::CART_AMOUNT] = true;
+            $this->modifiedColumns[ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT] = true;
         }
 
 
@@ -535,16 +535,16 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         try {
 
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ColissimoAreaFreeshippingTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
             $this->id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : ColissimoAreaFreeshippingTableMap::translateFieldName('AreaId', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName('AreaId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->area_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ColissimoAreaFreeshippingTableMap::translateFieldName('DeliveryModeId', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName('DeliveryModeId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->delivery_mode_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : ColissimoAreaFreeshippingTableMap::translateFieldName('CartAmount', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName('CartAmount', TableMap::TYPE_PHPNAME, $indexType)];
             $this->cart_amount = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
@@ -554,10 +554,10 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 4; // 4 = ColissimoAreaFreeshippingTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 4; // 4 = ColissimoPickupPointAreaFreeshippingTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping object", 0, $e);
+            throw new PropelException("Error populating \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping object", 0, $e);
         }
     }
 
@@ -602,13 +602,13 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildColissimoAreaFreeshippingQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildColissimoPickupPointAreaFreeshippingQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -628,8 +628,8 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see ColissimoAreaFreeshipping::setDeleted()
-     * @see ColissimoAreaFreeshipping::isDeleted()
+     * @see ColissimoPickupPointAreaFreeshipping::setDeleted()
+     * @see ColissimoPickupPointAreaFreeshipping::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -638,12 +638,12 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = ChildColissimoAreaFreeshippingQuery::create()
+            $deleteQuery = ChildColissimoPickupPointAreaFreeshippingQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -680,7 +680,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
         }
 
         $con->beginTransaction();
@@ -700,7 +700,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                ColissimoAreaFreeshippingTableMap::addInstanceToPool($this);
+                ColissimoPickupPointAreaFreeshippingTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -773,22 +773,22 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[ColissimoAreaFreeshippingTableMap::ID] = true;
+        $this->modifiedColumns[ColissimoPickupPointAreaFreeshippingTableMap::ID] = true;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . ColissimoAreaFreeshippingTableMap::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . ColissimoPickupPointAreaFreeshippingTableMap::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::ID)) {
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::ID)) {
             $modifiedColumns[':p' . $index++]  = 'ID';
         }
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::AREA_ID)) {
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID)) {
             $modifiedColumns[':p' . $index++]  = 'AREA_ID';
         }
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID)) {
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID)) {
             $modifiedColumns[':p' . $index++]  = 'DELIVERY_MODE_ID';
         }
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::CART_AMOUNT)) {
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT)) {
             $modifiedColumns[':p' . $index++]  = 'CART_AMOUNT';
         }
 
@@ -860,7 +860,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = ColissimoAreaFreeshippingTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -911,11 +911,11 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
-        if (isset($alreadyDumpedObjects['ColissimoAreaFreeshipping'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['ColissimoPickupPointAreaFreeshipping'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['ColissimoAreaFreeshipping'][$this->getPrimaryKey()] = true;
-        $keys = ColissimoAreaFreeshippingTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['ColissimoPickupPointAreaFreeshipping'][$this->getPrimaryKey()] = true;
+        $keys = ColissimoPickupPointAreaFreeshippingTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getAreaId(),
@@ -949,7 +949,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = ColissimoAreaFreeshippingTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = ColissimoPickupPointAreaFreeshippingTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -999,7 +999,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = ColissimoAreaFreeshippingTableMap::getFieldNames($keyType);
+        $keys = ColissimoPickupPointAreaFreeshippingTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
         if (array_key_exists($keys[1], $arr)) $this->setAreaId($arr[$keys[1]]);
@@ -1014,12 +1014,12 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
+        $criteria = new Criteria(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::ID)) $criteria->add(ColissimoAreaFreeshippingTableMap::ID, $this->id);
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::AREA_ID)) $criteria->add(ColissimoAreaFreeshippingTableMap::AREA_ID, $this->area_id);
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID)) $criteria->add(ColissimoAreaFreeshippingTableMap::DELIVERY_MODE_ID, $this->delivery_mode_id);
-        if ($this->isColumnModified(ColissimoAreaFreeshippingTableMap::CART_AMOUNT)) $criteria->add(ColissimoAreaFreeshippingTableMap::CART_AMOUNT, $this->cart_amount);
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::ID)) $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::ID, $this->id);
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID)) $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, $this->area_id);
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID)) $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID, $this->delivery_mode_id);
+        if ($this->isColumnModified(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT)) $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT, $this->cart_amount);
 
         return $criteria;
     }
@@ -1034,8 +1034,8 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(ColissimoAreaFreeshippingTableMap::DATABASE_NAME);
-        $criteria->add(ColissimoAreaFreeshippingTableMap::ID, $this->id);
+        $criteria = new Criteria(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
+        $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::ID, $this->id);
 
         return $criteria;
     }
@@ -1076,7 +1076,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping (or compatible) type.
+     * @param      object $copyObj An object of \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1101,7 +1101,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * objects.
      *
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return                 \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping Clone of current object.
+     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1118,7 +1118,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      * Declares an association between this object and a ChildArea object.
      *
      * @param                  ChildArea $v
-     * @return                 \ColissimoPickupPoint\Model\ColissimoAreaFreeshipping The current object (for fluent API support)
+     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping The current object (for fluent API support)
      * @throws PropelException
      */
     public function setArea(ChildArea $v = null)
@@ -1134,7 +1134,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
         // Add binding for other direction of this n:n relationship.
         // If this object has already been added to the ChildArea object, it will not be re-added.
         if ($v !== null) {
-            $v->addColissimoAreaFreeshipping($this);
+            $v->addColissimoPickupPointAreaFreeshipping($this);
         }
 
 
@@ -1158,7 +1158,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
                 to this object.  This level of coupling may, however, be
                 undesirable since it could result in an only partially populated collection
                 in the referenced object.
-                $this->aArea->addColissimoAreaFreeshippings($this);
+                $this->aArea->addColissimoPickupPointAreaFreeshippings($this);
              */
         }
 
@@ -1206,7 +1206,7 @@ abstract class ColissimoAreaFreeshipping implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(ColissimoAreaFreeshippingTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(ColissimoPickupPointAreaFreeshippingTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

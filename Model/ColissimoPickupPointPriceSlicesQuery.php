@@ -2,7 +2,7 @@
 
 namespace ColissimoPickupPoint\Model;
 
-use ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesSlicesQuery as BaseColissimoPickupPointPriceSlicesSlicesQuery;
+use ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesQuery as BaseColissimoPickupPointPriceSlicesQuery;
 
 
 /**
@@ -15,7 +15,7 @@ use ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesSlicesQuery a
  * long as it does not already exist in the output directory.
  *
  */
-class ColissimoPickupPointPriceSlicesSlicesQuery extends BaseColissimoPickupPointPriceSlicesSlicesQuery
+class ColissimoPickupPointPriceSlicesQuery extends BaseColissimoPickupPointPriceSlicesQuery
 {
 
-} // ColissimoPickupPointPriceSlicesSlicesQuery
+} // ColissimoPickupPointPriceSlicesQuery

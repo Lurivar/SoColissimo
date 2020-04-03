@@ -2,8 +2,8 @@
 
 namespace ColissimoPickupPoint\Model\Map;
 
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlicesQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -26,14 +26,14 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
+class ColissimoPickupPointPriceSlicesTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ColissimoPickupPoint.Model.Map.ColissimoPickupPointPriceSlicesSlicesTableMap';
+    const CLASS_NAME = 'ColissimoPickupPoint.Model.Map.ColissimoPickupPointPriceSlicesTableMap';
 
     /**
      * The default database name for this class
@@ -48,12 +48,12 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlicesSlices';
+    const OM_CLASS = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlices';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ColissimoPickupPoint.Model.ColissimoPickupPointPriceSlicesSlices';
+    const CLASS_DEFAULT = 'ColissimoPickupPoint.Model.ColissimoPickupPointPriceSlices';
 
     /**
      * The total number of columns
@@ -114,7 +114,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     protected static $fieldNames = array (
         self::TYPE_PHPNAME       => array('Id', 'AreaId', 'WeightMax', 'PriceMax', 'FrancoMinPrice', 'Price', ),
         self::TYPE_STUDLYPHPNAME => array('id', 'areaId', 'weightMax', 'priceMax', 'francoMinPrice', 'price', ),
-        self::TYPE_COLNAME       => array(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX, ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX, ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE, ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE, ),
+        self::TYPE_COLNAME       => array(ColissimoPickupPointPriceSlicesTableMap::ID, ColissimoPickupPointPriceSlicesTableMap::AREA_ID, ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX, ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX, ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE, ColissimoPickupPointPriceSlicesTableMap::PRICE, ),
         self::TYPE_RAW_COLNAME   => array('ID', 'AREA_ID', 'WEIGHT_MAX', 'PRICE_MAX', 'FRANCO_MIN_PRICE', 'PRICE', ),
         self::TYPE_FIELDNAME     => array('id', 'area_id', 'weight_max', 'price_max', 'franco_min_price', 'price', ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
@@ -129,7 +129,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     protected static $fieldKeys = array (
         self::TYPE_PHPNAME       => array('Id' => 0, 'AreaId' => 1, 'WeightMax' => 2, 'PriceMax' => 3, 'FrancoMinPrice' => 4, 'Price' => 5, ),
         self::TYPE_STUDLYPHPNAME => array('id' => 0, 'areaId' => 1, 'weightMax' => 2, 'priceMax' => 3, 'francoMinPrice' => 4, 'price' => 5, ),
-        self::TYPE_COLNAME       => array(ColissimoPickupPointPriceSlicesSlicesTableMap::ID => 0, ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID => 1, ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX => 2, ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX => 3, ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE => 4, ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE => 5, ),
+        self::TYPE_COLNAME       => array(ColissimoPickupPointPriceSlicesTableMap::ID => 0, ColissimoPickupPointPriceSlicesTableMap::AREA_ID => 1, ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX => 2, ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX => 3, ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE => 4, ColissimoPickupPointPriceSlicesTableMap::PRICE => 5, ),
         self::TYPE_RAW_COLNAME   => array('ID' => 0, 'AREA_ID' => 1, 'WEIGHT_MAX' => 2, 'PRICE_MAX' => 3, 'FRANCO_MIN_PRICE' => 4, 'PRICE' => 5, ),
         self::TYPE_FIELDNAME     => array('id' => 0, 'area_id' => 1, 'weight_max' => 2, 'price_max' => 3, 'franco_min_price' => 4, 'price' => 5, ),
         self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
@@ -146,8 +146,8 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     {
         // attributes
         $this->setName('colissimo_pickup_point_price_slices');
-        $this->setPhpName('ColissimoPickupPointPriceSlicesSlices');
-        $this->setClassName('\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlicesSlices');
+        $this->setPhpName('ColissimoPickupPointPriceSlices');
+        $this->setClassName('\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlices');
         $this->setPackage('ColissimoPickupPoint.Model');
         $this->setUseIdGenerator(true);
         // columns
@@ -223,7 +223,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? ColissimoPickupPointPriceSlicesSlicesTableMap::CLASS_DEFAULT : ColissimoPickupPointPriceSlicesSlicesTableMap::OM_CLASS;
+        return $withPrefix ? ColissimoPickupPointPriceSlicesTableMap::CLASS_DEFAULT : ColissimoPickupPointPriceSlicesTableMap::OM_CLASS;
     }
 
     /**
@@ -237,21 +237,21 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
-     * @return array (ColissimoPickupPointPriceSlicesSlices object, last column rank)
+     * @return array (ColissimoPickupPointPriceSlices object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = ColissimoPickupPointPriceSlicesSlicesTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = ColissimoPickupPointPriceSlicesSlicesTableMap::getInstanceFromPool($key))) {
+        $key = ColissimoPickupPointPriceSlicesTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = ColissimoPickupPointPriceSlicesTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + ColissimoPickupPointPriceSlicesSlicesTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + ColissimoPickupPointPriceSlicesTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = ColissimoPickupPointPriceSlicesSlicesTableMap::OM_CLASS;
+            $cls = ColissimoPickupPointPriceSlicesTableMap::OM_CLASS;
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            ColissimoPickupPointPriceSlicesSlicesTableMap::addInstanceToPool($obj, $key);
+            ColissimoPickupPointPriceSlicesTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -274,8 +274,8 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = ColissimoPickupPointPriceSlicesSlicesTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = ColissimoPickupPointPriceSlicesSlicesTableMap::getInstanceFromPool($key))) {
+            $key = ColissimoPickupPointPriceSlicesTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = ColissimoPickupPointPriceSlicesTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
@@ -284,7 +284,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                ColissimoPickupPointPriceSlicesSlicesTableMap::addInstanceToPool($obj, $key);
+                ColissimoPickupPointPriceSlicesTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -305,12 +305,12 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::ID);
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID);
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX);
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX);
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE);
-            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::ID);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::AREA_ID);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE);
+            $criteria->addSelectColumn(ColissimoPickupPointPriceSlicesTableMap::PRICE);
         } else {
             $criteria->addSelectColumn($alias . '.ID');
             $criteria->addSelectColumn($alias . '.AREA_ID');
@@ -330,7 +330,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME)->getTable(ColissimoPickupPointPriceSlicesSlicesTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME)->getTable(ColissimoPickupPointPriceSlicesTableMap::TABLE_NAME);
     }
 
     /**
@@ -338,16 +338,16 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-      $dbMap = Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
-      if (!$dbMap->hasTable(ColissimoPickupPointPriceSlicesSlicesTableMap::TABLE_NAME)) {
-        $dbMap->addTableObject(new ColissimoPickupPointPriceSlicesSlicesTableMap());
+      $dbMap = Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+      if (!$dbMap->hasTable(ColissimoPickupPointPriceSlicesTableMap::TABLE_NAME)) {
+        $dbMap->addTableObject(new ColissimoPickupPointPriceSlicesTableMap());
       }
     }
 
     /**
-     * Performs a DELETE on the database, given a ColissimoPickupPointPriceSlicesSlices or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a ColissimoPickupPointPriceSlices or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or ColissimoPickupPointPriceSlicesSlices object or primary key or array of primary keys
+     * @param mixed               $values Criteria or ColissimoPickupPointPriceSlices object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -358,25 +358,25 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices) { // it's a model object
+        } elseif ($values instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
-            $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $criteria->add(ColissimoPickupPointPriceSlicesTableMap::ID, (array) $values, Criteria::IN);
         }
 
-        $query = ColissimoPickupPointPriceSlicesSlicesQuery::create()->mergeWith($criteria);
+        $query = ColissimoPickupPointPriceSlicesQuery::create()->mergeWith($criteria);
 
-        if ($values instanceof Criteria) { ColissimoPickupPointPriceSlicesSlicesTableMap::clearInstancePool();
+        if ($values instanceof Criteria) { ColissimoPickupPointPriceSlicesTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
-            foreach ((array) $values as $singleval) { ColissimoPickupPointPriceSlicesSlicesTableMap::removeInstanceFromPool($singleval);
+            foreach ((array) $values as $singleval) { ColissimoPickupPointPriceSlicesTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -391,13 +391,13 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return ColissimoPickupPointPriceSlicesSlicesQuery::create()->doDeleteAll($con);
+        return ColissimoPickupPointPriceSlicesQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a ColissimoPickupPointPriceSlicesSlices or Criteria object.
+     * Performs an INSERT on the database, given a ColissimoPickupPointPriceSlices or Criteria object.
      *
-     * @param mixed               $criteria Criteria or ColissimoPickupPointPriceSlicesSlices object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or ColissimoPickupPointPriceSlices object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -406,22 +406,22 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from ColissimoPickupPointPriceSlicesSlices object
+            $criteria = $criteria->buildCriteria(); // build Criteria from ColissimoPickupPointPriceSlices object
         }
 
-        if ($criteria->containsKey(ColissimoPickupPointPriceSlicesSlicesTableMap::ID) && $criteria->keyContainsValue(ColissimoPickupPointPriceSlicesSlicesTableMap::ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.ColissimoPickupPointPriceSlicesSlicesTableMap::ID.')');
+        if ($criteria->containsKey(ColissimoPickupPointPriceSlicesTableMap::ID) && $criteria->keyContainsValue(ColissimoPickupPointPriceSlicesTableMap::ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.ColissimoPickupPointPriceSlicesTableMap::ID.')');
         }
 
 
         // Set the correct dbName
-        $query = ColissimoPickupPointPriceSlicesSlicesQuery::create()->mergeWith($criteria);
+        $query = ColissimoPickupPointPriceSlicesQuery::create()->mergeWith($criteria);
 
         try {
             // use transaction because $criteria could contain info
@@ -437,7 +437,7 @@ class ColissimoPickupPointPriceSlicesSlicesTableMap extends TableMap
         return $pk;
     }
 
-} // ColissimoPickupPointPriceSlicesSlicesTableMap
+} // ColissimoPickupPointPriceSlicesTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-ColissimoPickupPointPriceSlicesSlicesTableMap::buildTableMap();
+ColissimoPickupPointPriceSlicesTableMap::buildTableMap();
