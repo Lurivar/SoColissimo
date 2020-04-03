@@ -81,7 +81,7 @@ class SendMail implements EventSubscriberInterface
                     ->setLocale($order->getLang()->getLocale());
 
                 $instance = \Swift_Message::newInstance()
-                    ->addTo($customer->getEmail(), $customer->getFirstname()." ".$customer->getLastname())
+                    ->addTo($customer->getEmail(), $customer->getFirstname() . ' ' . $customer->getLastname())
                     ->addFrom($contact_email, ConfigQuery::read('store_name'))
                 ;
 

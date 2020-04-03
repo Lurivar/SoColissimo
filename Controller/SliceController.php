@@ -3,8 +3,8 @@
 namespace ColissimoPickupPoint\Controller;
 
 use Propel\Runtime\Map\TableMap;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPrice;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery;
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\Security\AccessManager;
@@ -33,9 +33,9 @@ class SliceController extends BaseAdminController
             $requestData = $this->getRequest()->request;
 
             if (0 !== $id = (int)$requestData->get('id', 0)) {
-                $slice = ColissimoPickupPointPriceQuery::create()->findPk($id);
+                $slice = ColissimoPickupPointPriceSlicesQuery::create()->findPk($id);
             } else {
-                $slice = new ColissimoPickupPointPrice();
+                $slice = new ColissimoPickupPointPriceSlices();
             }
 
 
@@ -172,7 +172,7 @@ class SliceController extends BaseAdminController
             $requestData = $this->getRequest()->request;
 
             if (0 !== $id = (int)$requestData->get('id', 0)) {
-                $slice = ColissimoPickupPointPriceQuery::create()->findPk($id);
+                $slice = ColissimoPickupPointPriceSlicesQuery::create()->findPk($id);
                 $slice->delete();
                 $responseData['success'] = true;
             } else {

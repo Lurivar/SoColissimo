@@ -108,18 +108,6 @@ class ConfigureSoColissimo extends BaseForm
                     'label_attr'  => ['for' => 'socolissimo_google_map_key']
                 ]
             )
-            ->add(
-                'socolissimo_dom_delivery_authorized',
-                CheckboxType::class,
-                [
-                    'constraints' => [],
-                    'required'      => false,
-                    'data'          => (bool)ColissimoPickupPoint::getConfigValue('socolissimo_dom_delivery_authorized'),
-                    'value'         => (bool)ColissimoPickupPoint::getConfigValue('socolissimo_dom_delivery_authorized'),
-                    'label'       => $translator->trans("[DEPRECATED] Activate Dom delivery", [], ColissimoPickupPoint::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_dom_delivery_authorized']
-                ]
-            )
         ;
     }
 
@@ -128,6 +116,6 @@ class ConfigureSoColissimo extends BaseForm
      */
     public function getName()
     {
-        return "configuresocolissimo";
+        return 'configuresocolissimo';
     }
 }

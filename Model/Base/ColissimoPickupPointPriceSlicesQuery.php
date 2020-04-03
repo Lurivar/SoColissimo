@@ -4,9 +4,9 @@ namespace ColissimoPickupPoint\Model\Base;
 
 use \Exception;
 use \PDO;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices as ChildColissimoPickupPointPriceSlices;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery as ChildColissimoPickupPointPriceSlicesQuery;
-use ColissimoPickupPoint\Model\Map\ColissimoPickupPointPriceSlicesTableMap;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices as ChildColissimoPickupPointPriceSlicesSlices;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlicesQuery as ChildColissimoPickupPointPriceSlicesSlicesQuery;
+use ColissimoPickupPoint\Model\Map\ColissimoPickupPointPriceSlicesSlicesTableMap;
 use ColissimoPickupPoint\Model\Thelia\Model\Area;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -22,75 +22,75 @@ use Propel\Runtime\Exception\PropelException;
  *
  *
  *
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderById($order = Criteria::ASC) Order by the id column
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderByAreaId($order = Criteria::ASC) Order by the area_id column
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderByWeightMax($order = Criteria::ASC) Order by the weight_max column
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderByPriceMax($order = Criteria::ASC) Order by the price_max column
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderByFrancoMinPrice($order = Criteria::ASC) Order by the franco_min_price column
- * @method     ChildColissimoPickupPointPriceSlicesQuery orderByPrice($order = Criteria::ASC) Order by the price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderById($order = Criteria::ASC) Order by the id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderByAreaId($order = Criteria::ASC) Order by the area_id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderByWeightMax($order = Criteria::ASC) Order by the weight_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderByPriceMax($order = Criteria::ASC) Order by the price_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderByFrancoMinPrice($order = Criteria::ASC) Order by the franco_min_price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery orderByPrice($order = Criteria::ASC) Order by the price column
  *
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupById() Group by the id column
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupByAreaId() Group by the area_id column
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupByWeightMax() Group by the weight_max column
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupByPriceMax() Group by the price_max column
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupByFrancoMinPrice() Group by the franco_min_price column
- * @method     ChildColissimoPickupPointPriceSlicesQuery groupByPrice() Group by the price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupById() Group by the id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupByAreaId() Group by the area_id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupByWeightMax() Group by the weight_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupByPriceMax() Group by the price_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupByFrancoMinPrice() Group by the franco_min_price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery groupByPrice() Group by the price column
  *
- * @method     ChildColissimoPickupPointPriceSlicesQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
- * @method     ChildColissimoPickupPointPriceSlicesQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
- * @method     ChildColissimoPickupPointPriceSlicesQuery innerJoin($relation) Adds a INNER JOIN clause to the query
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery innerJoin($relation) Adds a INNER JOIN clause to the query
  *
- * @method     ChildColissimoPickupPointPriceSlicesQuery leftJoinArea($relationAlias = null) Adds a LEFT JOIN clause to the query using the Area relation
- * @method     ChildColissimoPickupPointPriceSlicesQuery rightJoinArea($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Area relation
- * @method     ChildColissimoPickupPointPriceSlicesQuery innerJoinArea($relationAlias = null) Adds a INNER JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery leftJoinArea($relationAlias = null) Adds a LEFT JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery rightJoinArea($relationAlias = null) Adds a RIGHT JOIN clause to the query using the Area relation
+ * @method     ChildColissimoPickupPointPriceSlicesSlicesQuery innerJoinArea($relationAlias = null) Adds a INNER JOIN clause to the query using the Area relation
  *
- * @method     ChildColissimoPickupPointPriceSlices findOne(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointPriceSlices matching the query
- * @method     ChildColissimoPickupPointPriceSlices findOneOrCreate(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointPriceSlices matching the query, or a new ChildColissimoPickupPointPriceSlices object populated from the query conditions when no match is found
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOne(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointPriceSlicesSlices matching the query
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneOrCreate(ConnectionInterface $con = null) Return the first ChildColissimoPickupPointPriceSlicesSlices matching the query, or a new ChildColissimoPickupPointPriceSlicesSlices object populated from the query conditions when no match is found
  *
- * @method     ChildColissimoPickupPointPriceSlices findOneById(int $id) Return the first ChildColissimoPickupPointPriceSlices filtered by the id column
- * @method     ChildColissimoPickupPointPriceSlices findOneByAreaId(int $area_id) Return the first ChildColissimoPickupPointPriceSlices filtered by the area_id column
- * @method     ChildColissimoPickupPointPriceSlices findOneByWeightMax(double $weight_max) Return the first ChildColissimoPickupPointPriceSlices filtered by the weight_max column
- * @method     ChildColissimoPickupPointPriceSlices findOneByPriceMax(double $price_max) Return the first ChildColissimoPickupPointPriceSlices filtered by the price_max column
- * @method     ChildColissimoPickupPointPriceSlices findOneByFrancoMinPrice(double $franco_min_price) Return the first ChildColissimoPickupPointPriceSlices filtered by the franco_min_price column
- * @method     ChildColissimoPickupPointPriceSlices findOneByPrice(double $price) Return the first ChildColissimoPickupPointPriceSlices filtered by the price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneById(int $id) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneByAreaId(int $area_id) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the area_id column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneByWeightMax(double $weight_max) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the weight_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneByPriceMax(double $price_max) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the price_max column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneByFrancoMinPrice(double $franco_min_price) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the franco_min_price column
+ * @method     ChildColissimoPickupPointPriceSlicesSlices findOneByPrice(double $price) Return the first ChildColissimoPickupPointPriceSlicesSlices filtered by the price column
  *
- * @method     array findById(int $id) Return ChildColissimoPickupPointPriceSlices objects filtered by the id column
- * @method     array findByAreaId(int $area_id) Return ChildColissimoPickupPointPriceSlices objects filtered by the area_id column
- * @method     array findByWeightMax(double $weight_max) Return ChildColissimoPickupPointPriceSlices objects filtered by the weight_max column
- * @method     array findByPriceMax(double $price_max) Return ChildColissimoPickupPointPriceSlices objects filtered by the price_max column
- * @method     array findByFrancoMinPrice(double $franco_min_price) Return ChildColissimoPickupPointPriceSlices objects filtered by the franco_min_price column
- * @method     array findByPrice(double $price) Return ChildColissimoPickupPointPriceSlices objects filtered by the price column
+ * @method     array findById(int $id) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the id column
+ * @method     array findByAreaId(int $area_id) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the area_id column
+ * @method     array findByWeightMax(double $weight_max) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the weight_max column
+ * @method     array findByPriceMax(double $price_max) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the price_max column
+ * @method     array findByFrancoMinPrice(double $franco_min_price) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the franco_min_price column
+ * @method     array findByPrice(double $price) Return ChildColissimoPickupPointPriceSlicesSlices objects filtered by the price column
  *
  */
-abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
+abstract class ColissimoPickupPointPriceSlicesSlicesQuery extends ModelCriteria
 {
 
     /**
-     * Initializes internal state of \ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesQuery object.
+     * Initializes internal state of \ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesSlicesQuery object.
      *
      * @param     string $dbName The database name
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'thelia', $modelName = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlices', $modelAlias = null)
+    public function __construct($dbName = 'thelia', $modelName = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointPriceSlicesSlices', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }
 
     /**
-     * Returns a new ChildColissimoPickupPointPriceSlicesQuery object.
+     * Returns a new ChildColissimoPickupPointPriceSlicesSlicesQuery object.
      *
      * @param     string $modelAlias The alias of a model in the query
      * @param     Criteria $criteria Optional Criteria to build the query from
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery
      */
     public static function create($modelAlias = null, $criteria = null)
     {
-        if ($criteria instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery) {
+        if ($criteria instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlicesQuery) {
             return $criteria;
         }
-        $query = new \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery();
+        $query = new \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlicesQuery();
         if (null !== $modelAlias) {
             $query->setModelAlias($modelAlias);
         }
@@ -113,19 +113,19 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      * @param mixed $key Primary key to use for the query
      * @param ConnectionInterface $con an optional connection object
      *
-     * @return ChildColissimoPickupPointPriceSlices|array|mixed the result, formatted by the current formatter
+     * @return ChildColissimoPickupPointPriceSlicesSlices|array|mixed the result, formatted by the current formatter
      */
     public function findPk($key, $con = null)
     {
         if ($key === null) {
             return null;
         }
-        if ((null !== ($obj = ColissimoPickupPointPriceSlicesTableMap::getInstanceFromPool((string) $key))) && !$this->formatter) {
+        if ((null !== ($obj = ColissimoPickupPointPriceSlicesSlicesTableMap::getInstanceFromPool((string) $key))) && !$this->formatter) {
             // the object is already in the instance pool
             return $obj;
         }
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
         $this->basePreSelect($con);
         if ($this->formatter || $this->modelAlias || $this->with || $this->select
@@ -144,7 +144,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      * @param     mixed $key Primary key to use for the query
      * @param     ConnectionInterface $con A connection object
      *
-     * @return   ChildColissimoPickupPointPriceSlices A model object, or null if the key is not found
+     * @return   ChildColissimoPickupPointPriceSlicesSlices A model object, or null if the key is not found
      */
     protected function findPkSimple($key, $con)
     {
@@ -159,9 +159,9 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
         }
         $obj = null;
         if ($row = $stmt->fetch(\PDO::FETCH_NUM)) {
-            $obj = new ChildColissimoPickupPointPriceSlices();
+            $obj = new ChildColissimoPickupPointPriceSlicesSlices();
             $obj->hydrate($row);
-            ColissimoPickupPointPriceSlicesTableMap::addInstanceToPool($obj, (string) $key);
+            ColissimoPickupPointPriceSlicesSlicesTableMap::addInstanceToPool($obj, (string) $key);
         }
         $stmt->closeCursor();
 
@@ -174,7 +174,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      * @param     mixed $key Primary key to use for the query
      * @param     ConnectionInterface $con A connection object
      *
-     * @return ChildColissimoPickupPointPriceSlices|array|mixed the result, formatted by the current formatter
+     * @return ChildColissimoPickupPointPriceSlicesSlices|array|mixed the result, formatted by the current formatter
      */
     protected function findPkComplex($key, $con)
     {
@@ -216,12 +216,12 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *
      * @param     mixed $key Primary key to use for the query
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByPrimaryKey($key)
     {
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $key, Criteria::EQUAL);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $key, Criteria::EQUAL);
     }
 
     /**
@@ -229,12 +229,12 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *
      * @param     array $keys The list of primary key to use for the query
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByPrimaryKeys($keys)
     {
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $keys, Criteria::IN);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $keys, Criteria::IN);
     }
 
     /**
@@ -253,18 +253,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterById($id = null, $comparison = null)
     {
         if (is_array($id)) {
             $useMinMax = false;
             if (isset($id['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $id['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $id['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($id['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $id['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $id['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -275,7 +275,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $id, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $id, $comparison);
     }
 
     /**
@@ -296,18 +296,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByAreaId($areaId = null, $comparison = null)
     {
         if (is_array($areaId)) {
             $useMinMax = false;
             if (isset($areaId['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $areaId['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $areaId['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($areaId['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $areaId['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $areaId['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -318,7 +318,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $areaId, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $areaId, $comparison);
     }
 
     /**
@@ -337,18 +337,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByWeightMax($weightMax = null, $comparison = null)
     {
         if (is_array($weightMax)) {
             $useMinMax = false;
             if (isset($weightMax['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX, $weightMax['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX, $weightMax['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($weightMax['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX, $weightMax['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX, $weightMax['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -359,7 +359,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX, $weightMax, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX, $weightMax, $comparison);
     }
 
     /**
@@ -378,18 +378,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByPriceMax($priceMax = null, $comparison = null)
     {
         if (is_array($priceMax)) {
             $useMinMax = false;
             if (isset($priceMax['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX, $priceMax['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX, $priceMax['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($priceMax['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX, $priceMax['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX, $priceMax['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -400,7 +400,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX, $priceMax, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX, $priceMax, $comparison);
     }
 
     /**
@@ -419,18 +419,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByFrancoMinPrice($francoMinPrice = null, $comparison = null)
     {
         if (is_array($francoMinPrice)) {
             $useMinMax = false;
             if (isset($francoMinPrice['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($francoMinPrice['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -441,7 +441,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE, $francoMinPrice, $comparison);
     }
 
     /**
@@ -460,18 +460,18 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
      * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByPrice($price = null, $comparison = null)
     {
         if (is_array($price)) {
             $useMinMax = false;
             if (isset($price['min'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE, $price['min'], Criteria::GREATER_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE, $price['min'], Criteria::GREATER_EQUAL);
                 $useMinMax = true;
             }
             if (isset($price['max'])) {
-                $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE, $price['max'], Criteria::LESS_EQUAL);
+                $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE, $price['max'], Criteria::LESS_EQUAL);
                 $useMinMax = true;
             }
             if ($useMinMax) {
@@ -482,7 +482,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             }
         }
 
-        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::PRICE, $price, $comparison);
+        return $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE, $price, $comparison);
     }
 
     /**
@@ -491,20 +491,20 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      * @param \ColissimoPickupPoint\Model\Thelia\Model\Area|ObjectCollection $area The related object(s) to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function filterByArea($area, $comparison = null)
     {
         if ($area instanceof \ColissimoPickupPoint\Model\Thelia\Model\Area) {
             return $this
-                ->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $area->getId(), $comparison);
+                ->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $area->getId(), $comparison);
         } elseif ($area instanceof ObjectCollection) {
             if (null === $comparison) {
                 $comparison = Criteria::IN;
             }
 
             return $this
-                ->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $area->toKeyValue('PrimaryKey', 'Id'), $comparison);
+                ->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $area->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
             throw new PropelException('filterByArea() only accepts arguments of type \ColissimoPickupPoint\Model\Thelia\Model\Area or Collection');
         }
@@ -516,7 +516,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      * @param     string $relationAlias optional alias for the relation
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function joinArea($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
@@ -563,14 +563,14 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
     /**
      * Exclude object from result
      *
-     * @param   ChildColissimoPickupPointPriceSlices $colissimoPickupPointPriceSlices Object to remove from the list of results
+     * @param   ChildColissimoPickupPointPriceSlicesSlices $colissimoPickupPointPriceSlices Object to remove from the list of results
      *
-     * @return ChildColissimoPickupPointPriceSlicesQuery The current query, for fluid interface
+     * @return ChildColissimoPickupPointPriceSlicesSlicesQuery The current query, for fluid interface
      */
     public function prune($colissimoPickupPointPriceSlices = null)
     {
         if ($colissimoPickupPointPriceSlices) {
-            $this->addUsingAlias(ColissimoPickupPointPriceSlicesTableMap::ID, $colissimoPickupPointPriceSlices->getId(), Criteria::NOT_EQUAL);
+            $this->addUsingAlias(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $colissimoPickupPointPriceSlices->getId(), Criteria::NOT_EQUAL);
         }
 
         return $this;
@@ -585,7 +585,7 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
     public function doDeleteAll(ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
         $affectedRows = 0; // initialize var to track total num of affected rows
         try {
@@ -596,8 +596,8 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             // Because this db requires some delete cascade/set null emulation, we have to
             // clear the cached instance *after* the emulation has happened (since
             // instances get re-added by the select statement contained therein).
-            ColissimoPickupPointPriceSlicesTableMap::clearInstancePool();
-            ColissimoPickupPointPriceSlicesTableMap::clearRelatedInstancePool();
+            ColissimoPickupPointPriceSlicesSlicesTableMap::clearInstancePool();
+            ColissimoPickupPointPriceSlicesSlicesTableMap::clearRelatedInstancePool();
 
             $con->commit();
         } catch (PropelException $e) {
@@ -609,9 +609,9 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
     }
 
     /**
-     * Performs a DELETE on the database, given a ChildColissimoPickupPointPriceSlices or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a ChildColissimoPickupPointPriceSlicesSlices or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or ChildColissimoPickupPointPriceSlices object or primary key or array of primary keys
+     * @param mixed               $values Criteria or ChildColissimoPickupPointPriceSlicesSlices object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -622,13 +622,13 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
      public function delete(ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
 
         $criteria = $this;
 
         // Set the correct dbName
-        $criteria->setDbName(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+        $criteria->setDbName(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
 
         $affectedRows = 0; // initialize var to track total num of affected rows
 
@@ -638,10 +638,10 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
             $con->beginTransaction();
 
 
-        ColissimoPickupPointPriceSlicesTableMap::removeInstanceFromPool($criteria);
+        ColissimoPickupPointPriceSlicesSlicesTableMap::removeInstanceFromPool($criteria);
 
             $affectedRows += ModelCriteria::delete($con);
-            ColissimoPickupPointPriceSlicesTableMap::clearRelatedInstancePool();
+            ColissimoPickupPointPriceSlicesSlicesTableMap::clearRelatedInstancePool();
             $con->commit();
 
             return $affectedRows;
@@ -651,4 +651,4 @@ abstract class ColissimoPickupPointPriceSlicesQuery extends ModelCriteria
         }
     }
 
-} // ColissimoPickupPointPriceSlicesQuery
+} // ColissimoPickupPointPriceSlicesSlicesQuery

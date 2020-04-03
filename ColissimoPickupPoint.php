@@ -29,10 +29,8 @@ use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Propel;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPrQuery;
-use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryMode;
-use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPrice;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Finder\Finder;
 use Thelia\Model\AreaQuery;
@@ -86,7 +84,7 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
 
         $areaId = $country->getAreaId();
 
-        $prices = ColissimoPickupPointPriceQuery::create()
+        $prices = ColissimoPickupPointPriceSlicesQuery::create()
             ->filterByAreaId($areaId)
             ->findOne();
 
@@ -125,7 +123,7 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
         $postage = 0;
 
         if (!$freeshipping) {
-            $areaPrices = ColissimoPickupPointPriceQuery::create()
+            $areaPrices = ColissimoPickupPointPriceSlicesQuery::create()
                 ->filterByDeliveryModeId($deliveryMode->getId())
                 ->filterByAreaId($areaId)
                 ->filterByWeightMax($weight, Criteria::GREATER_EQUAL)
@@ -310,7 +308,7 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
     {
         $areaPrices = self::getPrices($deliveryMode);
 
-        $priceExist = ColissimoPickupPointPriceQuery::create()
+        $priceExist = ColissimoPickupPointPriceSlicesQuery::create()
             ->filterByDeliveryModeId($deliveryMode->getId())
             ->findOne();
 
@@ -325,7 +323,7 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
                 // Check if the area exists
                 if (null !== AreaQuery::create()->findPk($areaId)) {
                     foreach ($area['slices'] as $weight => $price) {
-                        $slice = (new ColissimoPickupPointPrice())
+                        $slice = (new ColissimoPickupPointPriceSlices())
                             ->setAreaId($areaId)
                             ->setWeightMax($weight)
                             ->setPrice($price)

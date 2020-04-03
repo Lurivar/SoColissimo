@@ -6,7 +6,7 @@ use ColissimoPickupPoint\Model\Base\ColissimoAreaFreeshippingQuery as BaseColiss
 
 
 /**
- * Skeleton subclass for performing query and update operations on the 'colissimo_area_freeshipping' table.
+ * Skeleton subclass for performing query and update operations on the 'colissimo_pickup_point_area_freeshipping' table.
  *
  *
  *

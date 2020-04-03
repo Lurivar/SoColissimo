@@ -75,21 +75,21 @@ class CSV
      */
     public function parse()
     {
-        $buffer = "";
+        $buffer = '';
 
-        for ($j=0; $j < ($lineslen=count($this->lines)); ++$j) {
+        for ($j=0; $j < ($lineslen = count($this->lines)); ++$j) {
             /** @var CSVLine $line */
             $line = $this->lines[$j];
             $aline = $line->getValues();
 
-            for ($i=0; $i < ($linelen=count($aline)); ++$i) {
-                $buffer .= "\"".$aline[$i]."\"";
+            for ($i=0; $i < ($linelen = count($aline)); ++$i) {
+                $buffer .= '"' . $aline[$i] . '"';
 
                 if ($i !== $linelen-1) {
                     $buffer .= $this->separator;
                 }
             }
-            if ($j !== $lineslen-1) {
+            if ($j !== $lineslen - 1) {
                 $buffer .= self::CRLF;
             }
         }

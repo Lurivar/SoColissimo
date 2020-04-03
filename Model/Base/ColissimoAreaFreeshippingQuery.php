@@ -18,7 +18,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
 
 /**
- * Base class that represents a query for the 'colissimo_area_freeshipping' table.
+ * Base class that represents a query for the 'colissimo_pickup_point_area_freeshipping' table.
  *
  *
  *
@@ -140,7 +140,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
      */
     protected function findPkSimple($key, $con)
     {
-        $sql = 'SELECT ID, AREA_ID, DELIVERY_MODE_ID, CART_AMOUNT FROM colissimo_area_freeshipping WHERE ID = :p0';
+        $sql = 'SELECT ID, AREA_ID, DELIVERY_MODE_ID, CART_AMOUNT FROM colissimo_pickup_point_area_freeshipping WHERE ID = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -487,7 +487,7 @@ abstract class ColissimoAreaFreeshippingQuery extends ModelCriteria
     }
 
     /**
-     * Deletes all rows from the colissimo_area_freeshipping table.
+     * Deletes all rows from the colissimo_pickup_point_area_freeshipping table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).

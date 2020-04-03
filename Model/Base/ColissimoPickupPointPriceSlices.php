@@ -4,8 +4,8 @@ namespace ColissimoPickupPoint\Model\Base;
 
 use \Exception;
 use \PDO;
-use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesQuery as ChildColissimoPickupPointPriceSlicesQuery;
-use ColissimoPickupPoint\Model\Map\ColissimoPickupPointPriceSlicesTableMap;
+use ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlicesQuery as ChildColissimoPickupPointPriceSlicesSlicesQuery;
+use ColissimoPickupPoint\Model\Map\ColissimoPickupPointPriceSlicesSlicesTableMap;
 use ColissimoPickupPoint\Model\Thelia\Model\AreaQuery;
 use ColissimoPickupPoint\Model\Thelia\Model\Area as ChildArea;
 use Propel\Runtime\Propel;
@@ -19,12 +19,12 @@ use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
 
-abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
+abstract class ColissimoPickupPointPriceSlicesSlices implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\ColissimoPickupPoint\\Model\\Map\\ColissimoPickupPointPriceSlicesTableMap';
+    const TABLE_MAP = '\\ColissimoPickupPoint\\Model\\Map\\ColissimoPickupPointPriceSlicesSlicesTableMap';
 
 
     /**
@@ -103,7 +103,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
-     * Initializes internal state of ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlices object.
+     * Initializes internal state of ColissimoPickupPoint\Model\Base\ColissimoPickupPointPriceSlicesSlices object.
      */
     public function __construct()
     {
@@ -198,9 +198,9 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
     }
 
     /**
-     * Compares this with another <code>ColissimoPickupPointPriceSlices</code> instance.  If
-     * <code>obj</code> is an instance of <code>ColissimoPickupPointPriceSlices</code>, delegates to
-     * <code>equals(ColissimoPickupPointPriceSlices)</code>.  Otherwise, returns <code>false</code>.
+     * Compares this with another <code>ColissimoPickupPointPriceSlicesSlices</code> instance.  If
+     * <code>obj</code> is an instance of <code>ColissimoPickupPointPriceSlicesSlices</code>, delegates to
+     * <code>equals(ColissimoPickupPointPriceSlicesSlices)</code>.  Otherwise, returns <code>false</code>.
      *
      * @param  mixed   $obj The object to compare to.
      * @return boolean Whether equal to the object specified.
@@ -283,7 +283,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * @param string $name  The virtual column name
      * @param mixed  $value The value to give to the virtual column
      *
-     * @return ColissimoPickupPointPriceSlices The current object, for fluid interface
+     * @return ColissimoPickupPointPriceSlicesSlices The current object, for fluid interface
      */
     public function setVirtualColumn($name, $value)
     {
@@ -315,7 +315,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      *                       or a format name ('XML', 'YAML', 'JSON', 'CSV')
      * @param string $data The source data to import from
      *
-     * @return ColissimoPickupPointPriceSlices The current object, for fluid interface
+     * @return ColissimoPickupPointPriceSlicesSlices The current object, for fluid interface
      */
     public function importFrom($parser, $data)
     {
@@ -430,7 +430,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [id] column.
      *
      * @param      int $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -440,7 +440,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::ID] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::ID] = true;
         }
 
 
@@ -451,7 +451,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [area_id] column.
      *
      * @param      int $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setAreaId($v)
     {
@@ -461,7 +461,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->area_id !== $v) {
             $this->area_id = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::AREA_ID] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID] = true;
         }
 
         if ($this->aArea !== null && $this->aArea->getId() !== $v) {
@@ -476,7 +476,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [weight_max] column.
      *
      * @param      double $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setWeightMax($v)
     {
@@ -486,7 +486,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->weight_max !== $v) {
             $this->weight_max = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX] = true;
         }
 
 
@@ -497,7 +497,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [price_max] column.
      *
      * @param      double $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setPriceMax($v)
     {
@@ -507,7 +507,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->price_max !== $v) {
             $this->price_max = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX] = true;
         }
 
 
@@ -518,7 +518,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [franco_min_price] column.
      *
      * @param      double $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setFrancoMinPrice($v)
     {
@@ -528,7 +528,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->franco_min_price !== $v) {
             $this->franco_min_price = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE] = true;
         }
 
 
@@ -539,7 +539,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Set the value of [price] column.
      *
      * @param      double $v new value
-     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return   \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      */
     public function setPrice($v)
     {
@@ -549,7 +549,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
 
         if ($this->price !== $v) {
             $this->price = $v;
-            $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::PRICE] = true;
+            $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE] = true;
         }
 
 
@@ -593,22 +593,22 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         try {
 
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 0 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('Id', TableMap::TYPE_PHPNAME, $indexType)];
             $this->id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('AreaId', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('AreaId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->area_id = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('WeightMax', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('WeightMax', TableMap::TYPE_PHPNAME, $indexType)];
             $this->weight_max = (null !== $col) ? (double) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('PriceMax', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('PriceMax', TableMap::TYPE_PHPNAME, $indexType)];
             $this->price_max = (null !== $col) ? (double) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('FrancoMinPrice', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('FrancoMinPrice', TableMap::TYPE_PHPNAME, $indexType)];
             $this->franco_min_price = (null !== $col) ? (double) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : ColissimoPickupPointPriceSlicesTableMap::translateFieldName('Price', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName('Price', TableMap::TYPE_PHPNAME, $indexType)];
             $this->price = (null !== $col) ? (double) $col : null;
             $this->resetModified();
 
@@ -618,10 +618,10 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 6; // 6 = ColissimoPickupPointPriceSlicesTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 6; // 6 = ColissimoPickupPointPriceSlicesSlicesTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices object", 0, $e);
+            throw new PropelException("Error populating \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices object", 0, $e);
         }
     }
 
@@ -666,13 +666,13 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getReadConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $dataFetcher = ChildColissimoPickupPointPriceSlicesQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
+        $dataFetcher = ChildColissimoPickupPointPriceSlicesSlicesQuery::create(null, $this->buildPkeyCriteria())->setFormatter(ModelCriteria::FORMAT_STATEMENT)->find($con);
         $row = $dataFetcher->fetch();
         $dataFetcher->close();
         if (!$row) {
@@ -692,8 +692,8 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * @param      ConnectionInterface $con
      * @return void
      * @throws PropelException
-     * @see ColissimoPickupPointPriceSlices::setDeleted()
-     * @see ColissimoPickupPointPriceSlices::isDeleted()
+     * @see ColissimoPickupPointPriceSlicesSlices::setDeleted()
+     * @see ColissimoPickupPointPriceSlicesSlices::isDeleted()
      */
     public function delete(ConnectionInterface $con = null)
     {
@@ -702,12 +702,12 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = ChildColissimoPickupPointPriceSlicesQuery::create()
+            $deleteQuery = ChildColissimoPickupPointPriceSlicesSlicesQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -744,7 +744,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         }
 
         if ($con === null) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
         }
 
         $con->beginTransaction();
@@ -764,7 +764,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                ColissimoPickupPointPriceSlicesTableMap::addInstanceToPool($this);
+                ColissimoPickupPointPriceSlicesSlicesTableMap::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -837,28 +837,28 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[ColissimoPickupPointPriceSlicesTableMap::ID] = true;
+        $this->modifiedColumns[ColissimoPickupPointPriceSlicesSlicesTableMap::ID] = true;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . ColissimoPickupPointPriceSlicesTableMap::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . ColissimoPickupPointPriceSlicesSlicesTableMap::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::ID)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::ID)) {
             $modifiedColumns[':p' . $index++]  = 'ID';
         }
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::AREA_ID)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID)) {
             $modifiedColumns[':p' . $index++]  = 'AREA_ID';
         }
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX)) {
             $modifiedColumns[':p' . $index++]  = 'WEIGHT_MAX';
         }
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX)) {
             $modifiedColumns[':p' . $index++]  = 'PRICE_MAX';
         }
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE)) {
             $modifiedColumns[':p' . $index++]  = 'FRANCO_MIN_PRICE';
         }
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::PRICE)) {
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE)) {
             $modifiedColumns[':p' . $index++]  = 'PRICE';
         }
 
@@ -936,7 +936,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function getByName($name, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = ColissimoPickupPointPriceSlicesTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -993,11 +993,11 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
-        if (isset($alreadyDumpedObjects['ColissimoPickupPointPriceSlices'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['ColissimoPickupPointPriceSlicesSlices'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['ColissimoPickupPointPriceSlices'][$this->getPrimaryKey()] = true;
-        $keys = ColissimoPickupPointPriceSlicesTableMap::getFieldNames($keyType);
+        $alreadyDumpedObjects['ColissimoPickupPointPriceSlicesSlices'][$this->getPrimaryKey()] = true;
+        $keys = ColissimoPickupPointPriceSlicesSlicesTableMap::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getAreaId(),
@@ -1033,7 +1033,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
-        $pos = ColissimoPickupPointPriceSlicesTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
+        $pos = ColissimoPickupPointPriceSlicesSlicesTableMap::translateFieldName($name, $type, TableMap::TYPE_NUM);
 
         return $this->setByPosition($pos, $value);
     }
@@ -1089,7 +1089,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function fromArray($arr, $keyType = TableMap::TYPE_PHPNAME)
     {
-        $keys = ColissimoPickupPointPriceSlicesTableMap::getFieldNames($keyType);
+        $keys = ColissimoPickupPointPriceSlicesSlicesTableMap::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
         if (array_key_exists($keys[1], $arr)) $this->setAreaId($arr[$keys[1]]);
@@ -1106,14 +1106,14 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
+        $criteria = new Criteria(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
 
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::ID)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::ID, $this->id);
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::AREA_ID)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::AREA_ID, $this->area_id);
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::WEIGHT_MAX, $this->weight_max);
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::PRICE_MAX, $this->price_max);
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::FRANCO_MIN_PRICE, $this->franco_min_price);
-        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesTableMap::PRICE)) $criteria->add(ColissimoPickupPointPriceSlicesTableMap::PRICE, $this->price);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::ID)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $this->id);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::AREA_ID, $this->area_id);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::WEIGHT_MAX, $this->weight_max);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE_MAX, $this->price_max);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::FRANCO_MIN_PRICE, $this->franco_min_price);
+        if ($this->isColumnModified(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE)) $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::PRICE, $this->price);
 
         return $criteria;
     }
@@ -1128,8 +1128,8 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(ColissimoPickupPointPriceSlicesTableMap::DATABASE_NAME);
-        $criteria->add(ColissimoPickupPointPriceSlicesTableMap::ID, $this->id);
+        $criteria = new Criteria(ColissimoPickupPointPriceSlicesSlicesTableMap::DATABASE_NAME);
+        $criteria->add(ColissimoPickupPointPriceSlicesSlicesTableMap::ID, $this->id);
 
         return $criteria;
     }
@@ -1170,7 +1170,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices (or compatible) type.
+     * @param      object $copyObj An object of \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1197,7 +1197,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * objects.
      *
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices Clone of current object.
+     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1214,7 +1214,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      * Declares an association between this object and a ChildArea object.
      *
      * @param                  ChildArea $v
-     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlices The current object (for fluent API support)
+     * @return                 \ColissimoPickupPoint\Model\ColissimoPickupPointPriceSlicesSlices The current object (for fluent API support)
      * @throws PropelException
      */
     public function setArea(ChildArea $v = null)
@@ -1230,7 +1230,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
         // Add binding for other direction of this n:n relationship.
         // If this object has already been added to the ChildArea object, it will not be re-added.
         if ($v !== null) {
-            $v->addColissimoPickupPointPriceSlices($this);
+            $v->addColissimoPickupPointPriceSlicesSlices($this);
         }
 
 
@@ -1254,7 +1254,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
                 to this object.  This level of coupling may, however, be
                 undesirable since it could result in an only partially populated collection
                 in the referenced object.
-                $this->aArea->addColissimoPickupPointPriceSlicess($this);
+                $this->aArea->addColissimoPickupPointPriceSlicesSlicess($this);
              */
         }
 
@@ -1303,7 +1303,7 @@ abstract class ColissimoPickupPointPriceSlices implements ActiveRecordInterface
      */
     public function __toString()
     {
-        return (string) $this->exportTo(ColissimoPickupPointPriceSlicesTableMap::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(ColissimoPickupPointPriceSlicesSlicesTableMap::DEFAULT_STRING_FORMAT);
     }
 
     /**

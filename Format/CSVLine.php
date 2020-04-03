@@ -30,7 +30,7 @@ namespace ColissimoPickupPoint\Format;
  */
 class CSVLine
 {
-    protected $values=array();
+    protected $values = array();
 
     public function __construct(array $values)
     {

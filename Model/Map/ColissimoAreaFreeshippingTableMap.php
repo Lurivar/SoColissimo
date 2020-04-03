@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'colissimo_area_freeshipping' table.
+ * This class defines the structure of the 'colissimo_pickup_point_area_freeshipping' table.
  *
  *
  *
@@ -43,7 +43,7 @@ class ColissimoAreaFreeshippingTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'colissimo_area_freeshipping';
+    const TABLE_NAME = 'colissimo_pickup_point_area_freeshipping';
 
     /**
      * The related Propel class for this table
@@ -73,22 +73,22 @@ class ColissimoAreaFreeshippingTableMap extends TableMap
     /**
      * the column name for the ID field
      */
-    const ID = 'colissimo_area_freeshipping.ID';
+    const ID = 'colissimo_pickup_point_area_freeshipping.ID';
 
     /**
      * the column name for the AREA_ID field
      */
-    const AREA_ID = 'colissimo_area_freeshipping.AREA_ID';
+    const AREA_ID = 'colissimo_pickup_point_area_freeshipping.AREA_ID';
 
     /**
      * the column name for the DELIVERY_MODE_ID field
      */
-    const DELIVERY_MODE_ID = 'colissimo_area_freeshipping.DELIVERY_MODE_ID';
+    const DELIVERY_MODE_ID = 'colissimo_pickup_point_area_freeshipping.DELIVERY_MODE_ID';
 
     /**
      * the column name for the CART_AMOUNT field
      */
-    const CART_AMOUNT = 'colissimo_area_freeshipping.CART_AMOUNT';
+    const CART_AMOUNT = 'colissimo_pickup_point_area_freeshipping.CART_AMOUNT';
 
     /**
      * The default string format for model objects of the related table
@@ -135,7 +135,7 @@ class ColissimoAreaFreeshippingTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('colissimo_area_freeshipping');
+        $this->setName('colissimo_pickup_point_area_freeshipping');
         $this->setPhpName('ColissimoAreaFreeshipping');
         $this->setClassName('\\ColissimoPickupPoint\\Model\\ColissimoAreaFreeshipping');
         $this->setPackage('ColissimoPickupPoint.Model');
@@ -368,7 +368,7 @@ class ColissimoAreaFreeshippingTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the colissimo_area_freeshipping table.
+     * Deletes all rows from the colissimo_pickup_point_area_freeshipping table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).

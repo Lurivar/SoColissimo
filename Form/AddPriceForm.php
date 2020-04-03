@@ -16,51 +16,40 @@ class AddPriceForm extends BaseForm
     protected function buildForm()
     {
         $this->formBuilder
-            ->add("area", "integer", array(
-                "constraints" => array(
+            ->add('area', 'integer', array(
+                'constraints' => array(
                     new Constraints\NotBlank(),
                     new Constraints\Callback(array(
-                        "methods" => array(
+                        'methods' => array(
                             array($this,
-                                "verifyAreaExist")
+                                'verifyAreaExist')
                         )
                     ))
                 )
             ))
-            ->add("delivery_mode", "integer", array(
-                "constraints" => array(
+            ->add('weight', 'number', array(
+                'constraints' => array(
                     new Constraints\NotBlank(),
                     new Constraints\Callback(array(
-                        "methods" => array(
+                        'methods' => array(
                             array($this,
-                                "verifyDeliveryModeExist")
+                                'verifyValidWeight')
                         )
                     ))
                 )
             ))
-            ->add("weight", "number", array(
-                "constraints" => array(
+            ->add('price', 'number', array(
+                'constraints' => array(
                     new Constraints\NotBlank(),
                     new Constraints\Callback(array(
-                        "methods" => array(
+                        'methods' => array(
                             array($this,
-                                "verifyValidWeight")
+                                'verifyValidPrice')
                         )
                     ))
                 )
             ))
-            ->add("price", "number", array(
-                "constraints" => array(
-                    new Constraints\NotBlank(),
-                    new Constraints\Callback(array(
-                        "methods" => array(
-                            array($this,
-                                "verifyValidPrice")
-                        )
-                    ))
-                )
-            ))
-            ->add("franco", "number", array())
+            ->add('franco', 'number', array())
         ;
     }
 
@@ -69,14 +58,6 @@ class AddPriceForm extends BaseForm
         $area = AreaQuery::create()->findPk($value);
         if (null === $area) {
             $context->addViolation(Translator::getInstance()->trans("This area doesn't exists.", [], ColissimoPickupPoint::DOMAIN));
-        }
-    }
-
-    public function verifyDeliveryModeExist($value, ExecutionContextInterface $context)
-    {
-        $mode = ColissimoPickupPointDeliveryModeQuery::create()->findPk($value);
-        if (null === $mode) {
-            $context->addViolation(Translator::getInstance()->trans("This delivery mode doesn't exists.", [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
@@ -100,6 +81,6 @@ class AddPriceForm extends BaseForm
 
     public function getName()
     {
-        return "colissimo_pickup_point_price_slices_create";
+        return 'colissimo_pickup_point_price_slices_create';
     }
 }
