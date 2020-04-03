@@ -53,9 +53,6 @@
         <foreign-key foreignTable="area" name="fk_colissimo_area_freeshipping_pr_area_id" onDelete="RESTRICT" onUpdate="RESTRICT">
             <reference foreign="id" local="area_id" />
         </foreign-key>
-        <foreign-key foreignTable="socolissimo_delivery_mode" name="fk_colissimo_area_freeshipping_pr_delivery_mode_id" onDelete="RESTRICT" onUpdate="RESTRICT">
-            <reference foreign="id" local="delivery_mode_id" />
-        </foreign-key>
     </table>
 
     <external-schema filename="local/config/schema.xml" referenceOnly="true" />
