@@ -83,6 +83,20 @@ CREATE TABLE `colissimo_pickup_point_price_slices`
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
+-- colissimo_pickup_point_freeshipping
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `colissimo_pickup_point_freeshipping`;
+
+CREATE TABLE `colissimo_pickup_point_freeshipping`
+(
+    `id` INTEGER NOT NULL,
+    `active` TINYINT(1) DEFAULT 0,
+    `freeshipping_from` DECIMAL(18,2),
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- colissimo_pickup_point_area_freeshipping
 -- ---------------------------------------------------------------------
 
@@ -93,7 +107,7 @@ CREATE TABLE `colissimo_pickup_point_area_freeshipping`
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `area_id` INTEGER NOT NULL,
     `delivery_mode_id` INTEGER NOT NULL,
-    `cart_amount` DECIMAL(16,2) DEFAULT 0.00,
+    `cart_amount` DECIMAL(18,2) DEFAULT 0.00,
     PRIMARY KEY (`id`),
     INDEX `FI_colissimo_pickup_point_area_freeshipping_pr_area_id` (`area_id`),
     CONSTRAINT `fk_colissimo_pickup_point_area_freeshipping_pr_area_id`

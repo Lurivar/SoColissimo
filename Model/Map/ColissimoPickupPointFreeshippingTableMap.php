@@ -2,8 +2,8 @@
 
 namespace ColissimoPickupPoint\Model\Map;
 
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping;
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshipping;
+use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshippingQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -16,7 +16,7 @@ use Propel\Runtime\Map\TableMapTrait;
 
 
 /**
- * This class defines the structure of the 'colissimo_pickup_point_area_freeshipping' table.
+ * This class defines the structure of the 'colissimo_pickup_point_freeshipping' table.
  *
  *
  *
@@ -26,14 +26,14 @@ use Propel\Runtime\Map\TableMapTrait;
  * (i.e. if it's a text column type).
  *
  */
-class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
+class ColissimoPickupPointFreeshippingTableMap extends TableMap
 {
     use InstancePoolTrait;
     use TableMapTrait;
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'ColissimoPickupPoint.Model.Map.ColissimoPickupPointAreaFreeshippingTableMap';
+    const CLASS_NAME = 'ColissimoPickupPoint.Model.Map.ColissimoPickupPointFreeshippingTableMap';
 
     /**
      * The default database name for this class
@@ -43,22 +43,22 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     /**
      * The table name for this class
      */
-    const TABLE_NAME = 'colissimo_pickup_point_area_freeshipping';
+    const TABLE_NAME = 'colissimo_pickup_point_freeshipping';
 
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointAreaFreeshipping';
+    const OM_CLASS = '\\ColissimoPickupPoint\\Model\\ColissimoPickupPointFreeshipping';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'ColissimoPickupPoint.Model.ColissimoPickupPointAreaFreeshipping';
+    const CLASS_DEFAULT = 'ColissimoPickupPoint.Model.ColissimoPickupPointFreeshipping';
 
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 4;
+    const NUM_COLUMNS = 3;
 
     /**
      * The number of lazy-loaded columns
@@ -68,27 +68,22 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 4;
+    const NUM_HYDRATE_COLUMNS = 3;
 
     /**
      * the column name for the ID field
      */
-    const ID = 'colissimo_pickup_point_area_freeshipping.ID';
+    const ID = 'colissimo_pickup_point_freeshipping.ID';
 
     /**
-     * the column name for the AREA_ID field
+     * the column name for the ACTIVE field
      */
-    const AREA_ID = 'colissimo_pickup_point_area_freeshipping.AREA_ID';
+    const ACTIVE = 'colissimo_pickup_point_freeshipping.ACTIVE';
 
     /**
-     * the column name for the DELIVERY_MODE_ID field
+     * the column name for the FREESHIPPING_FROM field
      */
-    const DELIVERY_MODE_ID = 'colissimo_pickup_point_area_freeshipping.DELIVERY_MODE_ID';
-
-    /**
-     * the column name for the CART_AMOUNT field
-     */
-    const CART_AMOUNT = 'colissimo_pickup_point_area_freeshipping.CART_AMOUNT';
+    const FREESHIPPING_FROM = 'colissimo_pickup_point_freeshipping.FREESHIPPING_FROM';
 
     /**
      * The default string format for model objects of the related table
@@ -102,12 +97,12 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'AreaId', 'DeliveryModeId', 'CartAmount', ),
-        self::TYPE_STUDLYPHPNAME => array('id', 'areaId', 'deliveryModeId', 'cartAmount', ),
-        self::TYPE_COLNAME       => array(ColissimoPickupPointAreaFreeshippingTableMap::ID, ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID, ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID, ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT, ),
-        self::TYPE_RAW_COLNAME   => array('ID', 'AREA_ID', 'DELIVERY_MODE_ID', 'CART_AMOUNT', ),
-        self::TYPE_FIELDNAME     => array('id', 'area_id', 'delivery_mode_id', 'cart_amount', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id', 'Active', 'FreeshippingFrom', ),
+        self::TYPE_STUDLYPHPNAME => array('id', 'active', 'freeshippingFrom', ),
+        self::TYPE_COLNAME       => array(ColissimoPickupPointFreeshippingTableMap::ID, ColissimoPickupPointFreeshippingTableMap::ACTIVE, ColissimoPickupPointFreeshippingTableMap::FREESHIPPING_FROM, ),
+        self::TYPE_RAW_COLNAME   => array('ID', 'ACTIVE', 'FREESHIPPING_FROM', ),
+        self::TYPE_FIELDNAME     => array('id', 'active', 'freeshipping_from', ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -117,12 +112,12 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'AreaId' => 1, 'DeliveryModeId' => 2, 'CartAmount' => 3, ),
-        self::TYPE_STUDLYPHPNAME => array('id' => 0, 'areaId' => 1, 'deliveryModeId' => 2, 'cartAmount' => 3, ),
-        self::TYPE_COLNAME       => array(ColissimoPickupPointAreaFreeshippingTableMap::ID => 0, ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID => 1, ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID => 2, ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT => 3, ),
-        self::TYPE_RAW_COLNAME   => array('ID' => 0, 'AREA_ID' => 1, 'DELIVERY_MODE_ID' => 2, 'CART_AMOUNT' => 3, ),
-        self::TYPE_FIELDNAME     => array('id' => 0, 'area_id' => 1, 'delivery_mode_id' => 2, 'cart_amount' => 3, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Active' => 1, 'FreeshippingFrom' => 2, ),
+        self::TYPE_STUDLYPHPNAME => array('id' => 0, 'active' => 1, 'freeshippingFrom' => 2, ),
+        self::TYPE_COLNAME       => array(ColissimoPickupPointFreeshippingTableMap::ID => 0, ColissimoPickupPointFreeshippingTableMap::ACTIVE => 1, ColissimoPickupPointFreeshippingTableMap::FREESHIPPING_FROM => 2, ),
+        self::TYPE_RAW_COLNAME   => array('ID' => 0, 'ACTIVE' => 1, 'FREESHIPPING_FROM' => 2, ),
+        self::TYPE_FIELDNAME     => array('id' => 0, 'active' => 1, 'freeshipping_from' => 2, ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -135,16 +130,15 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('colissimo_pickup_point_area_freeshipping');
-        $this->setPhpName('ColissimoPickupPointAreaFreeshipping');
-        $this->setClassName('\\ColissimoPickupPoint\\Model\\ColissimoPickupPointAreaFreeshipping');
+        $this->setName('colissimo_pickup_point_freeshipping');
+        $this->setPhpName('ColissimoPickupPointFreeshipping');
+        $this->setClassName('\\ColissimoPickupPoint\\Model\\ColissimoPickupPointFreeshipping');
         $this->setPackage('ColissimoPickupPoint.Model');
-        $this->setUseIdGenerator(true);
+        $this->setUseIdGenerator(false);
         // columns
         $this->addPrimaryKey('ID', 'Id', 'INTEGER', true, null, null);
-        $this->addForeignKey('AREA_ID', 'AreaId', 'INTEGER', 'area', 'ID', true, null, null);
-        $this->addColumn('DELIVERY_MODE_ID', 'DeliveryModeId', 'INTEGER', true, null, null);
-        $this->addColumn('CART_AMOUNT', 'CartAmount', 'DECIMAL', false, 18, 0);
+        $this->addColumn('ACTIVE', 'Active', 'BOOLEAN', false, 1, false);
+        $this->addColumn('FREESHIPPING_FROM', 'FreeshippingFrom', 'DECIMAL', false, 18, null);
     } // initialize()
 
     /**
@@ -152,7 +146,6 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Area', '\\ColissimoPickupPoint\\Model\\Thelia\\Model\\Area', RelationMap::MANY_TO_ONE, array('area_id' => 'id', ), 'RESTRICT', 'RESTRICT');
     } // buildRelations()
 
     /**
@@ -211,7 +204,7 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? ColissimoPickupPointAreaFreeshippingTableMap::CLASS_DEFAULT : ColissimoPickupPointAreaFreeshippingTableMap::OM_CLASS;
+        return $withPrefix ? ColissimoPickupPointFreeshippingTableMap::CLASS_DEFAULT : ColissimoPickupPointFreeshippingTableMap::OM_CLASS;
     }
 
     /**
@@ -225,21 +218,21 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      *
      * @throws PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
-     * @return array (ColissimoPickupPointAreaFreeshipping object, last column rank)
+     * @return array (ColissimoPickupPointFreeshipping object, last column rank)
      */
     public static function populateObject($row, $offset = 0, $indexType = TableMap::TYPE_NUM)
     {
-        $key = ColissimoPickupPointAreaFreeshippingTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
-        if (null !== ($obj = ColissimoPickupPointAreaFreeshippingTableMap::getInstanceFromPool($key))) {
+        $key = ColissimoPickupPointFreeshippingTableMap::getPrimaryKeyHashFromRow($row, $offset, $indexType);
+        if (null !== ($obj = ColissimoPickupPointFreeshippingTableMap::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $offset, true); // rehydrate
-            $col = $offset + ColissimoPickupPointAreaFreeshippingTableMap::NUM_HYDRATE_COLUMNS;
+            $col = $offset + ColissimoPickupPointFreeshippingTableMap::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = ColissimoPickupPointAreaFreeshippingTableMap::OM_CLASS;
+            $cls = ColissimoPickupPointFreeshippingTableMap::OM_CLASS;
             $obj = new $cls();
             $col = $obj->hydrate($row, $offset, false, $indexType);
-            ColissimoPickupPointAreaFreeshippingTableMap::addInstanceToPool($obj, $key);
+            ColissimoPickupPointFreeshippingTableMap::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
@@ -262,8 +255,8 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
         $cls = static::getOMClass(false);
         // populate the object(s)
         while ($row = $dataFetcher->fetch()) {
-            $key = ColissimoPickupPointAreaFreeshippingTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
-            if (null !== ($obj = ColissimoPickupPointAreaFreeshippingTableMap::getInstanceFromPool($key))) {
+            $key = ColissimoPickupPointFreeshippingTableMap::getPrimaryKeyHashFromRow($row, 0, $dataFetcher->getIndexType());
+            if (null !== ($obj = ColissimoPickupPointFreeshippingTableMap::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
@@ -272,7 +265,7 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                ColissimoPickupPointAreaFreeshippingTableMap::addInstanceToPool($obj, $key);
+                ColissimoPickupPointFreeshippingTableMap::addInstanceToPool($obj, $key);
             } // if key exists
         }
 
@@ -293,15 +286,13 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(ColissimoPickupPointAreaFreeshippingTableMap::ID);
-            $criteria->addSelectColumn(ColissimoPickupPointAreaFreeshippingTableMap::AREA_ID);
-            $criteria->addSelectColumn(ColissimoPickupPointAreaFreeshippingTableMap::DELIVERY_MODE_ID);
-            $criteria->addSelectColumn(ColissimoPickupPointAreaFreeshippingTableMap::CART_AMOUNT);
+            $criteria->addSelectColumn(ColissimoPickupPointFreeshippingTableMap::ID);
+            $criteria->addSelectColumn(ColissimoPickupPointFreeshippingTableMap::ACTIVE);
+            $criteria->addSelectColumn(ColissimoPickupPointFreeshippingTableMap::FREESHIPPING_FROM);
         } else {
             $criteria->addSelectColumn($alias . '.ID');
-            $criteria->addSelectColumn($alias . '.AREA_ID');
-            $criteria->addSelectColumn($alias . '.DELIVERY_MODE_ID');
-            $criteria->addSelectColumn($alias . '.CART_AMOUNT');
+            $criteria->addSelectColumn($alias . '.ACTIVE');
+            $criteria->addSelectColumn($alias . '.FREESHIPPING_FROM');
         }
     }
 
@@ -314,7 +305,7 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      */
     public static function getTableMap()
     {
-        return Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME)->getTable(ColissimoPickupPointAreaFreeshippingTableMap::TABLE_NAME);
+        return Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointFreeshippingTableMap::DATABASE_NAME)->getTable(ColissimoPickupPointFreeshippingTableMap::TABLE_NAME);
     }
 
     /**
@@ -322,16 +313,16 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      */
     public static function buildTableMap()
     {
-      $dbMap = Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
-      if (!$dbMap->hasTable(ColissimoPickupPointAreaFreeshippingTableMap::TABLE_NAME)) {
-        $dbMap->addTableObject(new ColissimoPickupPointAreaFreeshippingTableMap());
+      $dbMap = Propel::getServiceContainer()->getDatabaseMap(ColissimoPickupPointFreeshippingTableMap::DATABASE_NAME);
+      if (!$dbMap->hasTable(ColissimoPickupPointFreeshippingTableMap::TABLE_NAME)) {
+        $dbMap->addTableObject(new ColissimoPickupPointFreeshippingTableMap());
       }
     }
 
     /**
-     * Performs a DELETE on the database, given a ColissimoPickupPointAreaFreeshipping or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a ColissimoPickupPointFreeshipping or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or ColissimoPickupPointAreaFreeshipping object or primary key or array of primary keys
+     * @param mixed               $values Criteria or ColissimoPickupPointFreeshipping object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -342,25 +333,25 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
      public static function doDelete($values, ConnectionInterface $con = null)
      {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointFreeshippingTableMap::DATABASE_NAME);
         }
 
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping) { // it's a model object
+        } elseif ($values instanceof \ColissimoPickupPoint\Model\ColissimoPickupPointFreeshipping) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
-            $criteria->add(ColissimoPickupPointAreaFreeshippingTableMap::ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(ColissimoPickupPointFreeshippingTableMap::DATABASE_NAME);
+            $criteria->add(ColissimoPickupPointFreeshippingTableMap::ID, (array) $values, Criteria::IN);
         }
 
-        $query = ColissimoPickupPointAreaFreeshippingQuery::create()->mergeWith($criteria);
+        $query = ColissimoPickupPointFreeshippingQuery::create()->mergeWith($criteria);
 
-        if ($values instanceof Criteria) { ColissimoPickupPointAreaFreeshippingTableMap::clearInstancePool();
+        if ($values instanceof Criteria) { ColissimoPickupPointFreeshippingTableMap::clearInstancePool();
         } elseif (!is_object($values)) { // it's a primary key, or an array of pks
-            foreach ((array) $values as $singleval) { ColissimoPickupPointAreaFreeshippingTableMap::removeInstanceFromPool($singleval);
+            foreach ((array) $values as $singleval) { ColissimoPickupPointFreeshippingTableMap::removeInstanceFromPool($singleval);
             }
         }
 
@@ -368,20 +359,20 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     }
 
     /**
-     * Deletes all rows from the colissimo_pickup_point_area_freeshipping table.
+     * Deletes all rows from the colissimo_pickup_point_freeshipping table.
      *
      * @param ConnectionInterface $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).
      */
     public static function doDeleteAll(ConnectionInterface $con = null)
     {
-        return ColissimoPickupPointAreaFreeshippingQuery::create()->doDeleteAll($con);
+        return ColissimoPickupPointFreeshippingQuery::create()->doDeleteAll($con);
     }
 
     /**
-     * Performs an INSERT on the database, given a ColissimoPickupPointAreaFreeshipping or Criteria object.
+     * Performs an INSERT on the database, given a ColissimoPickupPointFreeshipping or Criteria object.
      *
-     * @param mixed               $criteria Criteria or ColissimoPickupPointAreaFreeshipping object containing data that is used to create the INSERT statement.
+     * @param mixed               $criteria Criteria or ColissimoPickupPointFreeshipping object containing data that is used to create the INSERT statement.
      * @param ConnectionInterface $con the ConnectionInterface connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -390,22 +381,18 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
     public static function doInsert($criteria, ConnectionInterface $con = null)
     {
         if (null === $con) {
-            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointAreaFreeshippingTableMap::DATABASE_NAME);
+            $con = Propel::getServiceContainer()->getWriteConnection(ColissimoPickupPointFreeshippingTableMap::DATABASE_NAME);
         }
 
         if ($criteria instanceof Criteria) {
             $criteria = clone $criteria; // rename for clarity
         } else {
-            $criteria = $criteria->buildCriteria(); // build Criteria from ColissimoPickupPointAreaFreeshipping object
-        }
-
-        if ($criteria->containsKey(ColissimoPickupPointAreaFreeshippingTableMap::ID) && $criteria->keyContainsValue(ColissimoPickupPointAreaFreeshippingTableMap::ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.ColissimoPickupPointAreaFreeshippingTableMap::ID.')');
+            $criteria = $criteria->buildCriteria(); // build Criteria from ColissimoPickupPointFreeshipping object
         }
 
 
         // Set the correct dbName
-        $query = ColissimoPickupPointAreaFreeshippingQuery::create()->mergeWith($criteria);
+        $query = ColissimoPickupPointFreeshippingQuery::create()->mergeWith($criteria);
 
         try {
             // use transaction because $criteria could contain info
@@ -421,7 +408,7 @@ class ColissimoPickupPointAreaFreeshippingTableMap extends TableMap
         return $pk;
     }
 
-} // ColissimoPickupPointAreaFreeshippingTableMap
+} // ColissimoPickupPointFreeshippingTableMap
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-ColissimoPickupPointAreaFreeshippingTableMap::buildTableMap();
+ColissimoPickupPointFreeshippingTableMap::buildTableMap();
