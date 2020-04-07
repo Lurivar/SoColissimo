@@ -14,16 +14,16 @@ class SliceController extends BaseAdminController
 {
     public function saveSliceAction()
     {
-        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), ['socolissimo'], AccessManager::UPDATE)) {
+        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), ['ColissimoPickupPoint'], AccessManager::UPDATE)) {
             return $response;
         }
 
         $this->checkXmlHttpRequest();
 
         $responseData = [
-            "success" => false,
-            "message" => '',
-            "slice" => null
+            'success' => false,
+            'message' => '',
+            'slice' => null
         ];
 
         $messages = [];
@@ -48,17 +48,6 @@ class SliceController extends BaseAdminController
                     ColissimoPickupPoint::DOMAIN
                 );
             }
-
-            if (0 !== $deliveryMode = (int)$requestData->get('deliveryModeId', 0)) {
-                $slice->setDeliveryModeId($deliveryMode);
-            } else {
-                $messages[] = $this->getTranslator()->trans(
-                    'The delivery mode is not valid',
-                    [],
-                    ColissimoPickupPoint::DOMAIN
-                );
-            }
-
 
             $requestPriceMax = $requestData->get('priceMax', null);
             $requestWeightMax = $requestData->get('weightMax', null);
@@ -152,7 +141,7 @@ class SliceController extends BaseAdminController
 
     public function deleteSliceAction()
     {
-        $response = $this->checkAuth([], ['socolissimo'], AccessManager::DELETE);
+        $response = $this->checkAuth([], ['ColissimoPickupPoint'], AccessManager::DELETE);
 
         if (null !== $response) {
             return $response;
@@ -161,9 +150,9 @@ class SliceController extends BaseAdminController
         $this->checkXmlHttpRequest();
 
         $responseData = [
-            "success" => false,
-            "message" => '',
-            "slice" => null
+            'success' => false,
+            'message' => '',
+            'slice' => null
         ];
 
         $response = null;

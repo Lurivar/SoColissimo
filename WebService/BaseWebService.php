@@ -78,30 +78,30 @@ abstract class BaseWebService
     {
         if (method_exists($this, $name)) {
             return call_user_func($this->$name, $arguments);
-        } else {
-            if (substr($name,0,3) === "get") {
-                if (!empty($arguments)) {
-                    throw new InvalidArgumentException("The function ".$name." in ".get_class($this)." doesn't take any argument.");
-                }
+        }
 
-                $real_name = $this->getProprietyRealName($name);
-                if (property_exists($this, $real_name)) {
-                    return $this->$real_name;
-                }
-
-            } elseif (substr($name,0,3) === "set") {
-                if (count($arguments) !== 1) {
-                    throw new InvalidArgumentException("The function ".$name." in ".get_class($this)."  take only one argument.");
-                }
-
-                $real_name = $this->getProprietyRealName($name);
-                $this->$real_name = $arguments[array_keys($arguments)[0]];
-
-                return $this;
+        if (substr($name,0,3) === "get") {
+            if (!empty($arguments)) {
+                throw new InvalidArgumentException("The function ".$name." in ".get_class($this)." doesn't take any argument.");
             }
 
-            throw new \BadFunctionCallException("The function ".$name." doesn't exist in ".get_class($this));
+            $real_name = $this->getProprietyRealName($name);
+            if (property_exists($this, $real_name)) {
+                return $this->$real_name;
+            }
+
+        } elseif (substr($name,0,3) === "set") {
+            if (count($arguments) !== 1) {
+                throw new InvalidArgumentException("The function ".$name." in ".get_class($this)."  take only one argument.");
+            }
+
+            $real_name = $this->getProprietyRealName($name);
+            $this->$real_name = $arguments[array_keys($arguments)[0]];
+
+            return $this;
         }
+
+        throw new \BadFunctionCallException("The function ".$name." doesn't exist in ".get_class($this));
     }
 
     /**

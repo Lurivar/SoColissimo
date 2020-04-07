@@ -18,18 +18,15 @@ class ColissimoPickupPointPriceSlices extends BaseLoop implements PropelSearchLo
     protected function getArgDefinitions()
     {
         return new ArgumentCollection(
-            Argument::createIntTypeArgument('area_id', null, true),
-            Argument::createIntTypeArgument('delivery_mode_id', null, true)
+            Argument::createIntTypeArgument('area_id', null, true)
         );
     }
 
     public function buildModelCriteria()
     {
         $areaId = $this->getAreaId();
-        $modeId = $this->getDeliveryModeId();
 
         $areaPrices = ColissimoPickupPointPriceSlicesQuery::create()
-            ->filterByDeliveryModeId($modeId)
             ->filterByAreaId($areaId)
             ->orderByWeightMax();
 
@@ -42,11 +39,11 @@ class ColissimoPickupPointPriceSlices extends BaseLoop implements PropelSearchLo
         foreach ($loopResult->getResultDataCollection() as $price) {
             $loopResultRow = new LoopResultRow($price);
             $loopResultRow
-                ->set("SLICE_ID", $price->getId())
-                ->set("MAX_WEIGHT", $price->getWeightMax())
-                ->set("MAX_PRICE", $price->getPriceMax())
-                ->set("PRICE", $price->getPrice())
-                ->set("FRANCO", $price->getFrancoMinPrice())
+                ->set('SLICE_ID', $price->getId())
+                ->set('MAX_WEIGHT', $price->getWeightMax())
+                ->set('MAX_PRICE', $price->getPriceMax())
+                ->set('PRICE', $price->getPrice())
+                ->set('FRANCO', $price->getFrancoMinPrice())
             ;
             $loopResult->addRow($loopResultRow);
         }

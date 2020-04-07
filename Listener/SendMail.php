@@ -61,7 +61,7 @@ class SendMail implements EventSubscriberInterface
             if ($contact_email) {
 
                 $message = MessageQuery::create()
-                    ->filterByName('mail_socolissimo')
+                    ->filterByName('mail_colissimo_pickup_point')
                     ->findOne();
 
                 if (false === $message || null === $message) {

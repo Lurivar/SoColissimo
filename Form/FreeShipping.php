@@ -69,7 +69,7 @@ class FreeShipping extends BaseForm
      */
     public function getName()
     {
-        return "socolissimofreeshipping";
+        return 'colissimopickuppointfreeshipping';
     }
 
 }

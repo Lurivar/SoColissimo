@@ -23,11 +23,15 @@
 
 namespace ColissimoPickupPoint\Controller;
 
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDom;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPr;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPrQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery;
 use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshippingQuery;
+use Propel\Runtime\Exception\PropelException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\HttpFoundation\Response;
@@ -41,7 +45,7 @@ class FreeShipping extends BaseAdminController
     public function toggleFreeShippingActivation()
     {
         if (null !== $response = $this
-                ->checkAuth(array(AdminResources::MODULE), array('SoColissimo'), AccessManager::UPDATE)) {
+                ->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
             return $response;
         }
 
@@ -51,14 +55,15 @@ class FreeShipping extends BaseAdminController
         try {
             $vform = $this->validateForm($form);
             $freeshipping = $vform->get('freeshipping')->getData();
-            $deliveryModeId = $vform->get('delivery_mode')->getData();
 
-            $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($deliveryModeId);
-            $deliveryMode->setFreeshippingActive($freeshipping)
-                ->save();
+            $deliveryMode = ColissimoPickupPointFreeshippingQuery::create()->findOneById(1);
+            $deliveryMode
+                ->setActive($freeshipping)
+                ->save()
+            ;
             $response = Response::create('');
         } catch (\Exception $e) {
-            $response = JsonResponse::create(array("error"=>$e->getMessage()), 500);
+            $response = JsonResponse::create(array('error' => $e->getMessage()), 500);
         }
         return $response;
     }
@@ -71,21 +76,24 @@ class FreeShipping extends BaseAdminController
         }
 
         $data = $this->getRequest()->request;
-        $deliveryMode = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($data->get('delivery-mode'));
 
-        $price = $data->get("price") === "" ? null : $data->get("price");
+        $price = $data->get('price') === '' ? null : $data->get('price');
 
         if ($price < 0) {
             $price = null;
         }
-        $deliveryMode->setFreeshippingFrom($price)
-            ->save();
+
+        ColissimoPickupPointFreeshippingQuery::create()
+            ->findOneById(1)
+            ->setFreeshippingFrom($price)
+            ->save()
+        ;
 
         return $this->generateRedirectFromRoute(
             'admin.module.configure',
             array(),
             array (
-                'current_tab'=> 'prices_slices_tab_'.$data->get('delivery-mode'),
+                'current_tab'=> 'prices_slices_tab',
                 'module_code'=> 'ColissimoPickupPoint',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
                 'price_error_id' => null,
@@ -96,7 +104,7 @@ class FreeShipping extends BaseAdminController
 
     /**
      * @return mixed|null|\Symfony\Component\HttpFoundation\Response
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws PropelException
      */
     public function setAreaFreeShipping()
     {
@@ -111,7 +119,6 @@ class FreeShipping extends BaseAdminController
             $data = $this->getRequest()->request;
 
             $colissimo_pickup_area_id = $data->get('area-id');
-            $colissimo_pickup_delivery_id = $data->get('delivery-mode');
             $cartAmount = $data->get('cart-amount');
 
             if ($cartAmount < 0 || $cartAmount === '') {
@@ -123,69 +130,34 @@ class FreeShipping extends BaseAdminController
                 return null;
             }
 
-            $deliveryModeQuery = ColissimoPickupPointDeliveryModeQuery::create()->findOneById($colissimo_pickup_delivery_id);
-            if (null === $deliveryModeQuery) {
-                return null;
-            }
+            $socolissimoAreaFreeshippingQuery = ColissimoPickupPointAreaFreeshippingQuery::create()
+                ->filterByAreaId($colissimo_pickup_area_id)
+                ->findOne();
 
-            //Price slices for "Domicile"
-            if ($colissimo_pickup_delivery_id === '1') {
-                $socolissimoFreeShippingDom = new ColissimoPickupPointAreaFreeshippingDom();
+            if (null === $socolissimoAreaFreeshippingQuery) {
+                $socolissimoFreeShipping = new ColissimoPickupPointAreaFreeshipping();
 
-                $socolissimoAreaFreeshippingDomQuery = ColissimoPickupPointAreaFreeshippingDomQuery::create()
-                    ->filterByAreaId($colissimo_pickup_area_id)
-                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
-                    ->findOne();
-
-                if (null === $socolissimoAreaFreeshippingDomQuery) {
-                    $socolissimoFreeShippingDom
-                        ->setAreaId($colissimo_pickup_area_id)
-                        ->setDeliveryModeId($colissimo_pickup_delivery_id)
-                        ->setCartAmount($cartAmount)
-                        ->save();
-                }
-
-                $cartAmountDomQuery = ColissimoPickupPointAreaFreeshippingDomQuery::create()
-                    ->filterByAreaId($colissimo_pickup_area_id)
-                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
-                    ->findOneOrCreate()
+                $socolissimoFreeShipping
+                    ->setAreaId($colissimo_pickup_area_id)
                     ->setCartAmount($cartAmount)
                     ->save();
             }
 
-            //Price slices for "Point Relais"
-            if ($colissimo_pickup_delivery_id === '2') {
-                $socolissimoFreeShippingPr = new ColissimoPickupPointAreaFreeshippingPr();
+            $cartAmountQuery = ColissimoPickupPointAreaFreeshippingQuery::create()
+                ->filterByAreaId($colissimo_pickup_area_id)
+                ->findOneOrCreate()
+                ->setCartAmount($cartAmount)
+                ->save();
 
-                $socolissimoAreaFreeshippingPrQuery = ColissimoPickupPointAreaFreeshippingPrQuery::create()
-                    ->filterByAreaId($colissimo_pickup_area_id)
-                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
-                    ->findOne();
-
-                if (null === $socolissimoAreaFreeshippingPrQuery) {
-                    $socolissimoFreeShippingPr
-                        ->setAreaId($colissimo_pickup_area_id)
-                        ->setDeliveryModeId($colissimo_pickup_delivery_id)
-                        ->setCartAmount($cartAmount)
-                        ->save();
-                }
-
-                $cartAmountPrQuery = ColissimoPickupPointAreaFreeshippingPrQuery::create()
-                    ->filterByAreaId($colissimo_pickup_area_id)
-                    ->filterByDeliveryModeId($colissimo_pickup_delivery_id)
-                    ->findOneOrCreate()
-                    ->setCartAmount($cartAmount)
-                    ->save();
-            }
         } catch (\Exception $e) {
         }
 
         return $this->generateRedirectFromRoute(
-            "admin.module.configure",
+            'admin.module.configure',
             array(),
             array(
                 'current_tab' => 'prices_slices_tab_' . $data->get('area_freeshipping'),
-                'module_code' => "SoColissimo",
+                'module_code' => 'ColissimoPickupPoint',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
                 'price_error_id' => null,
                 'price_error' => null

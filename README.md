@@ -94,11 +94,11 @@ Boucles
         
 7. socolissimo.order_address
 	- Argument :
-		1. id | obligatoire | ID de la OrderAddressSoColissimo que l'on veut retrouver grâce à la boucle.
+		1. id | obligatoire | ID de la OrderAddressColissimoPickupPoint que l'on veut retrouver grâce à la boucle.
 	- Sorties :
-		1. $ID : ID de la OrderAddressSoColissimo.
-		2. $CODE : code de la OrderAddressSoColissimo.
-		3. $TYPE : type de la OrderAddressSoColissimo.
+		1. $ID : ID de la OrderAddressColissimoPickupPoint.
+		2. $CODE : code de la OrderAddressColissimoPickupPoint.
+		3. $TYPE : type de la OrderAddressColissimoPickupPoint.
 	- Utilisation:
 		```{loop name="yourloopname" type="socolissimo.order_address"}<!-- your template -->{/loop}```
 
@@ -184,11 +184,11 @@ Loops
         
 7. socolissimo.order_address
 	- Arguments:
-		1. id | obligatoire | ID of the OrderAddressSoColissimo that should be retrieved by the loop.
+		1. id | obligatoire | ID of the OrderAddressColissimoPickupPoint that should be retrieved by the loop.
 	- Outputs:
-		1. $ID : OrderAddressSoColissimo ID.
-		2. $CODE : OrderAddressSoColissimo code.
-		3. $TYPE : OrderAddressSoColissimo type.
+		1. $ID : OrderAddressColissimoPickupPoint ID.
+		2. $CODE : OrderAddressColissimoPickupPoint code.
+		3. $TYPE : OrderAddressColissimoPickupPoint type.
 	- Usage:
 		```{loop name="yourloopname" type="socolissimo.order_address"}<!-- your template -->{/loop}```
 

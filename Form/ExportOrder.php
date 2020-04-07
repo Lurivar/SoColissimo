@@ -27,6 +27,7 @@ use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Form\BaseForm;
 use Thelia\Model\Base\OrderQuery;
 use Thelia\Core\Translation\Translator;
+use Thelia\Model\Order;
 use Thelia\Model\OrderStatusQuery;
 use Thelia\Model\OrderStatus;
 
@@ -69,7 +70,7 @@ class ExportOrder extends BaseForm
                 Criteria::IN
             )
             ->find()
-            ->toArray("code")
+            ->toArray('code')
         ;
         $query = OrderQuery::create()
             ->filterByDeliveryModuleId(ColissimoPickupPoint::getModCode())
@@ -80,29 +81,29 @@ class ExportOrder extends BaseForm
             ->add('new_status_id', 'choice',array(
                     'label' => Translator::getInstance()->trans('server'),
                     'choices' => array(
-                        "nochange" => Translator::getInstance()->trans("Do not change"),
-                        "processing" => Translator::getInstance()->trans("Set orders status as processing"),
-                        "sent" => Translator::getInstance()->trans("Set orders status as sent")
+                        'nochange' => Translator::getInstance()->trans('Do not change'),
+                        'processing' => Translator::getInstance()->trans('Set orders status as processing'),
+                        'sent' => Translator::getInstance()->trans('Set orders status as sent')
                     ),
                     'required' => 'true',
-                    'expanded'=>true,
-                    'multiple'=>false,
-                    'data'=>'nochange'
+                    'expanded' => true,
+                    'multiple' => false,
+                    'data' => 'nochange'
                 )
             );
-        /** @var \Thelia\Model\Order $order */
+        /** @var Order $order */
         foreach ($query as $order) {
             $this->formBuilder
                 ->add(
-                    "order_".$order->getId(),
-                    "checkbox",
+                    'order_' . $order->getId(),
+                    'checkbox',
                     [
-                        'label'=>$order->getRef(),
-                        'label_attr'=>['for'=>'export_'.$order->getId()]
+                        'label' => $order->getRef(),
+                        'label_attr' => ['for' => 'export_' . $order->getId()]
                     ]
                 )
                 ->add(
-                    "order_weight_".$order->getId(),
+                    'order_weight_' . $order->getId(),
                     'number'
                 )
             ;
@@ -114,7 +115,7 @@ class ExportOrder extends BaseForm
      */
     public function getName()
     {
-        return "exportsocolissimoorder";
+        return 'exportcolissimopickuppointorder';
     }
 
 }

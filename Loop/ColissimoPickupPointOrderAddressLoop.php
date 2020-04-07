@@ -12,8 +12,8 @@
 
 namespace ColissimoPickupPoint\Loop;
 
-use ColissimoPickupPoint\Model\OrderAddressSocolissimo;
-use ColissimoPickupPoint\Model\OrderAddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\OrderAddressColissimoPickupPoint;
+use ColissimoPickupPoint\Model\OrderAddressColissimoPickupPointQuery;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -61,10 +61,10 @@ class ColissimoPickupPointOrderAddressLoop extends BaseLoop implements PropelSea
      */
     public function buildModelCriteria()
     {
-        $query = OrderAddressSocolissimoQuery::create();
+        $query = OrderAddressColissimoPickupPointQuery::create();
 
-        if (!is_null($id = $this->getId())) {
-            $query->filterById(intval($id));
+        if (($id = $this->getId()) !== null) {
+            $query->filterById((int)$id);
         }
 
         return $query;
@@ -77,13 +77,14 @@ class ColissimoPickupPointOrderAddressLoop extends BaseLoop implements PropelSea
      */
     public function parseResults(LoopResult $loopResult)
     {
-        /** @var OrderAddressSocolissimo $orderAddressSocolissimo */
-        foreach ($loopResult->getResultDataCollection() as $orderAddressSocolissimo) {
+        /** @var OrderAddressColissimoPickupPoint $orderAddressColissimoPickupPoint */
+        foreach ($loopResult->getResultDataCollection() as $orderAddressColissimoPickupPoint) {
             $row = new LoopResultRow();
-            $row->set('ID', $orderAddressSocolissimo->getId());
-            $row->set('CODE', $orderAddressSocolissimo->getCode());
-            $row->set('TYPE', $orderAddressSocolissimo->getType());
-            $loopResult->addRow($row);
+            $row->set('ID', $orderAddressColissimoPickupPoint->getId());
+            $row->set('CODE', $orderAddressColissimoPickupPoint->getCode());
+            $row->set('TYPE', $orderAddressColissimoPickupPoint->getType());
+            $loopResult->addRow($row)
+            ;
         }
 
         return $loopResult;

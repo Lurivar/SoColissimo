@@ -23,7 +23,8 @@
 
 namespace ColissimoPickupPoint\Loop;
 
-use ColissimoPickupPoint\Model\AddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\AddressColissimoPickupPoint;
+use ColissimoPickupPoint\Model\AddressColissimoPickupPointQuery;
 use Thelia\Core\Template\Loop\Address;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -39,40 +40,44 @@ class ColissimoPickupPointAddress extends Address
 
     protected function setExists($id)
     {
-        $this->exists = AddressSocolissimoQuery::create()->findPK($id) !== null;
+        $this->exists = AddressColissimoPickupPointQuery::create()->findPK($id) !== null;
     }
+
     public function buildModelCriteria()
     {
         $id = $this->getId();
         $this->setExists($id[0]);
 
         return $this->exists ?
-                AddressSoColissimoQuery::create()->filterById($id[0]) :
+                AddressColissimoPickupPointQuery::create()->filterById($id[0]) :
                 parent::buildModelCriteria();
     }
+
     public function parseResults(LoopResult $loopResult)
     {
         if (!$this->exists) {
             return parent::parseResults($loopResult);
-        } else {
-            /** @var \ColissimoPickupPoint\Model\AddressSocolissimo $address */
-            foreach ($loopResult->getResultDataCollection() as $address) {
-                $loopResultRow = new LoopResultRow();
-                $loopResultRow->set("TITLE", $address->getTitleId())
-                    ->set("COMPANY", $address->getCompany())
-                    ->set("FIRSTNAME", $address->getFirstname())
-                    ->set("LASTNAME", $address->getLastname())
-                    ->set("ADDRESS1", $address->getAddress1())
-                    ->set("ADDRESS2", $address->getAddress2())
-                    ->set("ADDRESS3", $address->getAddress3())
-                    ->set("ZIPCODE", $address->getZipcode())
-                    ->set("CITY", $address->getCity())
-                    ->set("COUNTRY", $address->getCountryId())
-                    ->set("CELLPHONE", $address->getCellphone())
-                ; $loopResult->addRow($loopResultRow);
-            }
-
-            return $loopResult;
         }
+
+        /** @var AddressColissimoPickupPoint $address */
+        foreach ($loopResult->getResultDataCollection() as $address) {
+            $loopResultRow = new LoopResultRow();
+            $loopResultRow
+                ->set('TITLE', $address->getTitleId())
+                ->set('COMPANY', $address->getCompany())
+                ->set('FIRSTNAME', $address->getFirstname())
+                ->set('LASTNAME', $address->getLastname())
+                ->set('ADDRESS1', $address->getAddress1())
+                ->set('ADDRESS2', $address->getAddress2())
+                ->set('ADDRESS3', $address->getAddress3())
+                ->set('ZIPCODE', $address->getZipcode())
+                ->set('CITY', $address->getCity())
+                ->set('COUNTRY', $address->getCountryId())
+                ->set('CELLPHONE', $address->getCellphone())
+            ;
+            $loopResult->addRow($loopResultRow);
+        }
+
+        return $loopResult;
     }
 }

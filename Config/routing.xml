@@ -3,48 +3,48 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-	<route id="socolissimo.add.price" path="/admin/module/socolissimo/slice/save" methods="post">
+	<route id="colissimo.pickup.point.add.price" path="/admin/module/ColissimoPickupPoint/slice/save" methods="post">
 		<default key="_controller">ColissimoPickupPoint\Controller\SliceController::saveSliceAction</default>
 	</route>
-    <route id="socolissimo.update.price" path="/admin/module/socolissimo/slice/delete" methods="post">
+    <route id="colissimo.pickup.point.update.price" path="/admin/module/ColissimoPickupPoint/slice/delete" methods="post">
 		<default key="_controller">ColissimoPickupPoint\Controller\SliceController::deleteSliceAction</default>
 	</route>
 
-    <route id="socolissimo.toggle.freeshipping" path="/admin/module/socolissimo/freeshipping" methods="post">
+    <route id="colissimo.pickup.point.toggle.freeshipping" path="/admin/module/ColissimoPickupPoint/freeshipping" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::toggleFreeShippingActivation</default>
     </route>
 
-    <route id="socolissimo.edit.freeshippingfrom" path="/admin/module/socolissimo/freeshipping_from" methods="post">
+    <route id="colissimo.pickup.point.edit.freeshippingfrom" path="/admin/module/ColissimoPickupPoint/freeshipping_from" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::setFreeShippingFrom</default>
     </route>
 
-    <route id="socolissimo.edit.areafreeshipping" path="/admin/module/socolissimo/area_freeshipping" methods="post">
+    <route id="colissimo.pickup.point.edit.areafreeshipping" path="/admin/module/ColissimoPickupPoint/area_freeshipping" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::setAreaFreeShipping</default>
     </route>
 
-    <route id="socolissimo.configure" path="/admin/module/socolissimo/configure" methods="post">
+    <route id="colissimo.pickup.point.configure" path="/admin/module/ColissimoPickupPoint/configure" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\SaveConfig::save</default>
     </route>
 
-    <route id="socolissimo.get.specific.location" path="/module/socolissimo/{countryid}/{zipcode}/{city}/{address}" methods="get">
+    <route id="colissimo.pickup.point.get.specific.location" path="/module/ColissimoPickupPoint/{countryid}/{zipcode}/{city}/{address}" methods="get">
         <default key="_controller">ColissimoPickupPoint\Controller\GetSpecificLocation::get</default>
         <default key="address"></default>
         <requirement key="city">[a-zA-Z\- ]+</requirement>
     </route>
 
-    <route id="socolissimo.point.info" path="/module/socolissimo/point/{point_id}">
+    <route id="colissimo.pickup.point.point.info" path="/module/ColissimoPickupPoint/point/{point_id}">
         <default key="_controller">ColissimoPickupPoint\Controller\GetSpecificLocation::getPointInfo</default>
     </route>
 
-    <route id="socolissimo.point.search" path="/module/socolissimo/points">
+    <route id="colissimo.pickup.point.point.search" path="/module/ColissimoPickupPoint/points">
         <default key="_controller">ColissimoPickupPoint\Controller\GetSpecificLocation::search</default>
     </route>
 
-    <route id="socolissimo.export" path="/admin/module/socolissimo/export" methods="post">
+    <route id="colissimo.pickup.point.export" path="/admin/module/ColissimoPickupPoint/export" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\Export::export</default>
     </route>
 
-    <route id="socolissimo.import" path="/admin/module/socolissimo/import" methods="post">
-        <default key="_controller">SoColissimo:Import:import</default>
+    <route id="colissimo.pickup.point.import" path="/admin/module/ColissimoPickupPoint/import" methods="post">
+        <default key="_controller">ColissimoPickupPoint:Import:import</default>
     </route>
 </routes>

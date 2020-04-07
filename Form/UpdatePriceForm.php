@@ -16,45 +16,34 @@ class UpdatePriceForm extends BaseForm
     protected function buildForm()
     {
         $this->formBuilder
-            ->add("area", "integer", array(
-                "constraints" => array(
+            ->add('area', 'integer', array(
+                'constraints' => array(
                     new Constraints\NotBlank(),
                     new Constraints\Callback(array(
-                        "methods" => array(
+                        'methods' => array(
                             array($this,
-                                "verifyAreaExist")
+                                'verifyAreaExist')
                         )
                     ))
                 )
             ))
-            ->add("delivery_mode", "integer", array(
-                "constraints" => array(
+            ->add('weight', 'number', array(
+                'constraints' => array(
+                    new Constraints\NotBlank(),
+                )
+            ))
+            ->add('price', 'number', array(
+                'constraints' => array(
                     new Constraints\NotBlank(),
                     new Constraints\Callback(array(
-                        "methods" => array(
+                        'methods' => array(
                             array($this,
-                                "verifyDeliveryModeExist")
+                                'verifyValidPrice')
                         )
                     ))
                 )
             ))
-            ->add("weight", "number", array(
-                "constraints" => array(
-                    new Constraints\NotBlank(),
-                )
-            ))
-            ->add("price", "number", array(
-                "constraints" => array(
-                    new Constraints\NotBlank(),
-                    new Constraints\Callback(array(
-                        "methods" => array(
-                            array($this,
-                                "verifyValidPrice")
-                        )
-                    ))
-                )
-            ))
-            ->add("franco", "number", array())
+            ->add('franco', 'number', array())
         ;
     }
 
@@ -66,23 +55,15 @@ class UpdatePriceForm extends BaseForm
         }
     }
 
-    public function verifyDeliveryModeExist($value, ExecutionContextInterface $context)
-    {
-        $mode = ColissimoPickupPointDeliveryModeQuery::create()->findPk($value);
-        if (null === $mode) {
-            $context->addViolation(Translator::getInstance()->trans("This delivery mode doesn't exists.", [], ColissimoPickupPoint::DOMAIN));
-        }
-    }
-
     public function verifyValidPrice($value, ExecutionContextInterface $context)
     {
         if (!preg_match("#^\d+\.?\d*$#", $value)) {
-            $context->addViolation(Translator::getInstance()->trans("The price value is not valid.", [], ColissimoPickupPoint::DOMAIN));
+            $context->addViolation(Translator::getInstance()->trans('The price value is not valid.', [], ColissimoPickupPoint::DOMAIN));
         }
     }
 
     public function getName()
     {
-        return "colissimo_pickup_point_price_slices_create";
+        return 'colissimo_pickup_point_price_slices_create';
     }
 }

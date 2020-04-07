@@ -15,7 +15,7 @@ class SaveConfig extends BaseAdminController
 {
     public function save()
     {
-        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), array('SoColissimo'), AccessManager::UPDATE)) {
+        if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
             return $response;
         }
 
@@ -23,18 +23,17 @@ class SaveConfig extends BaseAdminController
         try {
             $vform = $this->validateForm($form);
 
-            ColissimoPickupPoint::setConfigValue('socolissimo_username', $vform->get('socolissimo_username')->getData());
-            ColissimoPickupPoint::setConfigValue('socolissimo_password', $vform->get('socolissimo_password')->getData());
-            ColissimoPickupPoint::setConfigValue('socolissimo_google_map_key', $vform->get('socolissimo_google_map_key')->getData());
-            ColissimoPickupPoint::setConfigValue('socolissimo_endpoint_url', $vform->get('socolissimo_endpoint_url')->getData());
-            ColissimoPickupPoint::setConfigValue('socolissimo_dom_delivery_authorized', $vform->get('socolissimo_dom_delivery_authorized')->getData());
+            ColissimoPickupPoint::setConfigValue(ColissimoPickupPoint::COLISSIMO_USERNAME, $vform->get(ColissimoPickupPoint::COLISSIMO_USERNAME)->getData());
+            ColissimoPickupPoint::setConfigValue(ColissimoPickupPoint::COLISSIMO_PASSWORD, $vform->get(ColissimoPickupPoint::COLISSIMO_PASSWORD)->getData());
+            ColissimoPickupPoint::setConfigValue(ColissimoPickupPoint::COLISSIMO_GOOGLE_KEY, $vform->get(ColissimoPickupPoint::COLISSIMO_GOOGLE_KEY)->getData());
+            ColissimoPickupPoint::setConfigValue(ColissimoPickupPoint::COLISSIMO_ENDPOINT, $vform->get(ColissimoPickupPoint::COLISSIMO_ENDPOINT)->getData());
 
             return $this->generateRedirect(
-                URL::getInstance()->absoluteUrl('/admin/module/SoColissimo', ['current_tab' => 'configure'])
+                URL::getInstance()->absoluteUrl('/admin/module/ColissimoPickupPoint', ['current_tab' => 'configure'])
             );
         } catch (\Exception $e) {
             $this->setupFormErrorContext(
-                Translator::getInstance()->trans("So Colissimo update config"),
+                Translator::getInstance()->trans('Colissimo Pickup Point update config'),
                 $e->getMessage(),
                 $form,
                 $e
@@ -43,7 +42,7 @@ class SaveConfig extends BaseAdminController
             return $this->render(
                 'module-configure',
                 [
-                    'module_code' => 'SoColissimo',
+                    'module_code' => 'ColissimoPickupPoint',
                     'current_tab' => 'configure',
                 ]
             );

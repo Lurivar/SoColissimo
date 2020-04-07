@@ -2,6 +2,7 @@
 
 namespace ColissimoPickupPoint\Controller;
 
+use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Propel;
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
@@ -28,7 +29,7 @@ class ImportController extends BaseAdminController
         $con = Propel::getWriteConnection(OrderTableMap::DATABASE_NAME);
         $con->beginTransaction();
 
-        $form = $this->createForm('socolissimo.import');
+        $form = $this->createForm('colissimo.pickup.point.import');
 
         try {
             $vForm = $this->validateForm($form);
@@ -94,9 +95,10 @@ class ImportController extends BaseAdminController
     /**
      * Update order's delivery ref
      *
-     * @param string    $deliveryRef
-     * @param string    $orderRef
-     * @param int       $i
+     * @param string $deliveryRef
+     * @param string $orderRef
+     * @param int $i
+     * @throws PropelException
      */
     public function importDeliveryRef($deliveryRef, $orderRef, &$i)
     {

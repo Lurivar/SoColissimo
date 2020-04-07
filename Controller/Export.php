@@ -27,7 +27,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ColissimoPickupPoint\Form\ExportOrder;
 use ColissimoPickupPoint\Format\CSV;
 use ColissimoPickupPoint\Format\CSVLine;
-use ColissimoPickupPoint\Model\OrderAddressSocolissimoQuery;
+use ColissimoPickupPoint\Model\OrderAddressColissimoPickupPointQuery;
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Thelia\Controller\Admin\BaseAdminController;
@@ -180,7 +180,7 @@ class Export extends BaseAdminController
                     /**
                      * Get relay ID
                      */
-                    $relay_id = OrderAddressSocolissimoQuery::create()
+                    $relay_id = OrderAddressColissimoPickupPointQuery::create()
                         ->findPk($order->getDeliveryOrderAddressId());
 
                     /**
@@ -219,11 +219,11 @@ class Export extends BaseAdminController
                     /**
                      * Then update order's status if necessary
                      */
-                    if ($status_id == "processing") {
+                    if ($status_id === 'processing') {
                         $event = new OrderEvent($order);
                         $event->setStatus($status[OrderStatus::CODE_PROCESSING]['Id']);
                         $this->dispatch(TheliaEvents::ORDER_UPDATE_STATUS, $event);
-                    } elseif ($status_id == "sent") {
+                    } elseif ($status_id === 'sent') {
                         $event = new OrderEvent($order);
                         $event->setStatus($status[OrderStatus::CODE_SENT]['Id']);
                         $this->dispatch(TheliaEvents::ORDER_UPDATE_STATUS, $event);

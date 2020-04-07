@@ -47,6 +47,7 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
     /**
      * @return array|mixed
      * @throws \ErrorException
+     * @throws \Propel\Runtime\Exception\PropelException
      */
     public function buildArray()
     {
@@ -65,10 +66,10 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
 
         if (null !== $addressModel = AddressQuery::create()->findPk($addressId)) {
             $address = array(
-                "zipcode" => $addressModel->getZipcode(),
-                "city" => $addressModel->getCity(),
-                "address" => $addressModel->getAddress1(),
-                "countrycode"=> $addressModel->getCountry()->getIsoalpha2()
+                'zipcode' => $addressModel->getZipcode(),
+                'city' => $addressModel->getCity(),
+                'address' => $addressModel->getAddress1(),
+                'countrycode' => $addressModel->getCountry()->getIsoalpha2()
             );
         } elseif (empty($zipcode) || empty($city)) {
             $search = AddressQuery::create();
@@ -76,22 +77,22 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
             $customer = $this->securityContext->getCustomerUser();
             if ($customer !== null) {
                 $search->filterByCustomerId($customer->getId());
-                $search->filterByIsDefault("1");
+                $search->filterByIsDefault('1');
             } else {
-                throw new \ErrorException("Customer not connected.");
+                throw new \ErrorException('Customer not connected.');
             }
 
             $search = $search->findOne();
-            $address["zipcode"] = $search->getZipcode();
-            $address["city"] = $search->getCity();
-            $address["address"] = $search->getAddress1();
-            $address["countrycode"] = $search->getCountry()->getIsoalpha2();
+            $address['zipcode'] = $search->getZipcode();
+            $address['city'] = $search->getCity();
+            $address['address'] = $search->getAddress1();
+            $address['countrycode'] = $search->getCountry()->getIsoalpha2();
         } else {
             $address = array(
-                "zipcode" => $zipcode,
-                "city" => $city,
-                "address" => "",
-                "countrycode" => CountryQuery::create()
+                'zipcode' => $zipcode,
+                'city' => $city,
+                'address' => '',
+                'countrycode' => CountryQuery::create()
                     ->findOneById($countryId)
                     ->getIsoalpha2()
             );
@@ -100,17 +101,17 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
         // Then ask the Web Service
         $request = new FindByAddress();
         $request
-            ->setAddress($address["address"])
-            ->setZipCode($address["zipcode"])
-            ->setCity($address["city"])
-            ->setCountryCode($address["countrycode"])
-            ->setFilterRelay("1")
+            ->setAddress($address['address'])
+            ->setZipCode($address['zipcode'])
+            ->setCity($address['city'])
+            ->setCountryCode($address['countrycode'])
+            ->setFilterRelay('1')
             ->setRequestId(md5(microtime()))
-            ->setLang("FR")
-            ->setOptionInter("1")
-            ->setShippingDate(date("d/m/Y"))
-            ->setAccountNumber(ColissimoPickupPoint::getConfigValue('socolissimo_username'))
-            ->setPassword(ColissimoPickupPoint::getConfigValue('socolissimo_password'))
+            ->setLang('FR')
+            ->setOptionInter('1')
+            ->setShippingDate(date('d/m/Y'))
+            ->setAccountNumber(ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_USERNAME))
+            ->setPassword(ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_PASSWORD))
         ;
 
         try {
@@ -145,15 +146,15 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
             }
 
             // format distance
-            $distance = (string) $loopResultRow->get("distanceEnMetre");
+            $distance = (string) $loopResultRow->get('distanceEnMetre');
             if (strlen($distance) < 4) {
-                $distance .= " m";
+                $distance .= ' m';
             } else {
-                $distance = (string) floatval($distance) / 1000;
+                $distance = (string)(float)$distance / 1000;
                 while (substr($distance, strlen($distance) - 1, 1) == "0") {
                     $distance = substr($distance, 0, strlen($distance) - 1);
                 }
-                $distance = str_replace(".", ",", $distance) . " km";
+                $distance = str_replace('.', ',', $distance) . ' km';
             }
             $loopResultRow->set('distance', $distance);
 
@@ -169,10 +170,10 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
     protected function getArgDefinitions()
     {
         return new ArgumentCollection(
-            Argument::createIntTypeArgument("countryid", ""),
-            Argument::createAnyTypeArgument("zipcode", ""),
-            Argument::createAnyTypeArgument("city", ""),
-            Argument::createIntTypeArgument("address")
+            Argument::createIntTypeArgument('countryid', ''),
+            Argument::createAnyTypeArgument('zipcode', ''),
+            Argument::createAnyTypeArgument('city', ''),
+            Argument::createIntTypeArgument('address')
         );
     }
 }

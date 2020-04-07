@@ -60,7 +60,7 @@ class NotSentOrders extends Order
                 Criteria::IN
             )
             ->find()
-            ->toArray("code");
+            ->toArray('code');
         $query = OrderQuery::create()
             ->filterByDeliveryModuleId(ColissimoPickupPoint::getModCode())
             ->filterByStatusId(

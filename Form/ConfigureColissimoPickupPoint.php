@@ -37,7 +37,7 @@ use Thelia\Model\ConfigQuery;
  * @package ColissimoPickupPoint\Form
  * @author Thelia <info@thelia.net>
  */
-class ConfigureSoColissimo extends BaseForm
+class ConfigureColissimoPickupPoint extends BaseForm
 {
     /**
      *
@@ -64,27 +64,27 @@ class ConfigureSoColissimo extends BaseForm
         $translator = Translator::getInstance();
         $this->formBuilder
             ->add(
-                'socolissimo_username',
+                ColissimoPickupPoint::COLISSIMO_USERNAME,
                 TextType::class,
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_username'),
-                    'label'       => $translator->trans("Account number", [], ColissimoPickupPoint::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_username']
+                    'data'        => ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_USERNAME),
+                    'label'       => $translator->trans('Account number', [], ColissimoPickupPoint::DOMAIN),
+                    'label_attr'  => ['for' => ColissimoPickupPoint::COLISSIMO_USERNAME]
                 ]
             )
             ->add(
-                'socolissimo_password',
+                ColissimoPickupPoint::COLISSIMO_PASSWORD,
                 TextType::class,
                 [
                     'constraints' => [new NotBlank()],
-                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_password'),
-                    'label'       => $translator->trans("Password", [], ColissimoPickupPoint::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_password']
+                    'data'        => ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_PASSWORD),
+                    'label'       => $translator->trans('Password', [], ColissimoPickupPoint::DOMAIN),
+                    'label_attr'  => ['for' => ColissimoPickupPoint::COLISSIMO_PASSWORD]
                 ]
             )
             ->add(
-                'socolissimo_endpoint_url',
+                ColissimoPickupPoint::COLISSIMO_ENDPOINT,
                 TextType::class,
                 [
                     'constraints' => [
@@ -93,19 +93,19 @@ class ConfigureSoColissimo extends BaseForm
                             'protocols' => ['https', 'http']
                         ])
                     ],
-                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_endpoint_url'),
-                    'label'       => $translator->trans("Colissimo URL prod", [], ColissimoPickupPoint::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_endpoint_url']
+                    'data'        => ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_ENDPOINT),
+                    'label'       => $translator->trans('Colissimo URL prod', [], ColissimoPickupPoint::DOMAIN),
+                    'label_attr'  => ['for' => ColissimoPickupPoint::COLISSIMO_ENDPOINT]
                 ]
             )
             ->add(
-                'socolissimo_google_map_key',
+                ColissimoPickupPoint::COLISSIMO_GOOGLE_KEY,
                 TextType::class,
                 [
                     'constraints' => [],
-                    'data'        => ColissimoPickupPoint::getConfigValue('socolissimo_google_map_key'),
-                    'label'       => $translator->trans("Google map API key", [], ColissimoPickupPoint::DOMAIN),
-                    'label_attr'  => ['for' => 'socolissimo_google_map_key']
+                    'data'        => ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_GOOGLE_KEY),
+                    'label'       => $translator->trans('Google map API key', [], ColissimoPickupPoint::DOMAIN),
+                    'label_attr'  => ['for' => ColissimoPickupPoint::COLISSIMO_GOOGLE_KEY]
                 ]
             )
         ;
@@ -116,6 +116,6 @@ class ConfigureSoColissimo extends BaseForm
      */
     public function getName()
     {
-        return 'configuresocolissimo';
+        return 'configurecolissimopickuppoint';
     }
 }

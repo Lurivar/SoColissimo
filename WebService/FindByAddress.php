@@ -23,6 +23,7 @@
 
 namespace ColissimoPickupPoint\WebService;
 
+use stdClass;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
@@ -62,31 +63,30 @@ class FindByAddress extends BaseSoColissimoWebService
 
     public function __construct()
     {
-        parent::__construct("findRDVPointRetraitAcheminement");
+        parent::__construct('findRDVPointRetraitAcheminement');
     }
 
-    public function isError(\stdClass $response)
+    public function isError(stdClass $response)
     {
         return isset($response->return->errorCode) && $response->return->errorCode != 0;
     }
 
-    public function getError(\stdClass $response)
+    public function getError(stdClass $response)
     {
-        return isset($response->return->errorMessage) ? $response->return->errorMessage : "Unknown error";
+        return isset($response->return->errorMessage) ? $response->return->errorMessage : 'Unknown error';
     }
 
     /**
-     * @param  \stdClass                                                $response
+     * @param  stdClass                                                $response
      * @return array
-     * @throws \Symfony\Component\Config\Definition\Exception\Exception
+     * @throws Exception
      */
-    public function getFormattedResponse(\stdClass $response)
+    public function getFormattedResponse(stdClass $response)
     {
         if (!isset($response->return->listePointRetraitAcheminement)) {
-            throw new Exception("An unknown error happened");
+            throw new Exception('An unknown error happened');
         }
-        $points = $response->return->listePointRetraitAcheminement;
 
-        return $points;
+        return $response->return->listePointRetraitAcheminement;
     }
 }

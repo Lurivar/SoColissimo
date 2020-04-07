@@ -25,9 +25,11 @@ namespace ColissimoPickupPoint\Controller;
 
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use ColissimoPickupPoint\WebService\FindById;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Core\HttpFoundation\Response;
+use Thelia\Core\Template\ParserInterface;
 use Thelia\Core\Template\TemplateDefinition;
 use Thelia\Model\ConfigQuery;
 
@@ -41,15 +43,16 @@ class GetSpecificLocation extends BaseFrontController
     public function get($countryid, $zipcode, $city, $address="")
     {
         $content = $this->renderRaw(
-            "getSpecificLocationSoColissimo",
+            'getSpecificLocationColissimoPickupPoint',
             array(
-                "_countryid_" => $countryid,
-                "_zipcode_" => $zipcode,
-                "_city_" => $city,
-                "_address_" => $address
+                '_countryid_' => $countryid,
+                '_zipcode_' => $zipcode,
+                '_city_' => $city,
+                '_address_' => $address
             )
         );
         $response = new Response($content, 200, $headers = array('Content-Type' => 'application/json'));
+
         return $response;
     }
 
@@ -58,10 +61,10 @@ class GetSpecificLocation extends BaseFrontController
         $req = new FindById();
 
         $req->setId($point_id)
-            ->setLangue("FR")
-            ->setDate(date("d/m/Y"))
-            ->setAccountNumber(ColissimoPickupPoint::getConfigValue('socolissimo_username'))
-            ->setPassword(ColissimoPickupPoint::getConfigValue('socolissimo_password'))
+            ->setLangue('FR')
+            ->setDate(date('d/m/Y'))
+            ->setAccountNumber(ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_USERNAME))
+            ->setPassword(ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_PASSWORD))
         ;
 
         $response = $req->exec();
@@ -82,16 +85,18 @@ class GetSpecificLocation extends BaseFrontController
     }
 
     /**
+     * @param null $template
      * @return ParserInterface instance parser
+     * @throws Exception
      */
     protected function getParser($template = null)
     {
-        $parser = $this->container->get("thelia.parser");
+        $parser = $this->container->get('thelia.parser');
 
         // Define the template that should be used
         $parser->setTemplateDefinition(
             new TemplateDefinition(
-                'module_socolissimo',
+                'default',
                 TemplateDefinition::FRONT_OFFICE
             )
         );

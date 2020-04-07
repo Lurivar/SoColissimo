@@ -46,15 +46,15 @@ class CheckRightsLoop extends BaseLoop implements ArraySearchLoopInterface
     public function buildArray()
     {
         $ret = array();
-        $dir = __DIR__."/../Config/";
+        $dir = __DIR__ . '/../Config/';
         if (!is_readable($dir)) {
-            $ret[] = array("ERRMES"=>Translator::getInstance()->trans("Can't read Config directory"), "ERRFILE"=>"");
+            $ret[] = array('ERRMES' => Translator::getInstance()->trans("Can't read Config directory"), 'ERRFILE' => '');
         }
         if ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
-                if (strlen($file) > 5 && substr($file, -5) === ".json") {
+                if (strlen($file) > 5 && substr($file, -5) === '.json') {
                     if (!is_readable($dir.$file)) {
-                        $ret[] = array("ERRMES"=>Translator::getInstance()->trans("Can't read file"), "ERRFILE"=>"Colissimo/Config/".$file);
+                        $ret[] = array('ERRMES' => Translator::getInstance()->trans("Can't read file"), 'ERRFILE' => 'Colissimo/Config/' . $file);
                     }
                 }
             }
@@ -66,8 +66,8 @@ class CheckRightsLoop extends BaseLoop implements ArraySearchLoopInterface
     {
         foreach ($loopResult->getResultDataCollection() as $arr) {
             $loopResultRow = new LoopResultRow();
-            $loopResultRow->set("ERRMES", $arr["ERRMES"])
-                ->set("ERRFILE", $arr["ERRFILE"]);
+            $loopResultRow->set('ERRMES', $arr['ERRMES'])
+                ->set('ERRFILE', $arr['ERRFILE']);
             $loopResult->addRow($loopResultRow);
         }
 

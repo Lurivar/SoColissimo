@@ -13,11 +13,11 @@ class BackHook extends BaseHook
 {
     public function onModuleConfiguration(HookRenderEvent $event)
     {
-        $event->add($this->render('SoColissimo/module_configuration.html'));
+        $event->add($this->render('module_configuration.html'));
     }
 
     public function onModuleConfigJs(HookRenderEvent $event)
     {
-        $event->add($this->render('SoColissimo/module-config-js.html'));
+        $event->add($this->render('module-config-js.html'));
     }
 }

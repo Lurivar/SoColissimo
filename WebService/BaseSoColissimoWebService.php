@@ -48,7 +48,7 @@ abstract class BaseSoColissimoWebService extends BaseWebService
 
     public function __construct($function)
     {
-        $url = ColissimoPickupPoint::getConfigValue('socolissimo_endpoint_url');
+        $url = ColissimoPickupPoint::getConfigValue(ColissimoPickupPoint::COLISSIMO_ENDPOINT);
 
         parent::__construct($url, $function);
     }
