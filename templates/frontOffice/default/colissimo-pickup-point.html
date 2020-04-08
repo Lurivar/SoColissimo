@@ -392,7 +392,7 @@
                                             </button>
                                         </div>
                                         <div class="clearfix col-md-12" style="margin-top: 15px;margin-bottom: 15px;">
-                                            <button type="submit" name="colissimo-pickup-point" value="PR" class="btn btn-primary pull-right">{intl l="Choose this delivery mode" d="colissimo.pickup.fo.default"}</button>
+                                            <button type="submit" name="colissimo-pickup-point-pr" value="PR" class="btn btn-primary pull-right">{intl l="Choose this delivery mode" d="colissimo.pickup.fo.default"}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -455,7 +455,7 @@
             displayContent();
         }
 
-        $('[name="colissimo-pickup-point"]').on('click', function(){
+        $('[name="colissimo-pickup-point-pr"]').on('click', function(){
             var radioChecked = $('input[type="radio"]:checked', '#table-colissimo-pickup-point').length;
             if (radioChecked === 0) {
                 alert("{intl l='No relay points were selected' d='colissimo.pickup.point.fo.default'}");
