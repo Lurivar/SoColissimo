@@ -27,17 +27,15 @@ class ColissimoPickupPointDeliveryPrice extends AbstractSmartyPlugin
     public function getPluginDescriptors()
     {
         return array(
-            new SmartyPluginDescriptor("function", "socolissimoDeliveryPrice", $this, "socolissimoDeliveryPrice")
+            new SmartyPluginDescriptor('function', 'colissimoPickupPointDeliveryPrice', $this, 'colissimoPickupPointDeliveryPrice')
         );
     }
 
-    public function socolissimoDeliveryPrice($params, $smarty)
+    public function colissimoPickupPointDeliveryPrice($params, $smarty)
     {
-        $deliveryMode = $params["delivery-mode"];
-
         $country = Country::getShopLocation();
-        if (isset($params["country"])) {
-            $country = CountryQuery::create()->findOneById($params["country"]);
+        if (isset($params['country'])) {
+            $country = CountryQuery::create()->findOneById($params['country']);
         }
 
         $cartWeight = $this->request->getSession()->getSessionCart($this->dispatcher)->getWeight();
@@ -47,13 +45,12 @@ class ColissimoPickupPointDeliveryPrice extends AbstractSmartyPlugin
             $price = ColissimoPickupPoint::getPostageAmount(
                 $country->getAreaId(),
                 $cartWeight,
-                $cartAmount,
-                $deliveryMode
+                $cartAmount
             );
         } catch (DeliveryException $ex) {
             $smarty->assign('isValidMode', false);
         }
 
-        $smarty->assign('deliveryModePrice', $price);
+        $smarty->assign('deliveryPrice', $price);
     }
 }

@@ -10,15 +10,15 @@
 <script>
 
     var config = {
-        'urlAdd': '{url path="/admin/module/socolissimo/slice/save"}',
-        'urlDelete': '{url path="/admin/module/socolissimo/slice/delete"}',
-        'urlSave': '{url path="/admin/module/socolissimo/slice/save"}'
+        'urlAdd': '{url path="/admin/module/ColissimoPickupPoint/slice/save"}',
+        'urlDelete': '{url path="/admin/module/ColissimoPickupPoint/slice/delete"}',
+        'urlSave': '{url path="/admin/module/ColissimoPickupPoint/slice/save"}'
     };
 
     $(document).ready(function() {
         var checkboxes = [];
 
-        {loop name="js.get.orders.socolissimo.export" type="order.notsent.socolissimo"}
+        {loop name="js.get.orders.colissimo.pickup.point.export" type="order.notsent.colissimo.pickup.point"}
         checkboxes.push("export_{$ID}");
         {/loop}
         //Buttons
@@ -39,8 +39,8 @@
             });
         });
         // Export form button
-        $("button[name=export_socolissimo_form]").click(function() {
-            var value = $("input[name='exportsocolissimoorder[new_status_id]']:checked").val();
+        $("button[name=export_colissimo_pickup_point_form]").click(function() {
+            var value = $("input[name='exportcolissimopickuppointorder[new_status_id]']:checked").val();
             if(value == "sent") {
                 checkboxes.forEach(function(entry) {
                     var box=$("#"+entry);
@@ -71,11 +71,11 @@
                 .success(function() {
                     if (is_checked) {
                         $('#config-btn-0').removeClass('disabled');
-                        $('#table-prices-socolissimo-'+mode).hide('slow');
+                        $('#table-prices-colissimo-pickup-point-'+mode).hide('slow');
                         $('#freeshipping-from-'+mode).hide('slow');
                     } else {
                         $('#config-btn-0').addClass('disabled');
-                        $('#table-prices-socolissimo-'+mode).show('slow');
+                        $('#table-prices-colissimo-pickup-point-'+mode).show('slow');
                         $('#freeshipping-from-'+mode).show('slow');
                     }
                 })
@@ -103,7 +103,6 @@
             var data = {
                 id: $slice.data("id"),
                 area: $slice.data("area"),
-                deliveryModeId: $slice.data("delivmode"),
                 price: $slice.find(".js-slice-price").first().val(),
                 priceMax: $slice.find(".js-slice-price-max").first().val(),
                 weightMax: $slice.find(".js-slice-weight-max").first().val()

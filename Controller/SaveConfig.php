@@ -4,7 +4,7 @@ namespace ColissimoPickupPoint\Controller;
 
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use Thelia\Controller\Admin\BaseAdminController;
-use ColissimoPickupPoint\Form\ConfigureSoColissimo;
+use ColissimoPickupPoint\Form\ConfigureColissimoPickupPoint;
 use Thelia\Core\Translation\Translator;
 use Thelia\Core\Security\Resource\AdminResources;
 use Thelia\Core\Security\AccessManager;
@@ -19,7 +19,7 @@ class SaveConfig extends BaseAdminController
             return $response;
         }
 
-        $form = new ConfigureSoColissimo($this->getRequest());
+        $form = new ConfigureColissimoPickupPoint($this->getRequest());
         try {
             $vform = $this->validateForm($form);
 

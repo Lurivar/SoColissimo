@@ -2,7 +2,6 @@
 
 namespace ColissimoPickupPoint\Form;
 
-use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
 use ColissimoPickupPoint\ColissimoPickupPoint;
 use Symfony\Component\Validator\Constraints;
 

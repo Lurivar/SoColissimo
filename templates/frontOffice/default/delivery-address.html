@@ -1,8 +1,8 @@
 {assign var="addresslooptype" value="address"}
 
-{loop type="socolissimoid" name="socolissimoid.invoice"}
+{loop type="colissimo.pickup.point.id" name="colissimo.pickup.point.id.invoice"}
     {if $module == {order attr="delivery_module"}}
-        {assign var="addresslooptype" value="address.socolissimo"}
+        {assign var="addresslooptype" value="address.colissimo.pickup.point"}
     {/if}
 {/loop}
 

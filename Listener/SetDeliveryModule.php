@@ -160,60 +160,32 @@ class SetDeliveryModule implements EventSubscriberInterface
         if ($this->check_module($event->getOrder()->getDeliveryModuleId())) {
             $request = $this->getRequest();
 
-            if ($request->getSession()->get('SoColissimoDomicile') == 1) {
-                $tmp_address = AddressColissimoPickupPointQuery::create()
-                    ->findPk($request->getSession()->get('ColissimoPickupPointDeliveryId'));
+            $tmp_address = AddressColissimoPickupPointQuery::create()
+                ->findPk($request->getSession()->get('ColissimoPickupPointDeliveryId'));
 
-                if ($tmp_address === null) {
-                    throw new \ErrorException('Got an error with ColissimoPickupPoint module. Please try again to checkout.');
-                }
-
-                $savecode = new OrderAddressColissimoPickupPoint();
-                $savecode
-                    ->setId($event->getOrder()->getDeliveryOrderAddressId())
-                    ->setCode(0)
-                    ->setType($tmp_address->getType())
-                    ->save()
-                ;
-
-                $update = OrderAddressQuery::create()
-                    ->findPK($event->getOrder()->getDeliveryOrderAddressId())
-                    ->setCompany($tmp_address->getCompany())
-                    ->setAddress1($tmp_address->getAddress1())
-                    ->setAddress2($tmp_address->getAddress2())
-                    ->setAddress3($tmp_address->getAddress3())
-                    ->setZipcode($tmp_address->getZipcode())
-                    ->setCity($tmp_address->getCity())
-                    ->save()
-                ;
-
-            } else {
-                $tmp_address = AddressColissimoPickupPointQuery::create()
-                    ->findPk($request->getSession()->get('ColissimoPickupPointDeliveryId'));
-
-                if ($tmp_address === null) {
-                    throw new \ErrorException('Got an error with ColissimoPickupPoint module. Please try again to checkout.');
-                }
-
-                $savecode = new OrderAddressColissimoPickupPoint();
-                $savecode
-                    ->setId($event->getOrder()->getDeliveryOrderAddressId())
-                    ->setCode($tmp_address->getCode())
-                    ->setType($tmp_address->getType())
-                    ->save()
-                ;
-
-                $update = OrderAddressQuery::create()
-                    ->findPK($event->getOrder()->getDeliveryOrderAddressId())
-                    ->setCompany($tmp_address->getCompany())
-                    ->setAddress1($tmp_address->getAddress1())
-                    ->setAddress2($tmp_address->getAddress2())
-                    ->setAddress3($tmp_address->getAddress3())
-                    ->setZipcode($tmp_address->getZipcode())
-                    ->setCity($tmp_address->getCity())
-                    ->save()
-                ;
+            if ($tmp_address === null) {
+                throw new \ErrorException('Got an error with ColissimoPickupPoint module. Please try again to checkout.');
             }
+
+            $savecode = new OrderAddressColissimoPickupPoint();
+
+            $savecode
+                ->setId($event->getOrder()->getDeliveryOrderAddressId())
+                ->setCode($tmp_address->getCode())
+                ->setType($tmp_address->getType())
+                ->save()
+            ;
+
+            $update = OrderAddressQuery::create()
+                ->findPK($event->getOrder()->getDeliveryOrderAddressId())
+                ->setCompany($tmp_address->getCompany())
+                ->setAddress1($tmp_address->getAddress1())
+                ->setAddress2($tmp_address->getAddress2())
+                ->setAddress3($tmp_address->getAddress3())
+                ->setZipcode($tmp_address->getZipcode())
+                ->setCity($tmp_address->getCity())
+                ->save()
+            ;
         }
     }
 

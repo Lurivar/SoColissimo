@@ -33,7 +33,7 @@ use Thelia\Form\BaseForm;
 use Thelia\Model\ConfigQuery;
 
 /**
- * Class ConfigureSoColissimo
+ * Class ConfigureColissimoPickupPoint
  * @package ColissimoPickupPoint\Form
  * @author Thelia <info@thelia.net>
  */

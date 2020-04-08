@@ -1,46 +1,19 @@
 
-{loop type="delivery" name="socolissimo" id=$module force_return="true" country=$country}
+{loop type="delivery" name="colissimopickuppoint" id=$module force_return="true" country=$country}
 <tr style="display: none;">
     <td colspan="3">
-        <div id="point-socolissimo">
-            <div id="google-map-socolissimo">
-                {* Domicile *}
-                {socolissimoDeliveryPrice delivery-mode="dom" country=$country}
-                {if $isValidMode !== false}
-                <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>{intl l="home delivery" d='socolissimo.fo.default'}</strong> / {$deliveryModePrice} {currency attr="symbol"}
-                </div>
-                <div class="panel-body">
-                    <div class="container-fluid">
-
-                        <div style="padding-top: 15px;">
-                            {images file="assets/img/socolissimo/dom-small.png" source="SoColissimo"}
-                            <img src="{$asset_url}" alt="{intl l="My home" d='socolissimo.fo.default'}">
-                            {/images}
-                            <br>
-                            {intl l="Delivery to you or a personal address of your choice." d='socolissimo.fo.default'}
-
-                            <div class="clearfix">
-                                <button type="submit" name="socolissimo-home" value="DOM" class="btn btn-primary pull-right">{intl l="Choose this delivery mode" d="socolissimo.fo.default"}</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            {/if}
-
+        <div id="point-colissimo-pickup-point">
+            <div id="google-map-colissimo-pickup-point">
             {* Point relais *}
-            {* Check if soColissimo webservice is up *}
-            {assign var="isSocolissimoUp" value=0}
-            {socolissimoDeliveryPrice delivery-mode="pr" country=$country}<h1>{$isValidMode}</h1>
+            {* Check if Colissimo webservice is up *}
+            {assign var="isColissimoPickupPointUp" value=0}
+            {colissimoPickupPointDeliveryPrice country=$country}<h1>{$isValidMode}</h1>
             {if $isValidMode !== false}
-            {loop name="is.socolissimo.up"  type="socolissimo.around"}{/loop}
-            {ifloop rel="is.socolissimo.up"}
+            {loop name="is.colissimo.pickup.point.up"  type="colissimo.pickup.point.around"}{/loop}
+            {ifloop rel="is.colissimo.pickup.point.up"}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <strong>{intl l="Near you" d='socolissimo.fo.default'}</strong> / {$deliveryModePrice} {currency attr="symbol"}
+                        <strong>{intl l="Near you" d='colissimo.pickup.point.fo.default'}</strong> / {$deliveryPrice} {currency attr="symbol"}
                     </div>
                     <div class="panel-body">
                         <script>
@@ -51,20 +24,20 @@
                                 "listMarker": [],
                                 "position": null,
                                 "images": {
-                                    'BPR': '{image file="assets/img/socolissimo/BPR.png" source="SoColissimo"}',
-                                    'ACP': '{image file="assets/img/socolissimo/BPR.png" source="SoColissimo"}',
-                                    'CDI': '{image file="assets/img/socolissimo/BPR.png" source="SoColissimo"}',
-                                    'BDP': '{image file="assets/img/socolissimo/BPR.png" source="SoColissimo"}',
-                                    'A2P': '{image file="assets/img/socolissimo/A2P.png" source="SoColissimo"}',
-                                    'CMT': '{image file="assets/img/socolissimo/A2P.png" source="SoColissimo"}',
-                                    'PCS': '{image file="assets/img/socolissimo/CIT.png" source="SoColissimo"}',
-                                    'HANDICAPE': '{image file="assets/img/socolissimo/mobilite-reduite.gif" source="SoColissimo"}'
+                                    'BPR': '{image file="assets/img/BPR.png" source="ColissimoPickupPoint"}',
+                                    'ACP': '{image file="assets/img/BPR.png" source="ColissimoPickupPoint"}',
+                                    'CDI': '{image file="assets/img/BPR.png" source="ColissimoPickupPoint"}',
+                                    'BDP': '{image file="assets/img/BPR.png" source="ColissimoPickupPoint"}',
+                                    'A2P': '{image file="assets/img/A2P.png" source="ColissimoPickupPoint"}',
+                                    'CMT': '{image file="assets/img/A2P.png" source="ColissimoPickupPoint"}',
+                                    'PCS': '{image file="assets/img/CIT.png" source="ColissimoPickupPoint"}',
+                                    'HANDICAPE': '{image file="assets/img/mobilite-reduite.gif" source="ColissimoPickupPoint"}'
                                 },
                                 "address": "",
                                 "locations": []
                             };
 
-                            function updatemap_socolissimo(adr_geoloc, locations) {
+                            function updatemap_colissimo_pickup_point(adr_geoloc, locations) {
 
                                 var buf = "",
                                         marker,
@@ -84,7 +57,7 @@
                                         mapTypeId: google.maps.MapTypeId.ROADMAP
                                     }
                                     // On va créer la map dans la div qui a l'id relaymap
-                                    mapSOC.map = new google.maps.Map(document.getElementById('socolissimomap'), mapOptions);
+                                    mapSOC.map = new google.maps.Map(document.getElementById('colissimopickuppointmap'), mapOptions);
                                     mapSOC.infowindow = new google.maps.InfoWindow({
                                         size: new google.maps.Size(50,50)
                                     });
@@ -101,7 +74,7 @@
                                         marker = new google.maps.Marker({
                                             position: new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()),
                                             map: mapSOC.map,
-                                            icon: "{image file='assets/img/socolissimo/maison.png' source='SoColissimo'}"
+                                            icon: "{image file='assets/img/maison.png' source='ColissimoPickupPoint'}"
                                         });
                                         if (mapSOC.position != null){
                                             mapSOC.position.setMap(null);
@@ -117,7 +90,7 @@
                                 });
 
                                 // clean current map
-                                $("#table-socolissimo").html("");
+                                $("#table-colissimo-pickup-point").html("");
                                 for (i = 0; i < mapSOC.listMarker.length; i++) {
                                     //google.maps.event.removeListener(listMarker[i]);
                                     mapSOC.listMarker[i].setMap(null);
@@ -132,7 +105,7 @@
 
                                 // Get services (or relay point type) that user wants to include in his search
                                 var services = {};
-                                $("input.toggle-type-socolissimo:checked").each(function(){
+                                $("input.toggle-type-colissimo-pickup-point:checked").each(function(){
                                     if(servicesCode.hasOwnProperty(this.value)){
                                         var codeArray = servicesCode[this.value];
                                         codeArray.forEach(function (code) {
@@ -181,12 +154,12 @@
                                     mapSOC.listMarker.push(marker);
                                     attachMarker(marker, loc);
                                 }
-                                document.getElementById("table-socolissimo").innerHTML = buf;
+                                document.getElementById("table-colissimo-pickup-point").innerHTML = buf;
                             }
 
                             function attachMarker(marker, data) {
                                 google.maps.event.addListener(marker, 'click', function() {
-                                    $("#pr-socolissimo" + data.id).prop('checked', true);
+                                    $("#colissimo-pickup-point" + data.id).prop('checked', true);
                                     //verifyRadio();
                                     mapSOC.infowindow.setContent(
                                             '<img src="' + mapSOC.images[data.type] + '">' +
@@ -203,13 +176,13 @@
                                             ((data.disabledPerson) ? '<img src="' + mapSOC.images["HANDICAPE"] + '">' : "") +
                                             '</p>' +
                                             '<table class="table table-condensed table-striped table-bordered" style="width: 100%;">' +
-                                            getHoraireRow('{intl l="Monday" d='socolissimo.fo.default'}', data.monday) +
-                                            getHoraireRow('{intl l="Tuesday" d='socolissimo.fo.default'}', data.tuesday) +
-                                            getHoraireRow('{intl l="Wednesday" d='socolissimo.fo.default'}', data.wednesday) +
-                                            getHoraireRow('{intl l="Friday" d='socolissimo.fo.default'}', data.friday) +
-                                            getHoraireRow('{intl l="Thursday" d='socolissimo.fo.default'}', data.thursday) +
-                                            getHoraireRow('{intl l="Saturday" d='socolissimo.fo.default'}', data.saturday) +
-                                            getHoraireRow('{intl l="Sunday" d='socolissimo.fo.default'}', data.sunday) +
+                                            getHoraireRow('{intl l="Monday" d='colissimo.pickup.point.fo.default'}', data.monday) +
+                                            getHoraireRow('{intl l="Tuesday" d='colissimo.pickup.point.fo.default'}', data.tuesday) +
+                                            getHoraireRow('{intl l="Wednesday" d='colissimo.pickup.point.fo.default'}', data.wednesday) +
+                                            getHoraireRow('{intl l="Friday" d='colissimo.pickup.point.fo.default'}', data.friday) +
+                                            getHoraireRow('{intl l="Thursday" d='colissimo.pickup.point.fo.default'}', data.thursday) +
+                                            getHoraireRow('{intl l="Saturday" d='colissimo.pickup.point.fo.default'}', data.saturday) +
+                                            getHoraireRow('{intl l="Sunday" d='colissimo.pickup.point.fo.default'}', data.sunday) +
                                             '</table>');
                                     mapSOC.infowindow.open(mapSOC.map, marker);
                                 });
@@ -232,10 +205,10 @@
 
                                 var selectedAddressId = $selectedAddressInput.val();
 
-                                var locationsSearchUrl = "{url path='/module/socolissimo/points'}";
+                                var locationsSearchUrl = "{url path='/module/ColissimoPickupPoint/points'}";
 
                                 var addresses_geoloc = [];
-                                {loop type="address" name="delivery-selection-socolissimo" customer="current"}
+                                {loop type="address" name="delivery-selection-colissimo-pickup-point" customer="current"}
                                     addresses_geoloc[{$ID}] = "{$ADDRESS1}, {$ZIPCODE} {$CITY}";
                                 {/loop}
 
@@ -247,7 +220,7 @@
                                     locationsSearchUrl + "?address=" + selectedAddressId,
                                     function(data) {
                                         locations = data.locations;
-                                        updatemap_socolissimo(adr_geoloc, locations);
+                                        updatemap_colissimo_pickup_point(adr_geoloc, locations);
                                     }
                                 );
                             }
@@ -262,16 +235,16 @@
                                 };
                             }());
 
-                            function search_city_socolissimo() {
-                                var address = document.getElementById("search-address-socolissimo").value;
-                                var zipcode = document.getElementById("search-zipcode-socolissimo").value;
-                                var city = document.getElementById("search-city-socolissimo").value;
-                                var countryid = $("#search-countryid-socolissimo").val();
+                            function search_city_colissimo_pickup_point() {
+                                var address = document.getElementById("search-address-colissimo-pickup-point").value;
+                                var zipcode = document.getElementById("search-zipcode-colissimo-pickup-point").value;
+                                var city = document.getElementById("search-city-colissimo-pickup-point").value;
+                                var countryid = $("#search-countryid-colissimo-pickup-point").val();
                                 if (zipcode == "" || city == "") {
-                                    alert("{intl l="Please enter a city and a zipcode" d='socolissimo.fo.default'}");
+                                    alert("{intl l="Please enter a city and a zipcode" d='colissimo.pickup.point.fo.default'}");
                                 } else {
                                     // Get site base url
-                                    var url_site = '{url path="/"}module/socolissimo/'
+                                    var url_site = '{url path="/"}module/ColissimoPickupPoint/'
                                             + encodeURIComponent(countryid) + '/'
                                             + encodeURIComponent(zipcode) + '/'
                                             + encodeURIComponent(normalize(city));
@@ -286,9 +259,9 @@
                                             .done(function(data) {
                                                 if (!$.isEmptyObject(data)) {
                                                     locations = data.locations;
-                                                    updatemap_socolissimo(adr_geoloc, locations);
+                                                    updatemap_colissimo_pickup_point(adr_geoloc, locations);
                                                 } else {
-                                                    alert("{intl l='Colissimo is unavailable. Please choose another delivery method' d='socolissimo.fo.default'}");
+                                                    alert("{intl l='Colissimo is unavailable. Please choose another delivery method' d='colissimo.pickup.point.fo.default'}");
                                                 }
                                             })
                                             .fail(function( jqxhr, textStatus, error ) {
@@ -305,16 +278,16 @@
                                 <!-- Bureau de poste -->
                                 <div class="col-md-4 col-sm-4">
                                     <div style="padding-top: 5px; padding-bottom: 5px;">
-                                        {images file="assets/img/socolissimo/BPR.png" source="SoColissimo"}
+                                        {images file="assets/img/BPR.png" source="ColissimoPickupPoint"}
                                         <img src="{$asset_url}" class="pull-left">
                                         {/images}
-                                        <h5 class="title-socolissimo-pickup-type">{intl l="Post office" d='socolissimo.fo.default'}</h5>
-                                        <p>{intl l="Delivery in one of the 10,000 collection points La Poste in France or in a post office in Europe." d='socolissimo.fo.default'}</p>
+                                        <h5 class="title-colissimo-pickup-point-pickup-type">{intl l="Post office" d='colissimo.pickup.point.fo.default'}</h5>
+                                        <p>{intl l="Delivery in one of the 10,000 collection points La Poste in France or in a post office in Europe." d='colissimo.pickup.point.fo.default'}</p>
 
                                         <div class="checkbox">
-                                            <label class="control-label" for="toggle-type-socolissimo-4">
-                                                <input type="checkbox" name="toggle-type-socolissimo" id="toggle-type-socolissimo-4" class="toggle-type-socolissimo" value="POSTE" checked>
-                                                {intl l="include in results" d='socolissimo.fo.default'}
+                                            <label class="control-label" for="toggle-type-colissimo-pickup-point-4">
+                                                <input type="checkbox" name="toggle-type-colissimo-pickup-point" id="toggle-type-colissimo-pickup-point-4" class="toggle-type-colissimo-pickup-point" value="POSTE" checked>
+                                                {intl l="include in results" d='colissimo.pickup.point.fo.default'}
                                             </label>
                                         </div>
                                     </div>
@@ -323,16 +296,16 @@
                                 <!-- Relais Pickup -->
                                 <div class="col-md-4 col-sm-4">
                                     <div style="padding-top: 5px; padding-bottom: 5px;">
-                                        {images file="assets/img/socolissimo/A2P.png" source="SoColissimo"}
+                                        {images file="assets/img/A2P.png" source="ColissimoPickupPoint"}
                                         <img src="{$asset_url}" class="pull-left">
                                         {/images}
-                                        <h5 class="title-socolissimo-pickup-type">{intl l="Pickup shop" d='socolissimo.fo.default'}</h5>
-                                        <p>{intl l="Delivery in one of the 7,500 shops in the PICKUP network." d='socolissimo.fo.default'}</p>
+                                        <h5 class="title-colissimo-pickup-point-pickup-type">{intl l="Pickup shop" d='colissimo.pickup.point.fo.default'}</h5>
+                                        <p>{intl l="Delivery in one of the 7,500 shops in the PICKUP network." d='colissimo.pickup.point.fo.default'}</p>
 
                                         <div class="checkbox">
-                                            <label class="control-label" for="toggle-type-socolissimo-5">
-                                                <input type="checkbox" name="toggle-type-socolissimo" id="toggle-type-socolissimo-5" class="toggle-type-socolissimo" value="RELAIS" checked>
-                                                {intl l="include in results" d='socolissimo.fo.default'}
+                                            <label class="control-label" for="toggle-type-colissimo-pickup-point-5">
+                                                <input type="checkbox" name="toggle-type-colissimo-pickup-point" id="toggle-type-colissimo-pickup-point-5" class="toggle-type-colissimo-pickup-point" value="RELAIS" checked>
+                                                {intl l="include in results" d='colissimo.pickup.point.fo.default'}
                                             </label>
                                         </div>
                                     </div>
@@ -341,16 +314,16 @@
                                 <!-- Consigne Pickup Station -->
                                 <div class="col-md-4 col-sm-4">
                                     <div style="padding-top: 5px; padding-bottom: 5px;">
-                                        {images file="assets/img/socolissimo/CIT.png" source="SoColissimo"}
+                                        {images file="assets/img/CIT.png" source="ColissimoPickupPoint"}
                                             <img src="{$asset_url}" class="pull-left">
                                         {/images}
-                                        <h5 class="title-socolissimo-pickup-type">{intl l="Automatic pickup point" d='socolissimo.fo.default'}</h5>
-                                        <p>{intl l="Delivery in France in one of the 500 automatic instructions 7/7 and 24h/24." d='socolissimo.fo.default'}</p>
+                                        <h5 class="title-colissimo-pickup-point-pickup-type">{intl l="Automatic pickup point" d='colissimo.pickup.point.fo.default'}</h5>
+                                        <p>{intl l="Delivery in France in one of the 500 automatic instructions 7/7 and 24h/24." d='colissimo.pickup.point.fo.default'}</p>
 
                                         <div class="checkbox">
-                                            <label class="control-label" for="toggle-type-socolissimo-6">
-                                                <input type="checkbox" name="toggle-type-socolissimo" id="toggle-type-socolissimo-6" class="toggle-type-socolissimo" value="CONSIGNE" checked>
-                                                {intl l="include in results" d='socolissimo.fo.default'}
+                                            <label class="control-label" for="toggle-type-colissimo-pickup-point-6">
+                                                <input type="checkbox" name="toggle-type-colissimo-pickup-point" id="toggle-type-colissimo-pickup-point-6" class="toggle-type-colissimo-pickup-point" value="CONSIGNE" checked>
+                                                {intl l="include in results" d='colissimo.pickup.point.fo.default'}
                                             </label>
                                         </div>
                                     </div>
@@ -362,45 +335,45 @@
                             <div class="container-fluid">
                                 <!-- Map -->
                                 <div class="col-md-7" style="padding-right: 0;">
-                                    <div id="socolissimomap" style="width: 100%; height: 450px;"></div>
+                                    <div id="colissimopickuppointmap" style="width: 100%; height: 450px;"></div>
                                 </div><!-- // Map -->
 
                                 <!-- Liste -->
                                 <div class="col-md-5" style="padding-left: 0">
                                     <div style="height: 450px; overflow-y: scroll;">
-                                        <table class="table table-bordered table-striped" id="table-socolissimo"></table>
+                                        <table class="table table-bordered table-striped" id="table-colissimo-pickup-point"></table>
                                     </div>
                                 </div><!-- // Liste -->
                             </div>
 
                             <div class="container-fluid">
                                 <div class="col-md-12">
-                                    <h4>{intl l="Search Colissimo relay in a city" d='socolissimo.fo.default'}</h4>
+                                    <h4>{intl l="Search Colissimo relay in a city" d='colissimo.pickup.point.fo.default'}</h4>
 
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="search-address-socolissimo" class="control-label sr-only">
-                                                {intl l="address" d='socolissimo.fo.default'}
+                                            <label for="search-address-colissimo-pickup-point" class="control-label sr-only">
+                                                {intl l="address" d='colissimo.pickup.point.fo.default'}
                                             </label>
-                                            <input type="text" id="search-address-socolissimo" placeholder="{intl l='address' d='socolissimo.fo.default'}" class="form-control" style="" onPaste=""
+                                            <input type="text" id="search-address-colissimo-pickup-point" placeholder="{intl l='address' d='colissimo.pickup.point.fo.default'}" class="form-control" style="" onPaste=""
                                                    {literal}onkeydown="if (event.keyCode == 13) {return false;}"{/literal}/>
                                         </div>
                                         <div class="col-md-2">
-                                            <label for="search-zipcode-socolissimo" class="control-label sr-only">
-                                                {intl l="zipcode" d='socolissimo.fo.default'}
+                                            <label for="search-zipcode-colissimo-pickup-point" class="control-label sr-only">
+                                                {intl l="zipcode" d='colissimo.pickup.point.fo.default'}
                                             </label>
-                                            <input type="text" id="search-zipcode-socolissimo" placeholder="{intl l='zipcode' d='socolissimo.fo.default'}" class="form-control" style="" onPaste=""
-                                                   {literal}onkeydown="if (event.keyCode == 13) {search_city_socolissimo();return false;}"{/literal}/>
+                                            <input type="text" id="search-zipcode-colissimo-pickup-point" placeholder="{intl l='zipcode' d='colissimo.pickup.point.fo.default'}" class="form-control" style="" onPaste=""
+                                                   {literal}onkeydown="if (event.keyCode == 13) {search_city_colissimo_pickup_point();return false;}"{/literal}/>
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="search-city-socolissimo" class="control-label sr-only">
-                                                {intl l="city" d='socolissimo.fo.default'}
+                                            <label for="search-city-colissimo-pickup-point" class="control-label sr-only">
+                                                {intl l="city" d='colissimo.pickup.point.fo.default'}
                                             </label>
-                                            <input type="text" id="search-city-socolissimo" placeholder="{intl l='city' d='socolissimo.fo.default'}" class="form-control" style="" onPaste=""
-                                                   {literal}onkeydown="if (event.keyCode == 13) {search_city_socolissimo();return false;}"{/literal}/>
+                                            <input type="text" id="search-city-colissimo-pickup-point" placeholder="{intl l='city' d='colissimo.pickup.point.fo.default'}" class="form-control" style="" onPaste=""
+                                                   {literal}onkeydown="if (event.keyCode == 13) {search_city_colissimo_pickup_point();return false;}"{/literal}/>
                                         </div>
                                         <div class="col-md-2">
-                                            <select id="search-countryid-socolissimo" class="form-control">
+                                            <select id="search-countryid-colissimo-pickup-point" class="form-control">
                                             {loop type="country" name="country.list"}
                                             <option value="{$ID}"
                                                 {if $value != ""}
@@ -413,13 +386,13 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="button" id="search-city-submit-socolissimo" class="form-submit-button btn btn-block btn-default" title="{intl l='Search' d='socolissimo.fo.default'}">
+                                            <button type="button" id="search-city-submit-colissimo-pickup-point" class="form-submit-button btn btn-block btn-default" title="{intl l='Search' d='colissimo.pickup.fo.default'}">
                                                 <span class="glyphicon glyphicon-search"></span>
-                                                {intl l='Search' d='socolissimo.fo.default'}
+                                                {intl l='Search' d='colissimo.pickup.point.fo.default'}
                                             </button>
                                         </div>
                                         <div class="clearfix col-md-12" style="margin-top: 15px;margin-bottom: 15px;">
-                                            <button type="submit" name="socolissimo-pr" value="PR" class="btn btn-primary pull-right">{intl l="Choose this delivery mode" d="socolissimo.fo.default"}</button>
+                                            <button type="submit" name="colissimo-pickup-point" value="PR" class="btn btn-primary pull-right">{intl l="Choose this delivery mode" d="colissimo.pickup.fo.default"}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -443,27 +416,27 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js'
-        + '?callback=SoColissimoInitialize'
-        + '&key={config key="socolissimo_google_map_key"}';
+        + '?callback=ColissimoPickupPointInitialize'
+        + '&key={config key="colissimo_pickup_point_google_map_key"}';
         document.body.appendChild(script);
     }
 
     if (typeof(google) == 'undefined') {
         loadScript();
     } else {
-        SoColissimoInitialize();
+        ColissimoPickupPointInitialize();
     }
 
-    function SoColissimoInitialize() {
+    function ColissimoPickupPointInitialize() {
         if (typeof initialize_so == 'function') {
             initialize_so();
             // Search city pseudo-form
-            document.getElementById("search-city-submit-socolissimo").onclick = search_city_socolissimo;
+            document.getElementById("search-city-submit-colissimo-pickup-point").onclick = search_city_colissimo_pickup_point;
         }
     }
 
     function displayContent () {
-        $("#google-map-socolissimo").closest('tr').show(function () {
+        $("#google-map-colissimo-pickup-point").closest('tr').show(function () {
             $('.btn-checkout-next').hide();
             if (typeof initialize_so == 'function') {
                 google.maps.event.trigger(mapSOC.map, 'resize');
@@ -477,17 +450,17 @@
             displayContent();
         }
 
-        $('[name="socolissimo-pr"]').on('click', function(){
-            var radioChecked = $('input[type="radio"]:checked', '#table-socolissimo').length;
+        $('[name="colissimo-pickup-point"]').on('click', function(){
+            var radioChecked = $('input[type="radio"]:checked', '#table-colissimo-pickup-point').length;
             if (radioChecked === 0) {
-                alert("{intl l='No relay points were selected' d='socolissimo.fo.default'}");
+                alert("{intl l='No relay points were selected' d='colissimo.pickup.point.fo.default'}");
                 return false;
             }
         });
 
         $('[name="thelia_order_delivery[delivery-module]"]', '.table-delivery').on('change', function(){
             if($(this).attr('id') != 'delivery-method_{$module}') {
-                $("#google-map-socolissimo").closest('tr').hide();
+                $("#google-map-colissimo-pickup-point").closest('tr').hide();
                 $('.btn-checkout-next').show();
             } else {
                 displayContent();
@@ -495,11 +468,11 @@
         });
 
         if (typeof initialize_so == 'function') {
-            $(".toggle-type-socolissimo").on('change', function () {
-                updatemap_socolissimo();
+            $(".toggle-type-colissimo-pickup-point").on('change', function () {
+                updatemap_colissimo_pickup_point();
             });
 
-            $("#delivery-method").on('click', '.socolissimo_pr', function () {
+            $("#delivery-method").on('click', '.colissimo_pickuo_point', function () {
                 markerId = $(this).data('marker');
                 google.maps.event.trigger(mapSOC.listMarker[markerId], 'click');
             });

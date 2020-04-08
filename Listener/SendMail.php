@@ -53,9 +53,9 @@ class SendMail implements EventSubscriberInterface
     public function updateStatus(OrderEvent $event)
     {
         $order = $event->getOrder();
-        $socolissimo = new ColissimoPickupPoint();
+        $colissimoPickupPoint = new ColissimoPickupPoint();
 
-        if ($order->isSent() && $order->getDeliveryModuleId() == $socolissimo->getModuleModel()->getId()) {
+        if ($order->isSent() && $order->getDeliveryModuleId() == $colissimoPickupPoint->getModuleModel()->getId()) {
             $contact_email = ConfigQuery::read('store_email');
 
             if ($contact_email) {

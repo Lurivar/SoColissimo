@@ -26,7 +26,7 @@ class FrontHook extends BaseHook {
 
     public function onOrderDeliveryExtra(HookRenderEvent $event)
     {
-        $content = $this->render('colissimoPickupPoint.html', $event->getArguments());
+        $content = $this->render('colissimo-pickup-point.html', $event->getArguments());
         $event->add($content);
     }
 

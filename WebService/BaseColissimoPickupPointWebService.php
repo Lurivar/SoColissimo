@@ -26,18 +26,18 @@ namespace ColissimoPickupPoint\WebService;
 use ColissimoPickupPoint\ColissimoPickupPoint;
 
 /**
- * Class BaseSoColissimoWebService
+ * Class BaseColissimoPickupPointWebService
  * @package ColissimoPickupPoint\WebService
  * @author Thelia <info@thelia.net>
  *
- * @method BaseSoColissimoWebService getAccountNumber()
- * @method BaseSoColissimoWebService setAccountNumber($value)
- * @method BaseSoColissimoWebService getPassword()
- * @method BaseSoColissimoWebService setPassword($value)
- * @method BaseSoColissimoWebService getWeight()
- * @method BaseSoColissimoWebService setWeight($value)
+ * @method BaseColissimoPickupPointWebService getAccountNumber()
+ * @method BaseColissimoPickupPointWebService setAccountNumber($value)
+ * @method BaseColissimoPickupPointWebService getPassword()
+ * @method BaseColissimoPickupPointWebService setPassword($value)
+ * @method BaseColissimoPickupPointWebService getWeight()
+ * @method BaseColissimoPickupPointWebService setWeight($value)
  */
-abstract class BaseSoColissimoWebService extends BaseWebService
+abstract class BaseColissimoPickupPointWebService extends BaseWebService
 {
 
     protected $account_number=null;

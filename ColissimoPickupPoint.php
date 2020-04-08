@@ -104,7 +104,6 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
      * @param $areaId
      * @param $weight
      * @param $cartAmount
-     * @param $deliverModeCode
      *
      * @return mixed
      * @throws DeliveryException
@@ -287,6 +286,10 @@ class ColissimoPickupPoint extends AbstractDeliveryModule
         } catch (\Exception $e) {
             $database = new Database($con->getWrappedConnection());
             $database->insertSql(null, [__DIR__ . '/Config/thelia.sql', __DIR__ . '/Config/insert.sql']);
+        }
+
+        if (!ColissimoPickupPointFreeshippingQuery::create()->filterById(1)->findOne()) {
+            ColissimoPickupPointFreeshippingQuery::create()->filterById(1)->findOneOrCreate()->setActive(0)->save();
         }
 
         $this->checkModuleConfig();

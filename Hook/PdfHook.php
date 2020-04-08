@@ -21,7 +21,7 @@ class PdfHook extends BaseHook
 {
     public function onInvoiceAfterDeliveryModule(HookRenderEvent $event)
     {
-        // No So Colissimo information if the delivery module is not SoColissimo
+        // No So Colissimo information if the delivery module is not ColissimoPickupPoint
         if (ColissimoPickupPoint::getModuleId() == $event->getArgument('module_id')) {
             return;
         }

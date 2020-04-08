@@ -39,7 +39,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * @method FindById getDate()
  * @method FindById setDate($value)
  */
-class FindById extends BaseSoColissimoWebService
+class FindById extends BaseColissimoPickupPointWebService
 {
     protected $id;
     /** @var  string if belgique: R12, else empty */

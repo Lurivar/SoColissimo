@@ -44,7 +44,6 @@ class AreaFreeshipping extends BaseLoop implements PropelSearchLoopInterface
             $loopResultRow
                 ->set('ID', $mode->getId())
                 ->set('AREA_ID', $mode->getAreaId())
-                ->set('DELIVERY_MODE_ID', $mode->getDeliveryModeId())
                 ->set('CART_AMOUNT', $mode->getCartAmount());
 
             $loopResult->addRow($loopResultRow);

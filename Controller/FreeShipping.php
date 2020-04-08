@@ -24,12 +24,7 @@
 namespace ColissimoPickupPoint\Controller;
 
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping;
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDom;
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingDomQuery;
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPr;
-use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingPrQuery;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery;
-use ColissimoPickupPoint\Model\ColissimoPickupPointDeliveryModeQuery;
 use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshippingQuery;
 use Propel\Runtime\Exception\PropelException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -56,8 +51,8 @@ class FreeShipping extends BaseAdminController
             $vform = $this->validateForm($form);
             $freeshipping = $vform->get('freeshipping')->getData();
 
-            $deliveryMode = ColissimoPickupPointFreeshippingQuery::create()->findOneById(1);
-            $deliveryMode
+            $deliveryFreeshipping = ColissimoPickupPointFreeshippingQuery::create()->findOneById(1);
+            $deliveryFreeshipping
                 ->setActive($freeshipping)
                 ->save()
             ;
@@ -130,14 +125,14 @@ class FreeShipping extends BaseAdminController
                 return null;
             }
 
-            $socolissimoAreaFreeshippingQuery = ColissimoPickupPointAreaFreeshippingQuery::create()
+            $colissimoPickupPointAreaFreeshippingQuery = ColissimoPickupPointAreaFreeshippingQuery::create()
                 ->filterByAreaId($colissimo_pickup_area_id)
                 ->findOne();
 
-            if (null === $socolissimoAreaFreeshippingQuery) {
-                $socolissimoFreeShipping = new ColissimoPickupPointAreaFreeshipping();
+            if (null === $colissimoPickupPointAreaFreeshippingQuery) {
+                $colissimoPickupPointFreeShipping = new ColissimoPickupPointAreaFreeshipping();
 
-                $socolissimoFreeShipping
+                $colissimoPickupPointFreeShipping
                     ->setAreaId($colissimo_pickup_area_id)
                     ->setCartAmount($cartAmount)
                     ->save();

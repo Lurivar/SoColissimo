@@ -50,7 +50,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * @method FindByAddress getShippingDate()
  * @method FindByAddress setShippingDate($value)
  */
-class FindByAddress extends BaseSoColissimoWebService
+class FindByAddress extends BaseColissimoPickupPointWebService
 {
     protected $address=null;
     protected $zip_code=null;
