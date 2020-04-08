@@ -413,6 +413,9 @@
 
 <script>
     function loadScript() {
+
+        console.log("loadScript");
+
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js'
@@ -428,6 +431,7 @@
     }
 
     function ColissimoPickupPointInitialize() {
+        console.log("ColissimoPickupPointInitialize");
         if (typeof initialize_so == 'function') {
             initialize_so();
             // Search city pseudo-form
@@ -436,6 +440,7 @@
     }
 
     function displayContent () {
+        console.log("displayContent");
         $("#google-map-colissimo-pickup-point").closest('tr').show(function () {
             $('.btn-checkout-next').hide();
             if (typeof initialize_so == 'function') {
@@ -472,7 +477,7 @@
                 updatemap_colissimo_pickup_point();
             });
 
-            $("#delivery-method").on('click', '.colissimo_pickuo_point', function () {
+            $("#delivery-method").on('click', '.colissimo_pickup_point', function () {
                 markerId = $(this).data('marker');
                 google.maps.event.trigger(mapSOC.listMarker[markerId], 'click');
             });
