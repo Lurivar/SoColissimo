@@ -23,10 +23,11 @@
 
 namespace ColissimoPickupPoint\Controller;
 
+use ColissimoPickupPoint\Form\FreeShippingForm;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshipping;
 use ColissimoPickupPoint\Model\ColissimoPickupPointAreaFreeshippingQuery;
+use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshipping;
 use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshippingQuery;
-use Propel\Runtime\Exception\PropelException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Thelia\Controller\Admin\BaseAdminController;
 use Thelia\Core\HttpFoundation\Response;
@@ -37,6 +38,11 @@ use Thelia\Model\AreaQuery;
 
 class FreeShipping extends BaseAdminController
 {
+    /**
+     * Toggle on or off free shipping for all areas without minimum cart amount, or set the minimum cart amount to reach for all areas to get free shipping
+     *
+     * @return mixed|JsonResponse|Response|null
+     */
     public function toggleFreeShippingActivation()
     {
         if (null !== $response = $this
@@ -44,62 +50,44 @@ class FreeShipping extends BaseAdminController
             return $response;
         }
 
-        $form = new \ColissimoPickupPoint\Form\FreeShipping($this->getRequest());
+        $form = new FreeShippingForm($this->getRequest());
         $response=null;
 
         try {
             $vform = $this->validateForm($form);
             $freeshipping = $vform->get('freeshipping')->getData();
+            $freeshippingFrom = $vform->get('freeshipping_from')->getData();
 
-            $deliveryFreeshipping = ColissimoPickupPointFreeshippingQuery::create()->findOneById(1);
+            if (null === $deliveryFreeshipping = ColissimoPickupPointFreeshippingQuery::create()->findOneById(1)){
+                $deliveryFreeshipping = new ColissimoPickupPointFreeshipping();
+            }
+
             $deliveryFreeshipping
                 ->setActive($freeshipping)
+                ->setFreeshippingFrom($freeshippingFrom)
                 ->save()
             ;
-            $response = Response::create('');
+
+            $response = $this->generateRedirectFromRoute(
+                'admin.module.configure',
+                array(),
+                array (
+                    'current_tab'=> 'prices_slices_tab',
+                    'module_code'=> 'ColissimoPickupPoint',
+                    '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
+                    'price_error_id' => null,
+                    'price_error' => null
+                )
+            );
         } catch (\Exception $e) {
             $response = JsonResponse::create(array('error' => $e->getMessage()), 500);
         }
+
         return $response;
-    }
-
-    public function setFreeShippingFrom()
-    {
-        if (null !== $response = $this
-                ->checkAuth(array(AdminResources::MODULE), array('ColissimoPickupPoint'), AccessManager::UPDATE)) {
-            return $response;
-        }
-
-        $data = $this->getRequest()->request;
-
-        $price = $data->get('price') === '' ? null : $data->get('price');
-
-        if ($price < 0) {
-            $price = null;
-        }
-
-        ColissimoPickupPointFreeshippingQuery::create()
-            ->findOneById(1)
-            ->setFreeshippingFrom($price)
-            ->save()
-        ;
-
-        return $this->generateRedirectFromRoute(
-            'admin.module.configure',
-            array(),
-            array (
-                'current_tab'=> 'prices_slices_tab',
-                'module_code'=> 'ColissimoPickupPoint',
-                '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
-                'price_error_id' => null,
-                'price_error' => null
-            )
-        );
     }
 
     /**
      * @return mixed|null|\Symfony\Component\HttpFoundation\Response
-     * @throws PropelException
      */
     public function setAreaFreeShipping()
     {
@@ -151,7 +139,7 @@ class FreeShipping extends BaseAdminController
             'admin.module.configure',
             array(),
             array(
-                'current_tab' => 'prices_slices_tab_' . $data->get('area_freeshipping'),
+                'current_tab' => 'prices_slices_tab',
                 'module_code' => 'ColissimoPickupPoint',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
                 'price_error_id' => null,

@@ -14,10 +14,6 @@
         <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::toggleFreeShippingActivation</default>
     </route>
 
-    <route id="colissimo.pickup.point.edit.freeshippingfrom" path="/admin/module/ColissimoPickupPoint/freeshipping_from" methods="post">
-        <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::setFreeShippingFrom</default>
-    </route>
-
     <route id="colissimo.pickup.point.edit.areafreeshipping" path="/admin/module/ColissimoPickupPoint/area_freeshipping" methods="post">
         <default key="_controller">ColissimoPickupPoint\Controller\FreeShipping::setAreaFreeShipping</default>
     </route>

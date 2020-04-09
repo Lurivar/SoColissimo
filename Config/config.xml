@@ -13,10 +13,11 @@
         <loop class="ColissimoPickupPoint\Loop\NotSentOrders" name="order.notsent.colissimo.pickup.point" />
         <loop class="ColissimoPickupPoint\Loop\ColissimoPickupPointOrderAddressLoop" name="colissimo.pickup.point.order_address" />
         <loop class="ColissimoPickupPoint\Loop\AreaFreeshipping" name="colissimo.pickup.point.area.freeshipping" />
+        <loop class="ColissimoPickupPoint\Loop\ColissimoPickupPointFreeshippingLoop" name="colissimo.pickup.point.freeshipping" />
     </loops>
 
     <forms>
-        <form name="colissimo.pickup.point.freeshipping.form" class="ColissimoPickupPoint\Form\FreeShipping" />
+        <form name="colissimo.pickup.point.freeshipping.form" class="ColissimoPickupPoint\Form\FreeShippingForm" />
         <form name="colissimo.pickup.point.configure" class="ColissimoPickupPoint\Form\ConfigureColissimoPickupPoint" />
         <form name="colissimo.pickup.point.export" class="ColissimoPickupPoint\Form\ExportOrder" />
         <form name="colissimo.pickup.point.import" class="ColissimoPickupPoint\Form\ImportForm"/>

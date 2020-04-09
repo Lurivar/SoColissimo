@@ -59,7 +59,7 @@
         $(".freeshipping-activation-ColissimoPickupPoint").on("switch-change", function(e, data){
             var is_checked = data.value;
             var mode = $(this).data("id");
-            var form = $("#freeshippingform-"+mode);
+            var form = $("#freeshippingform");
             $('body').append('<div class="modal-backdrop fade in" id="loading-event"><div class="loading"></div></div>');
             $.ajax({
                 url: form.attr('action'),

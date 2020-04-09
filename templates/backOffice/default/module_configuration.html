@@ -35,7 +35,7 @@
     {assign var="tab" value=$smarty.get.current_tab}
 {/if}
 
-    {* default currency *}
+{* default currency *}
 {loop type="currency" name="default_currency" default_only="1"}
 {$currencySymbol=$SYMBOL}
 {/loop}
@@ -260,39 +260,45 @@
                                 <div class="alert alert-danger" role="alert">{$smarty.get.price_error}</div>
                             {/if}
                             <br/>
+
                             <div class="row">
-                                <div class="col-md-4">
-                                    <!-- checkbox free shipping -->
-                                    {assign var="isColissimoPickupPointFreeShipping" value=0}
-                                    {form  name="colissimo.pickup.point.freeshipping.form"}
-                                        <form action="{url path="/admin/module/ColissimoPickupPoint/freeshipping"}" method="post" id="freeshippingform">
-                                            {form_hidden_fields form=$form}
+                                <!-- checkbox free shipping -->
+                                {assign var="isColissimoPickupPointFreeShipping" value=0}
+                                {form  name="colissimo.pickup.point.freeshipping.form"}
+                                <form action='{url path="/admin/module/ColissimoPickupPoint/freeshipping"}' method="post" id="freeshippingform">
+                                    <div class="col-md-4">
+                                        {form_hidden_fields form=$form}
 
-                                            {form_field form=$form field="freeshipping"}
-                                                <label>
-                                                    {intl l="Activate total free shipping " d="colissimo.pickup.point.bo.default"}
-                                                </label>
+                                        {form_field form=$form field="freeshipping"}
+                                        <label>
+                                            {intl l="Activate total free shipping " d="colissimo.pickup.point.bo.default"}
+                                        </label>
+                                        <div class="switch-small freeshipping-activation-ColissimoPickupPoint" data-id="1" data-on="success" data-off="danger" data-on-label="<i class='glyphicon glyphicon-ok-circle'></i>" data-off-label="<i class='glyphicon glyphicon-remove-circle'></i>">
+                                            {loop type="colissimo.pickup.point.freeshipping" name="freeshipping_colissimo_pickup_point"}
+                                            <input type="checkbox" name="{$name}" value="true" {if $FREESHIPPING_ACTIVE}checked{assign var="isColissimoPickupPointFreeShipping" value=1}{/if} />
+                                            {/loop}
+                                        </div>
+                                        {/form_field}
+                                    </div>
 
-                                                <div class="switch-small freeshipping-activation-ColissimoPickupPoint" data-id="1" data-on="success" data-off="danger" data-on-label="<i class='glyphicon glyphicon-ok-circle'></i>" data-off-label="<i class='glyphicon glyphicon-remove-circle'></i>">
-                                                    <input type="checkbox" name="{$name}" value="true" {if $FREESHIPPING_ACTIVE}checked{assign var="isColissimoPickupPointFreeShipping" value=1}{/if} />
-                                                </div>
-                                            {/form_field}
-                                        </form>
-                                    {/form}
-                                </div>
-
-                                <div class="col-md-6" id="freeshipping-from" {if $isColissimoPickupPointFreeShipping eq 1} style="display:none;" {/if}>
-                                    <form action="{url path="/admin/module/ColissimoPickupPoint/freeshipping_from"}"  method="post">
+                                    <div class="col-md-6" id="freeshipping-from">
                                         <div class="input-group">
-                                            <span class="input-group-addon {if $FREESHIPPING_FROM}alert-success{/if}">{intl l="Or activate free shipping from (€) :" d="colissimo.pickup.point.bo.default"}</span>
-                                            <input type="number" name="price" class="form-control" value="{$FREESHIPPING_FROM}">
+                                            {form_field form=$form field="freeshipping_from"}
+                                                {loop type="colissimo.pickup.point.freeshipping" name="freeshipping_colissimo_pickup_point"}
+                                                    <span class="input-group-addon {if $FREESHIPPING_FROM}alert-success{/if}">{intl l="Or activate free shipping from (€) :" d="colissimo.pickup.point.bo.default"}</span>
+                                                    <input type="number" name="{$name}"  class="form-control" value="{$value}" step="0.01">
+                                                {/loop}
+                                            {/form_field}
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default" type="submit">{intl l="Save"}</button>
                                             </span>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                                {/form}
                             </div>
+
+
                             <br/>
 
                             <div class="alert alert-info">

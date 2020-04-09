@@ -24,12 +24,14 @@
 namespace ColissimoPickupPoint\Form;
 
 use ColissimoPickupPoint\ColissimoPickupPoint;
+use ColissimoPickupPoint\Model\ColissimoPickupPointFreeshippingQuery;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Thelia\Core\Translation\Translator;
 use Thelia\Form\BaseForm;
 
-class FreeShipping extends BaseForm
+class FreeShippingForm extends BaseForm
 {
     /**
      *
@@ -61,6 +63,17 @@ class FreeShipping extends BaseForm
                     'label' =>  Translator::getInstance()->trans('Activate free shipping: ', [], ColissimoPickupPoint::DOMAIN)
                 ]
             )
+            ->add(
+                'freeshipping_from',
+                NumberType::class,
+                [
+                    'required'  => false,
+                    'label'     => Translator::getInstance()->trans("Free shipping from: ", [], ColissimoPickupPoint::DOMAIN),
+                    'data'      => ColissimoPickupPointFreeshippingQuery::create()->findOneById(1)->getFreeshippingFrom(),
+                    'scale'     => 2,
+                ]
+            )
+
         ;
     }
 
