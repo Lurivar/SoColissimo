@@ -312,8 +312,10 @@
 
                             <div class="slices" class="form-container">
 
+                                {loop type="module" name="module-id-loop" code="ColissimoPickupPoint"}
+                                    {assign var="module_id" value=$ID}
+                                {/loop}
                                 {loop type="area" name="area_loop" module_id=$module_id backend_context=true}
-                                {$area_id=$ID}
                                     <div class="col-md-12">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-condensed table-left-aligned">
