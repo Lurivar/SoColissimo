@@ -66,8 +66,10 @@ class CheckRightsLoop extends BaseLoop implements ArraySearchLoopInterface
     {
         foreach ($loopResult->getResultDataCollection() as $arr) {
             $loopResultRow = new LoopResultRow();
-            $loopResultRow->set('ERRMES', $arr['ERRMES'])
-                ->set('ERRFILE', $arr['ERRFILE']);
+            $loopResultRow
+                ->set('ERRMES', $arr['ERRMES'])
+                ->set('ERRFILE', $arr['ERRFILE'])
+            ;
             $loopResult->addRow($loopResultRow);
         }
 
