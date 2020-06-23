@@ -114,7 +114,7 @@ class SetDeliveryModule implements EventSubscriberInterface
             $response = $this->callWebServiceFindRelayPointByIdFromRequest($request);
 
             if ($response !== null) {
-                $customer_name = AddressQuery::create()
+                $customerName = AddressQuery::create()
                     ->findPk($event->getDeliveryAddress());
 
                 $address = AddressColissimoPickupPointQuery::create()
@@ -130,7 +130,7 @@ class SetDeliveryModule implements EventSubscriberInterface
                 $relayCountry = CountryQuery::create()->findOneByIsoalpha2($response->codePays);
 
                 if ($relayCountry == null) {
-                    $relayCountry = $customer_name->getCountry();
+                    $relayCountry = $customerName->getCountry();
                 }
 
                 $address
@@ -142,9 +142,9 @@ class SetDeliveryModule implements EventSubscriberInterface
                     ->setAddress3($response->adresse3)
                     ->setZipcode($response->codePostal)
                     ->setCity($response->localite)
-                    ->setFirstname($customer_name->getFirstname())
-                    ->setLastname($customer_name->getLastname())
-                    ->setTitleId($customer_name->getTitleId())
+                    ->setFirstname($customerName->getFirstname())
+                    ->setLastname($customerName->getLastname())
+                    ->setTitleId($customerName->getTitleId())
                     ->setCountryId($relayCountry->getId())
                     ->save()
                 ;

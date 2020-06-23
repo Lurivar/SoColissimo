@@ -45,6 +45,19 @@ use Thelia\Model\CountryQuery;
 class GetRelais extends BaseLoop implements ArraySearchLoopInterface
 {
     /**
+     * @inheritdoc
+     */
+    protected function getArgDefinitions()
+    {
+        return new ArgumentCollection(
+            Argument::createIntTypeArgument('countryid', ''),
+            Argument::createAnyTypeArgument('zipcode', ''),
+            Argument::createAnyTypeArgument('city', ''),
+            Argument::createIntTypeArgument('address')
+        );
+    }
+
+    /**
      * @return array|mixed
      * @throws \ErrorException
      * @throws \Propel\Runtime\Exception\PropelException
@@ -162,18 +175,5 @@ class GetRelais extends BaseLoop implements ArraySearchLoopInterface
         }
 
         return $loopResult;
-    }
-
-    /**
-    * @inheritdoc
-     */
-    protected function getArgDefinitions()
-    {
-        return new ArgumentCollection(
-            Argument::createIntTypeArgument('countryid', ''),
-            Argument::createAnyTypeArgument('zipcode', ''),
-            Argument::createAnyTypeArgument('city', ''),
-            Argument::createIntTypeArgument('address')
-        );
     }
 }
